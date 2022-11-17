@@ -1,14 +1,9 @@
 import AppStart from "./components/app-start.js";
-const testc = () => jsx("div", null);
-export function jsx(nameOrFn, props, ...children) {
-    return [nameOrFn, props, children, undefined];
-}
+export const jsx = (nameOrFn, props, ...children) => [nameOrFn, props, children, undefined];
+const testjsx = () => jsx("div", null);
 export function tupleToElement([nameOrFn, props, children, oldElement]) {
-    if (typeof nameOrFn === "function") {
-        const propsToJsxtree = nameOrFn;
-        const newElement = oldElementToNewElement(propsToJsxtree, props, oldElement);
-        return newElement;
-    }
+    if (typeof nameOrFn === "function")
+        throw Error("tuples weren't fully expanded");
     const element = document.createElement(nameOrFn);
     for (const key in props) {
         if (key.startsWith("on"))
@@ -20,16 +15,29 @@ export function tupleToElement([nameOrFn, props, children, oldElement]) {
         children.forEach(c => (!Array.isArray(c) ? element.append(c) : element.append(tupleToElement(c))));
     return element;
 }
-function oldElementToNewElement(propsToJsxtree, props, oldElement) {
-    const instance = oldElement?.instance || { privates: [], privatesIndex: 0, propsToJsxtree: propsToJsxtree };
-    instance.privatesIndex = 0;
-    const tuple = propsToJsxtree.call(instance, props);
-    const newElement = tupleToElement(tuple);
-    newElement.instance = instance;
-    return newElement;
+export function expandTuples([nameOrFn, props, children, oldElement]) {
+    if (typeof nameOrFn === "function") {
+        const propsToJsxtree = nameOrFn;
+        const state = oldElement?.state || { privates: [], privatesIndex: 0, propsToJsxtree };
+        state.privatesIndex = 0;
+        const tuple = propsToJsxtree.call(state, props);
+        return tuple;
+    }
+    const childs = children ? children.map(c => (Array.isArray(c) ? expandTuples(c) : c)) : children;
+    return [nameOrFn, props, childs, oldElement];
 }
-export function toplevel(oldElement, propsToJsxtree) {
-    const newElement = oldElementToNewElement(propsToJsxtree, null, oldElement);
+export function render(elementId, componentFn) {
+    const oldElement = document.getElementById(elementId);
+    if (!oldElement)
+        return console.error(elementId, "not found in index.html");
+    const props = null;
+    const state = oldElement?.state || { privates: [], privatesIndex: 0 };
+    state.privatesIndex = 0;
+    const tuple = componentFn.call(state, props);
+    const topTuple = expandTuples(tuple);
+    console.log({ topTuple });
+    const newElement = tupleToElement(topTuple);
+    newElement.state = oldElement.state;
     oldElement.replaceWith(newElement);
 }
 export const useState = (init) => {
@@ -52,8 +60,4 @@ export const useRef = (init) => {
         instance.privates[whichSlot] = { current: init };
     return instance.privates[whichSlot];
 };
-const appRoots = document.getElementsByTagName("app-start");
-if (appRoots.length)
-    Array.from(appRoots).forEach(el => toplevel(el, AppStart));
-else
-    console.error("<app-start /> not found in index.html");
+render("app-start", AppStart);

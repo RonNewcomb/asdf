@@ -2,37 +2,25 @@ import AppStart from "./components/app-start.js";
 
 // interfaces ///////
 
-interface CInstance {
+interface IState {
   privates: any[];
   privatesIndex: number;
-  propsToJsxtree: CompFn;
 }
 
 interface JsxElement extends Element {
-  instance?: CInstance;
+  state?: IState;
 }
 
 // jsx ///////
 
-const testc = () => <div></div>;
-
 export type IProps = Record<string, any> | null;
 export type CompFn = (props?: IProps) => JsxTree;
 export type JsxTree = [string | CompFn, IProps, JsxTree[], JsxElement?];
-
-export function jsx(nameOrFn: string | CompFn, props: IProps, ...children: any[]): JsxTree {
-  return [nameOrFn, props, children, undefined];
-}
+export const jsx = (nameOrFn: string | CompFn, props: IProps, ...children: any[]): JsxTree => [nameOrFn, props, children, undefined];
+const testjsx = () => <div></div>;
 
 export function tupleToElement([nameOrFn, props, children, oldElement]: JsxTree): JsxElement {
-  // recursive case
-  if (typeof nameOrFn === "function") {
-    const propsToJsxtree = nameOrFn;
-    const newElement = oldElementToNewElement(propsToJsxtree, props, oldElement);
-    return newElement;
-  }
-
-  // base case
+  if (typeof nameOrFn === "function") throw Error("tuples weren't fully expanded");
   const element = document.createElement(nameOrFn);
   for (const key in props) {
     if (key.startsWith("on")) element.addEventListener(key, props[key]);
@@ -42,26 +30,38 @@ export function tupleToElement([nameOrFn, props, children, oldElement]: JsxTree)
   return element;
 }
 
-// framework /////
-
-function oldElementToNewElement(propsToJsxtree: CompFn, props: IProps, oldElement?: JsxElement): JsxElement {
-  const instance = oldElement?.instance || { privates: [], privatesIndex: 0, propsToJsxtree: propsToJsxtree };
-  instance.privatesIndex = 0;
-  const tuple = propsToJsxtree.call(instance, props);
-  const newElement = tupleToElement(tuple);
-  newElement.instance = instance;
-  return newElement;
+export function expandTuplesRecursively([nameOrFn, props, children, oldElement]: JsxTree): JsxTree {
+  if (typeof nameOrFn === "function") {
+    const propsToJsxtree = nameOrFn;
+    const state: IState = oldElement?.state || { privates: [], privatesIndex: 0 };
+    state.privatesIndex = 0;
+    const tuple = propsToJsxtree.call(state, props);
+    return tuple;
+  }
+  const childs = children ? children.map(c => (Array.isArray(c) ? expandTuplesRecursively(c) : c)) : children;
+  return [nameOrFn, props, childs, oldElement];
 }
 
-export function toplevel(oldElement: JsxElement, propsToJsxtree: CompFn): void {
-  const newElement = oldElementToNewElement(propsToJsxtree, null, oldElement);
+// framework /////
+
+export function render(elementId: string, componentFn: CompFn): void {
+  const oldElement = document.getElementById(elementId) as JsxElement;
+  if (!oldElement) return console.error(elementId, "not found in index.html");
+  const props: IProps = null;
+  const state: IState = oldElement?.state || { privates: [], privatesIndex: 0 };
+  state.privatesIndex = 0;
+  const tuple = componentFn.call(state, props);
+  const topTuple: JsxTree = expandTuplesRecursively(tuple);
+  console.log({ topTuple }); //////
+  const newElement = tupleToElement(topTuple);
+  newElement.state = oldElement.state;
   oldElement.replaceWith(newElement);
 }
 
 // hooks ////
 
 export const useState = <T,>(init: T): [T, (newValue: T) => void] => {
-  const instance = this! as CInstance;
+  const instance = this! as IState;
   if (!instance) throw Error("useState has no instance");
   const whichSlot = instance.privatesIndex++;
   if (instance.privates.length - 1 < whichSlot) instance.privates[whichSlot] = init;
@@ -71,7 +71,7 @@ export const useState = <T,>(init: T): [T, (newValue: T) => void] => {
 };
 
 export const useRef = <T,>(init: T): { current: T } => {
-  const instance = this! as CInstance;
+  const instance = this! as IState;
   if (!instance) throw Error("useRef has no instance");
   const whichSlot = instance.privatesIndex++;
   if (instance.privates.length - 1 < whichSlot) instance.privates[whichSlot] = { current: init };
@@ -80,9 +80,4 @@ export const useRef = <T,>(init: T): { current: T } => {
 
 // go ///
 
-// const appRoot = document.getElementById("app-start");
-// if (appRoot) refresh(appRoot);
-// else console.error("#app-start not found in index.html");
-const appRoots = document.getElementsByTagName("app-start");
-if (appRoots.length) Array.from(appRoots).forEach(el => toplevel(el, AppStart));
-else console.error("<app-start /> not found in index.html");
+render("app-start", AppStart);
