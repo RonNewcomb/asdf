@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "target": "es2020",
+    "module": "es2020",
+    "moduleResolution":"node16",
+    "jsx":"react",
+    "jsxFactory": "jsx",
+    "strict": true,
+    "removeComments": true,
+  }
+}
