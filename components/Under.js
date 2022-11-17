@@ -1,6 +1,5 @@
 import { jsx } from "../asdf.js";
-export default function ({ x }) {
-    console.log("Under.this = ", this);
+export default function Under({ x }) {
     return (jsx("div", null,
         "number x=",
         x));

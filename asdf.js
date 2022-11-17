@@ -1,6 +1,14 @@
+import AppStart from "./components/app-start.js";
+const testc = () => jsx("div", null);
 export function jsx(nameOrFn, props, ...children) {
-    if (typeof nameOrFn === "function")
-        return nameOrFn(props);
+    return [nameOrFn, props, children, undefined];
+}
+export function tupleToElement([nameOrFn, props, children, oldElement]) {
+    if (typeof nameOrFn === "function") {
+        const propsToJsxtree = nameOrFn;
+        const newElement = oldElementToNewElement(propsToJsxtree, props, oldElement);
+        return newElement;
+    }
     const element = document.createElement(nameOrFn);
     for (const key in props) {
         if (key.startsWith("on"))
@@ -9,38 +17,22 @@ export function jsx(nameOrFn, props, ...children) {
             element.setAttribute(key, props[key]);
     }
     if (children)
-        children.forEach(c => element.append(c));
+        children.forEach(c => (!Array.isArray(c) ? element.append(c) : element.append(tupleToElement(c))));
     return element;
 }
-const testc = () => jsx("div", null);
-const registry = {};
-const bindPrivatesToCompfnToElement = (oldElement) => (oldElement.instance.jsonToHtmlFn = registry[oldElement.tagName].bind(oldElement.instance));
-export function refresh(oldElement) {
-    if (!registry[oldElement.tagName]) {
-        console.log("registering", oldElement.tagName);
-        oldElement.setAttribute("data-status", "loading");
-        registry[oldElement.tagName] = () => oldElement;
-        import(`./components/${oldElement.tagName}.js`).catch(console.error).then(module => {
-            if (module?.default)
-                registry[oldElement.tagName] = module.default;
-            else
-                oldElement.setAttribute("data-status", "module or module.default not found for " + oldElement.tagName);
-            bindPrivatesToCompfnToElement(oldElement);
-            refresh(oldElement);
-        });
-    }
-    if (!oldElement.instance) {
-        console.log("binding new instance to element and what registered to", oldElement.tagName);
-        oldElement.instance = { props: {}, privates: [], privatesIndex: 0, jsonToHtmlFn: null };
-        bindPrivatesToCompfnToElement(oldElement);
-    }
-    const instance = oldElement.instance;
+function oldElementToNewElement(propsToJsxtree, props, oldElement) {
+    const instance = oldElement?.instance || { privates: [], privatesIndex: 0, propsToJsxtree: propsToJsxtree };
     instance.privatesIndex = 0;
-    const newElementWithChildren = instance.jsonToHtmlFn(instance.props);
-    newElementWithChildren.instance = instance;
-    oldElement.replaceWith(newElementWithChildren);
+    const tuple = propsToJsxtree.call(instance, props);
+    const newElement = tupleToElement(tuple);
+    newElement.instance = instance;
+    return newElement;
 }
-export function useState(init) {
+export function toplevel(oldElement, propsToJsxtree) {
+    const newElement = oldElementToNewElement(propsToJsxtree, null, oldElement);
+    oldElement.replaceWith(newElement);
+}
+export const useState = (init) => {
     const instance = this;
     if (!instance)
         throw Error("useState has no instance");
@@ -50,7 +42,7 @@ export function useState(init) {
     const gettor = instance.privates[whichSlot];
     const settor = (x) => (instance.privates[whichSlot] = x);
     return [gettor, settor];
-}
+};
 export const useRef = (init) => {
     const instance = this;
     if (!instance)
@@ -62,6 +54,6 @@ export const useRef = (init) => {
 };
 const appRoots = document.getElementsByTagName("app-start");
 if (appRoots.length)
-    Array.from(appRoots).forEach(refresh);
+    Array.from(appRoots).forEach(el => toplevel(el, AppStart));
 else
-    console.error("#app-start not found");
+    console.error("<app-start /> not found in index.html");

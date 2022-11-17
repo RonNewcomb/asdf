@@ -1,12 +1,12 @@
 import { jsx } from "../asdf.js";
 import Under from "./Under.js";
 
-export default function (this: any) {
+export default function AppStart(this: any) {
   console.log("app-start this", this);
-  //const [x, setX] = useState(65);
+  //const [z, setZ] = useState(65);
   return (
     <span>
-      <span>yee</span>
+      <span>yee </span>
       <Under x={5} />
     </span>
   );
