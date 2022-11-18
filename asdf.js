@@ -3,9 +3,11 @@ const JsxSymbol = Symbol("JSX");
 export const isJsxTree = (tuple) => tuple && tuple[0] === JsxSymbol;
 const testjsx = () => jsx("div", null);
 // ordered ////
+const renderqueue = [];
 function rerender(i, val) {
     this.privates[i] = val;
-    // and?
+    renderqueue.push(this);
+    setTimeout(globalRender);
 }
 export const jsx = (nameOrFn, props, ...children) => [JsxSymbol, nameOrFn, props, children];
 export function expandTuplesRecursively(tree, childIndex, parentState) {
@@ -44,16 +46,19 @@ export function tupleToElement([id, nameOrFn, props, children]) {
 }
 // framework /////
 const globalState = { privates: [], privatesIndex: 0, childStates: [], render: rerender };
+let globalRender = () => { };
 export function render(elementId, componentFn) {
-    const oldElement = document.getElementById(elementId);
-    if (!oldElement)
-        return console.error(elementId, "not found in document");
+    globalRender = () => render(elementId, componentFn);
     globalState.privatesIndex = 0;
     const tuple = componentFn(null, globalState);
     const topTuple = expandTuplesRecursively(tuple, 0, globalState);
     console.log({ topTuple }); //////
     const newElement = tupleToElement(topTuple);
+    const oldElement = document.getElementById(elementId);
+    if (!oldElement)
+        return console.error(elementId, "not found in document");
     newElement.state = oldElement.state;
+    newElement.setAttribute("id", elementId);
     oldElement.replaceWith(newElement);
 }
 // hooks ////

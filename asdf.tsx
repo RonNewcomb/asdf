@@ -23,9 +23,12 @@ const testjsx = () => <div></div>;
 
 // ordered ////
 
+const renderqueue = [];
+
 function rerender<T>(this: IState, i: number, val: T): void {
   this.privates[i] = val;
-  // and?
+  renderqueue.push(this);
+  setTimeout(globalRender);
 }
 
 export const jsx = (nameOrFn: JxsTagname, props: IProps, ...children: any[]): JsxTree => [JsxSymbol, nameOrFn, props, children];
@@ -63,16 +66,21 @@ export function tupleToElement([id, nameOrFn, props, children]: JsxTree): JsxEle
 // framework /////
 
 const globalState: IState = { privates: [], privatesIndex: 0, childStates: [], render: rerender };
+let globalRender = () => {};
 
 export function render(elementId: string, componentFn: CompFn): void {
-  const oldElement = document.getElementById(elementId) as JsxElement;
-  if (!oldElement) return console.error(elementId, "not found in document");
+  globalRender = () => render(elementId, componentFn);
+
   globalState.privatesIndex = 0;
   const tuple = componentFn(null, globalState);
   const topTuple: JsxTree = expandTuplesRecursively(tuple, 0, globalState);
   console.log({ topTuple }); //////
   const newElement = tupleToElement(topTuple);
+
+  const oldElement = document.getElementById(elementId) as JsxElement;
+  if (!oldElement) return console.error(elementId, "not found in document");
   newElement.state = oldElement.state;
+  newElement.setAttribute("id", elementId);
   oldElement.replaceWith(newElement);
 }
 
