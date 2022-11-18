@@ -4,7 +4,7 @@ export interface IState {
   privates: any[];
   privatesIndex: number;
   childStates: IState[];
-  render: <T>(i: number, val: T) => void;
+  render: () => void;
 }
 
 interface JsxElement extends Element {
@@ -22,14 +22,6 @@ export const isJsxTree = (tuple: any[]) => tuple && tuple[0] === JsxSymbol;
 const testjsx = () => <div></div>;
 
 // ordered ////
-
-const renderqueue = [];
-
-function rerender<T>(this: IState, i: number, val: T): void {
-  this.privates[i] = val;
-  renderqueue.push(this);
-  setTimeout(globalRender);
-}
 
 export const jsx = (nameOrFn: JxsTagname, props: IProps, ...children: any[]): JsxTree => [JsxSymbol, nameOrFn, props, children];
 
@@ -66,22 +58,28 @@ export function tupleToElement([id, nameOrFn, props, children]: JsxTree): JsxEle
 // framework /////
 
 const globalState: IState = { privates: [], privatesIndex: 0, childStates: [], render: rerender };
-let globalRender = () => {};
+let globalRerender = () => {};
+let timer = 0;
+
+export function rerender(this: IState): void {
+  if (!timer) timer = setTimeout(globalRerender);
+}
 
 export function render(elementId: string, componentFn: CompFn): void {
-  globalRender = () => render(elementId, componentFn);
+  const oldElement = document.getElementById(elementId) as JsxElement;
+  if (!oldElement) return console.error(elementId, "not found in document");
+  renderInner(oldElement, componentFn);
+}
 
+function renderInner(oldElement: JsxElement, componentFn: CompFn): void {
   globalState.privatesIndex = 0;
   const tuple = componentFn(null, globalState);
   const topTuple: JsxTree = expandTuplesRecursively(tuple, 0, globalState);
   console.log({ topTuple }); //////
   const newElement = tupleToElement(topTuple);
-
-  const oldElement = document.getElementById(elementId) as JsxElement;
-  if (!oldElement) return console.error(elementId, "not found in document");
   newElement.state = oldElement.state;
-  newElement.setAttribute("id", elementId);
   oldElement.replaceWith(newElement);
+  globalRerender = () => renderInner(newElement, componentFn);
 }
 
 // hooks ////
@@ -90,24 +88,9 @@ export function use<T>(state: IState, init: T): [T, (newVal: T) => void] {
   const i = state.privatesIndex++;
   if (state.privates.length - 1 < i) state.privates[i] = init;
   const gettor = state.privates[i];
-  const settor = (val: T) => state.render(i, val);
+  const settor = (val: T) => {
+    state.privates[i] = val;
+    state.render();
+  };
   return [gettor, settor];
 }
-
-export const useState = <T,>(init: T): [T, (newValue: T) => void] => {
-  const instance = this! as IState;
-  if (!instance) throw Error("useState has no instance");
-  const whichSlot = instance.privatesIndex++;
-  if (instance.privates.length - 1 < whichSlot) instance.privates[whichSlot] = init;
-  const gettor = instance.privates[whichSlot];
-  const settor = (x: T) => (instance.privates[whichSlot] = x); // this effects immediately, not schedules the set for next render?
-  return [gettor, settor];
-};
-
-export const useRef = <T,>(init: T): { current: T } => {
-  const instance = this! as IState;
-  if (!instance) throw Error("useRef has no instance");
-  const whichSlot = instance.privatesIndex++;
-  if (instance.privates.length - 1 < whichSlot) instance.privates[whichSlot] = { current: init };
-  return instance.privates[whichSlot];
-};
