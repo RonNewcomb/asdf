@@ -1,8 +1,10 @@
 // interfaces ///////
 
-interface IState {
+export interface IState {
   privates: any[];
   privatesIndex: number;
+  childStates: IState[];
+  render: <T>(i: number, val: T) => void;
 }
 
 interface JsxElement extends Element {
@@ -12,14 +14,42 @@ interface JsxElement extends Element {
 // jsx ///////
 
 export type IProps = Record<string, any> | null;
-export type CompFn = (props?: IProps) => JsxTree;
+export type CompFn = (props?: IProps, state?: IState) => JsxTree;
+export type JxsTagname = string | CompFn;
 const JsxSymbol = Symbol("JSX");
-export type JsxTree = [typeof JsxSymbol, string | CompFn, IProps, any[], JsxElement?];
-export const jsx = (nameOrFn: string | CompFn, props: IProps, ...children: any[]): JsxTree => [JsxSymbol, nameOrFn, props, children, undefined];
-export const isJsxTree = (tuple: any[]) => tuple[0] === JsxSymbol;
+export type JsxTree = [symbol, JxsTagname, IProps, any[]];
+export const isJsxTree = (tuple: any[]) => tuple && tuple[0] === JsxSymbol;
 const testjsx = () => <div></div>;
 
-export function tupleToElement([id, nameOrFn, props, children, oldElement]: JsxTree): JsxElement {
+// ordered ////
+
+function rerender<T>(this: IState, i: number, val: T): void {
+  this.privates[i] = val;
+  // and?
+}
+
+export const jsx = (nameOrFn: JxsTagname, props: IProps, ...children: any[]): JsxTree => [JsxSymbol, nameOrFn, props, children];
+
+export function expandTuplesRecursively(tree: JsxTree, childIndex: number, parentState: IState): JsxTree {
+  if (!tree || tree[0] !== JsxSymbol) return tree;
+  const [id, nameOrFn, props, children] = tree;
+  if (typeof nameOrFn === "function") {
+    if (!parentState) throw Error("parentState missing");
+    if (!parentState!.childStates[childIndex]) {
+      parentState!.childStates[childIndex] = { privates: [], privatesIndex: 0, childStates: [], render: rerender };
+    }
+    const state: IState = parentState!.childStates[childIndex];
+    state.privatesIndex = 0;
+    const tuple = nameOrFn(props, state);
+    return expandTuplesRecursively(tuple, 0, state);
+  }
+  const adults = Array.isArray(children)
+    ? children.map((c, i) => expandTuplesRecursively(c, i, parentState))
+    : expandTuplesRecursively(children, 0, parentState);
+  return [JsxSymbol, nameOrFn, props, adults];
+}
+
+export function tupleToElement([id, nameOrFn, props, children]: JsxTree): JsxElement {
   if (typeof nameOrFn === "function") throw Error("tuples weren't fully expanded");
   const element = document.createElement(nameOrFn);
   for (const key in props) {
@@ -32,26 +62,14 @@ export function tupleToElement([id, nameOrFn, props, children, oldElement]: JsxT
 
 // framework /////
 
-export function expandTuplesRecursively([id, nameOrFn, props, children, oldElement]: JsxTree): JsxTree {
-  if (typeof nameOrFn === "function") {
-    const propsToJsxtree = nameOrFn;
-    const state: IState = oldElement?.state || { privates: [], privatesIndex: 0 };
-    state.privatesIndex = 0;
-    const tuple = propsToJsxtree.call(state, props);
-    return tuple;
-  }
-  const childs = children ? children.map(c => (isJsxTree(c) ? expandTuplesRecursively(c) : c)) : children;
-  return [JsxSymbol, nameOrFn, props, childs, oldElement];
-}
+const globalState: IState = { privates: [], privatesIndex: 0, childStates: [], render: rerender };
 
 export function render(elementId: string, componentFn: CompFn): void {
   const oldElement = document.getElementById(elementId) as JsxElement;
   if (!oldElement) return console.error(elementId, "not found in document");
-  const props: IProps = null;
-  const state: IState = oldElement?.state || { privates: [], privatesIndex: 0 };
-  state.privatesIndex = 0;
-  const tuple = componentFn.call(state, props);
-  const topTuple: JsxTree = expandTuplesRecursively(tuple);
+  globalState.privatesIndex = 0;
+  const tuple = componentFn(null, globalState);
+  const topTuple: JsxTree = expandTuplesRecursively(tuple, 0, globalState);
   console.log({ topTuple }); //////
   const newElement = tupleToElement(topTuple);
   newElement.state = oldElement.state;
@@ -59,6 +77,14 @@ export function render(elementId: string, componentFn: CompFn): void {
 }
 
 // hooks ////
+
+export function use<T>(state: IState, init: T): [T, (newVal: T) => void] {
+  const i = state.privatesIndex++;
+  if (state.privates.length - 1 < i) state.privates[i] = init;
+  const gettor = state.privates[i];
+  const settor = (val: T) => state.render(i, val);
+  return [gettor, settor];
+}
 
 export const useState = <T,>(init: T): [T, (newValue: T) => void] => {
   const instance = this! as IState;

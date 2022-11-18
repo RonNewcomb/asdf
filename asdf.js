@@ -1,9 +1,34 @@
 // interfaces ///////
 const JsxSymbol = Symbol("JSX");
-export const jsx = (nameOrFn, props, ...children) => [JsxSymbol, nameOrFn, props, children, undefined];
-export const isJsxTree = (tuple) => tuple[0] === JsxSymbol;
+export const isJsxTree = (tuple) => tuple && tuple[0] === JsxSymbol;
 const testjsx = () => jsx("div", null);
-export function tupleToElement([id, nameOrFn, props, children, oldElement]) {
+// ordered ////
+function rerender(i, val) {
+    this.privates[i] = val;
+    // and?
+}
+export const jsx = (nameOrFn, props, ...children) => [JsxSymbol, nameOrFn, props, children];
+export function expandTuplesRecursively(tree, childIndex, parentState) {
+    if (!tree || tree[0] !== JsxSymbol)
+        return tree;
+    const [id, nameOrFn, props, children] = tree;
+    if (typeof nameOrFn === "function") {
+        if (!parentState)
+            throw Error("parentState missing");
+        if (!parentState.childStates[childIndex]) {
+            parentState.childStates[childIndex] = { privates: [], privatesIndex: 0, childStates: [], render: rerender };
+        }
+        const state = parentState.childStates[childIndex];
+        state.privatesIndex = 0;
+        const tuple = nameOrFn(props, state);
+        return expandTuplesRecursively(tuple, 0, state);
+    }
+    const adults = Array.isArray(children)
+        ? children.map((c, i) => expandTuplesRecursively(c, i, parentState))
+        : expandTuplesRecursively(children, 0, parentState);
+    return [JsxSymbol, nameOrFn, props, adults];
+}
+export function tupleToElement([id, nameOrFn, props, children]) {
     if (typeof nameOrFn === "function")
         throw Error("tuples weren't fully expanded");
     const element = document.createElement(nameOrFn);
@@ -18,32 +43,28 @@ export function tupleToElement([id, nameOrFn, props, children, oldElement]) {
     return element;
 }
 // framework /////
-export function expandTuplesRecursively([id, nameOrFn, props, children, oldElement]) {
-    if (typeof nameOrFn === "function") {
-        const propsToJsxtree = nameOrFn;
-        const state = oldElement?.state || { privates: [], privatesIndex: 0 };
-        state.privatesIndex = 0;
-        const tuple = propsToJsxtree.call(state, props);
-        return tuple;
-    }
-    const childs = children ? children.map(c => (isJsxTree(c) ? expandTuplesRecursively(c) : c)) : children;
-    return [JsxSymbol, nameOrFn, props, childs, oldElement];
-}
+const globalState = { privates: [], privatesIndex: 0, childStates: [], render: rerender };
 export function render(elementId, componentFn) {
     const oldElement = document.getElementById(elementId);
     if (!oldElement)
         return console.error(elementId, "not found in document");
-    const props = null;
-    const state = oldElement?.state || { privates: [], privatesIndex: 0 };
-    state.privatesIndex = 0;
-    const tuple = componentFn.call(state, props);
-    const topTuple = expandTuplesRecursively(tuple);
+    globalState.privatesIndex = 0;
+    const tuple = componentFn(null, globalState);
+    const topTuple = expandTuplesRecursively(tuple, 0, globalState);
     console.log({ topTuple }); //////
     const newElement = tupleToElement(topTuple);
     newElement.state = oldElement.state;
     oldElement.replaceWith(newElement);
 }
 // hooks ////
+export function use(state, init) {
+    const i = state.privatesIndex++;
+    if (state.privates.length - 1 < i)
+        state.privates[i] = init;
+    const gettor = state.privates[i];
+    const settor = (val) => state.render(i, val);
+    return [gettor, settor];
+}
 export const useState = (init) => {
     const instance = this;
     if (!instance)
