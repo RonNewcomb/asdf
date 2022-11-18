@@ -1,4 +1,4 @@
-import AppStart from "./components/app-start.js";
+// interfaces ///////
 export const jsx = (nameOrFn, props, ...children) => [nameOrFn, props, children, undefined];
 const testjsx = () => jsx("div", null);
 export function tupleToElement([nameOrFn, props, children, oldElement]) {
@@ -15,17 +15,18 @@ export function tupleToElement([nameOrFn, props, children, oldElement]) {
         children.forEach(c => (!Array.isArray(c) ? element.append(c) : element.append(tupleToElement(c))));
     return element;
 }
-export function expandTuples([nameOrFn, props, children, oldElement]) {
+export function expandTuplesRecursively([nameOrFn, props, children, oldElement]) {
     if (typeof nameOrFn === "function") {
         const propsToJsxtree = nameOrFn;
-        const state = oldElement?.state || { privates: [], privatesIndex: 0, propsToJsxtree };
+        const state = oldElement?.state || { privates: [], privatesIndex: 0 };
         state.privatesIndex = 0;
         const tuple = propsToJsxtree.call(state, props);
         return tuple;
     }
-    const childs = children ? children.map(c => (Array.isArray(c) ? expandTuples(c) : c)) : children;
+    const childs = children ? children.map(c => (Array.isArray(c) ? expandTuplesRecursively(c) : c)) : children;
     return [nameOrFn, props, childs, oldElement];
 }
+// framework /////
 export function render(elementId, componentFn) {
     const oldElement = document.getElementById(elementId);
     if (!oldElement)
@@ -34,12 +35,13 @@ export function render(elementId, componentFn) {
     const state = oldElement?.state || { privates: [], privatesIndex: 0 };
     state.privatesIndex = 0;
     const tuple = componentFn.call(state, props);
-    const topTuple = expandTuples(tuple);
-    console.log({ topTuple });
+    const topTuple = expandTuplesRecursively(tuple);
+    console.log({ topTuple }); //////
     const newElement = tupleToElement(topTuple);
     newElement.state = oldElement.state;
     oldElement.replaceWith(newElement);
 }
+// hooks ////
 export const useState = (init) => {
     const instance = this;
     if (!instance)
@@ -48,7 +50,7 @@ export const useState = (init) => {
     if (instance.privates.length - 1 < whichSlot)
         instance.privates[whichSlot] = init;
     const gettor = instance.privates[whichSlot];
-    const settor = (x) => (instance.privates[whichSlot] = x);
+    const settor = (x) => (instance.privates[whichSlot] = x); // this effects immediately, not schedules the set for next render?
     return [gettor, settor];
 };
 export const useRef = (init) => {
@@ -60,4 +62,4 @@ export const useRef = (init) => {
         instance.privates[whichSlot] = { current: init };
     return instance.privates[whichSlot];
 };
-render("app-start", AppStart);
+// go ///

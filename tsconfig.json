@@ -6,6 +6,6 @@
     "jsx": "react",
     "jsxFactory": "jsx",
     "strict": true,
-    "removeComments": true, 
+    "watch": true,
   }
 }

@@ -1,4 +1,4 @@
-import { jsx } from "../asdf.js";
+import { jsx, render } from "../asdf.js";
 import Under from "./Under.js";
 
 export default function AppStart(this: any) {
@@ -11,3 +11,5 @@ export default function AppStart(this: any) {
     </span>
   );
 }
+
+render("app-start", AppStart);

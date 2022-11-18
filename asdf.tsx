@@ -1,5 +1,3 @@
-import AppStart from "./components/app-start.js";
-
 // interfaces ///////
 
 interface IState {
@@ -79,5 +77,3 @@ export const useRef = <T,>(init: T): { current: T } => {
 };
 
 // go ///
-
-render("app-start", AppStart);
