@@ -13,22 +13,26 @@ interface JsxElement extends Element {
 
 export type IProps = Record<string, any> | null;
 export type CompFn = (props?: IProps) => JsxTree;
-export type JsxTree = [string | CompFn, IProps, JsxTree[], JsxElement?];
-export const jsx = (nameOrFn: string | CompFn, props: IProps, ...children: any[]): JsxTree => [nameOrFn, props, children, undefined];
+const JsxSymbol = Symbol("JSX");
+export type JsxTree = [typeof JsxSymbol, string | CompFn, IProps, any[], JsxElement?];
+export const jsx = (nameOrFn: string | CompFn, props: IProps, ...children: any[]): JsxTree => [JsxSymbol, nameOrFn, props, children, undefined];
+export const isJsxTree = (tuple: any[]) => tuple[0] === JsxSymbol;
 const testjsx = () => <div></div>;
 
-export function tupleToElement([nameOrFn, props, children, oldElement]: JsxTree): JsxElement {
+export function tupleToElement([id, nameOrFn, props, children, oldElement]: JsxTree): JsxElement {
   if (typeof nameOrFn === "function") throw Error("tuples weren't fully expanded");
   const element = document.createElement(nameOrFn);
   for (const key in props) {
-    if (key.startsWith("on")) element.addEventListener(key, props[key]);
+    if (key.startsWith("on")) element.addEventListener(key.slice(2).toLowerCase(), props[key]);
     else element.setAttribute(key, props[key]);
   }
-  if (children) children.forEach(c => (!Array.isArray(c) ? element.append(c) : element.append(tupleToElement(c))));
+  if (children) children.forEach(c => element.append(isJsxTree(c) ? tupleToElement(c) : c));
   return element;
 }
 
-export function expandTuplesRecursively([nameOrFn, props, children, oldElement]: JsxTree): JsxTree {
+// framework /////
+
+export function expandTuplesRecursively([id, nameOrFn, props, children, oldElement]: JsxTree): JsxTree {
   if (typeof nameOrFn === "function") {
     const propsToJsxtree = nameOrFn;
     const state: IState = oldElement?.state || { privates: [], privatesIndex: 0 };
@@ -36,15 +40,13 @@ export function expandTuplesRecursively([nameOrFn, props, children, oldElement]:
     const tuple = propsToJsxtree.call(state, props);
     return tuple;
   }
-  const childs = children ? children.map(c => (Array.isArray(c) ? expandTuplesRecursively(c) : c)) : children;
-  return [nameOrFn, props, childs, oldElement];
+  const childs = children ? children.map(c => (isJsxTree(c) ? expandTuplesRecursively(c) : c)) : children;
+  return [JsxSymbol, nameOrFn, props, childs, oldElement];
 }
-
-// framework /////
 
 export function render(elementId: string, componentFn: CompFn): void {
   const oldElement = document.getElementById(elementId) as JsxElement;
-  if (!oldElement) return console.error(elementId, "not found in index.html");
+  if (!oldElement) return console.error(elementId, "not found in document");
   const props: IProps = null;
   const state: IState = oldElement?.state || { privates: [], privatesIndex: 0 };
   state.privatesIndex = 0;
@@ -75,5 +77,3 @@ export const useRef = <T,>(init: T): { current: T } => {
   if (instance.privates.length - 1 < whichSlot) instance.privates[whichSlot] = { current: init };
   return instance.privates[whichSlot];
 };
-
-// go ///

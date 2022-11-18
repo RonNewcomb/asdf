@@ -32,4 +32,4 @@ The hooks defined in here don't work and maybe can't work, since I thought late-
 
 innerHTML as a prop isn't supported.
 
-Unlike uif and 2if we don't code up loading html 5 custom tags. The component rendering is purely just functions.
+Unlike uif and 2if we don't code up loading HTML5 custom tags. The component rendering is purely just functions.
