@@ -5,11 +5,22 @@ export interface IState {
   privatesIndex: number;
   childStates: IState[];
   render: () => void;
+  useState: <T>(init: T) => [T, (newValue: T) => void];
 }
 
 interface JsxElement extends Element {
   state?: IState;
 }
+
+const newState = (): IState => ({
+  privates: [],
+  privatesIndex: 0,
+  childStates: [],
+  render: rerender,
+  useState: function <T>(this: IState, init: T) {
+    return use(this, init);
+  },
+});
 
 // jsx ///////
 
@@ -30,9 +41,7 @@ export function expandTuplesRecursively(tree: JsxTree, childIndex: number, paren
   const [id, nameOrFn, props, children] = tree;
   if (typeof nameOrFn === "function") {
     if (!parentState) throw Error("parentState missing");
-    if (!parentState!.childStates[childIndex]) {
-      parentState!.childStates[childIndex] = { privates: [], privatesIndex: 0, childStates: [], render: rerender };
-    }
+    if (!parentState!.childStates[childIndex]) parentState!.childStates[childIndex] = newState();
     const state: IState = parentState!.childStates[childIndex];
     state.privatesIndex = 0;
     const tuple = nameOrFn(props, state);
@@ -57,7 +66,7 @@ export function tupleToElement([id, nameOrFn, props, children]: JsxTree): JsxEle
 
 // framework /////
 
-const globalState: IState = { privates: [], privatesIndex: 0, childStates: [], render: rerender };
+const globalState: IState = newState();
 let globalRerender = () => {};
 let timer = 0;
 
@@ -79,6 +88,7 @@ function renderInner(oldElement: JsxElement, componentFn: CompFn): void {
   const newElement = tupleToElement(topTuple);
   newElement.state = oldElement.state;
   oldElement.replaceWith(newElement);
+  timer = 0;
   globalRerender = () => renderInner(newElement, componentFn);
 }
 
@@ -88,8 +98,8 @@ export function use<T>(state: IState, init: T): [T, (newVal: T) => void] {
   const i = state.privatesIndex++;
   if (state.privates.length - 1 < i) state.privates[i] = init;
   const gettor = state.privates[i];
-  const settor = (val: T) => {
-    state.privates[i] = val;
+  const settor = (newValue: T) => {
+    state.privates[i] = newValue;
     state.render();
   };
   return [gettor, settor];

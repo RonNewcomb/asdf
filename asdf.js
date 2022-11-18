@@ -1,4 +1,13 @@
 // interfaces ///////
+const newState = () => ({
+    privates: [],
+    privatesIndex: 0,
+    childStates: [],
+    render: rerender,
+    useState: function (init) {
+        return use(this, init);
+    },
+});
 const JsxSymbol = Symbol("JSX");
 export const isJsxTree = (tuple) => tuple && tuple[0] === JsxSymbol;
 const testjsx = () => jsx("div", null);
@@ -11,9 +20,8 @@ export function expandTuplesRecursively(tree, childIndex, parentState) {
     if (typeof nameOrFn === "function") {
         if (!parentState)
             throw Error("parentState missing");
-        if (!parentState.childStates[childIndex]) {
-            parentState.childStates[childIndex] = { privates: [], privatesIndex: 0, childStates: [], render: rerender };
-        }
+        if (!parentState.childStates[childIndex])
+            parentState.childStates[childIndex] = newState();
         const state = parentState.childStates[childIndex];
         state.privatesIndex = 0;
         const tuple = nameOrFn(props, state);
@@ -39,7 +47,7 @@ export function tupleToElement([id, nameOrFn, props, children]) {
     return element;
 }
 // framework /////
-const globalState = { privates: [], privatesIndex: 0, childStates: [], render: rerender };
+const globalState = newState();
 let globalRerender = () => { };
 let timer = 0;
 export function rerender() {
@@ -60,6 +68,7 @@ function renderInner(oldElement, componentFn) {
     const newElement = tupleToElement(topTuple);
     newElement.state = oldElement.state;
     oldElement.replaceWith(newElement);
+    timer = 0;
     globalRerender = () => renderInner(newElement, componentFn);
 }
 // hooks ////
@@ -68,8 +77,8 @@ export function use(state, init) {
     if (state.privates.length - 1 < i)
         state.privates[i] = init;
     const gettor = state.privates[i];
-    const settor = (val) => {
-        state.privates[i] = val;
+    const settor = (newValue) => {
+        state.privates[i] = newValue;
         state.render();
     };
     return [gettor, settor];
