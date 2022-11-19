@@ -21,7 +21,9 @@ export default function Under({ x }: { x: number }, { useState }: IState) {
       <br />
       and state.counter={counter}
       <br />
-      <button onClick={h2}>Y is {y} and also the other handler</button>
+      <button type="button" onClick={h2}>
+        Y is {y} and also the other handler
+      </button>
     </div>
   );
 }

@@ -1,24 +1,36 @@
-import { jsx, render } from "../framework.js";
+import { IState, jsx, renderJsx } from "../framework.js";
+import BigForm from "./big-form.js";
 import Looper from "./looper.js";
 import Under from "./Under.js";
 
-export default function AppStart(props: unknown, state: any) {
+export default function AppStart(props: { seed: string; children?: any }, state: IState & { as: string }) {
   console.log("app-start state", state);
+  console.log("app-start props ", props);
   state.as = "appstart.state.as!";
   const [z, setZ] = state.useState(65);
 
   const pressed = () => setZ(z + 5);
 
   return (
-    <span>
+    <div class="app-start">
       <span>yee </span>
       <Under x={5} />
-      <button onClick={pressed} onKeyDown={pressed}>
+      <button type="button" onClick={pressed} onKeyDown={pressed}>
         z is {z}
       </button>
       <Looper />
-    </span>
+      <BigForm />
+      <div>{props.children}</div>
+    </div>
   );
 }
 
-render("app-start", AppStart);
+//renderFn("app-start", AppStart, { seed: "seeded value" });
+renderJsx(
+  "app-start",
+  <AppStart seed={"seed value"}>
+    <div>
+      inner<div>asdfdsf</div>l;kj?
+    </div>
+  </AppStart>
+);

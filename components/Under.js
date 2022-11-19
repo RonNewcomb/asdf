@@ -18,7 +18,7 @@ export default function Under({ x }, { useState }) {
         "and state.counter=",
         counter,
         jsx("br", null),
-        jsx("button", { onClick: h2 },
+        jsx("button", { type: "button", onClick: h2 },
             "Y is ",
             y,
             " and also the other handler")));

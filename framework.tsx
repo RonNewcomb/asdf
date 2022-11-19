@@ -4,13 +4,25 @@ export interface IState {
   privates: any[];
   privatesIndex: number;
   childStates: IState[];
-  render: () => void;
+  render: (...ignored: any) => void;
   useState: <T>(init: T) => [T, (newValue: T) => void];
 }
 
 interface JsxElement extends Element {
   state?: IState;
 }
+
+// jsx ///////
+
+export type IProps = Record<string, any> | null | undefined;
+export type JxsTagname = string | ((props?: IProps, state?: IState) => JsxTree);
+const JsxSymbol = Symbol("JSX");
+export type JsxTree = [symbol, JxsTagname, IProps, any[]];
+export const isJsxTree = (tuple: any[]) => tuple && tuple[0] === JsxSymbol;
+const testjsx = () => <div></div>;
+export const jsx = (nameOrFn: JxsTagname, props: IProps, ...children: any[]): JsxTree => [JsxSymbol, nameOrFn, props, children];
+
+// ordered ////
 
 const newState = (): IState => {
   const state: IState = {
@@ -24,22 +36,8 @@ const newState = (): IState => {
   return state;
 };
 
-// jsx ///////
-
-export type IProps = Record<string, any> | null;
-export type CompFn = (props?: IProps, state?: IState) => JsxTree;
-export type JxsTagname = string | CompFn;
-const JsxSymbol = Symbol("JSX");
-export type JsxTree = [symbol, JxsTagname, IProps, any[]];
-export const isJsxTree = (tuple: any[]) => tuple && tuple[0] === JsxSymbol;
-const testjsx = () => <div></div>;
-
-// ordered ////
-
-export const jsx = (nameOrFn: JxsTagname, props: IProps, ...children: any[]): JsxTree => [JsxSymbol, nameOrFn, props, children];
-
 export function expandTuplesRecursively(tree: any, childIndex: number, parentState: IState): any {
-  if (!Array.isArray(tree)) return tree;
+  if (!Array.isArray(tree) || tree.length === 0) return tree;
   let [id, nameOrFn, props, children] = tree as JsxTree;
   if (id !== JsxSymbol) return [JsxSymbol, "array-items", null, tree.map((c, i) => expandTuplesRecursively(c, i, parentState))]; // array of components from a .map
   if (typeof nameOrFn !== "function") return [id, nameOrFn, props, children.map((c, i) => expandTuplesRecursively(c, i, parentState))]; // then a <div> or <span>
@@ -67,14 +65,6 @@ export function tupleToElement([id, nameOrFn, props, children]: JsxTree): JsxEle
   return element;
 }
 
-// entry point //////////
-
-export function render(elementId: string, componentFn: CompFn): void {
-  const oldElement = document.getElementById(elementId) as JsxElement;
-  if (!oldElement) return console.error(elementId, "not found in document");
-  renderInner(oldElement, componentFn);
-}
-
 // framework /////
 
 const globalState: IState = newState();
@@ -85,17 +75,14 @@ export function rerender(this: IState): void {
   if (!timer) timer = setTimeout(globalRerender);
 }
 
-function renderInner(oldElement: JsxElement, componentFn: CompFn): void {
-  globalState.privatesIndex = 0;
-  const tuple = componentFn.call(globalState, null, globalState);
-  const topTuple: JsxTree = expandTuplesRecursively(tuple, 0, globalState);
-  console.log({ topTuple }); //////
-  //console.log(JSON.stringify(topTuple, undefined, 2));
-  const newElement = tupleToElement(topTuple);
+function renderInner(oldElement: JsxElement, topTuple: JsxTree): void {
+  const rootTuple: JsxTree = expandTuplesRecursively(topTuple, 0, globalState);
+  console.log({ rootTuple });
+  const newElement = tupleToElement(rootTuple);
   newElement.state = oldElement.state;
   oldElement.replaceWith(newElement);
   timer = 0;
-  globalRerender = () => renderInner(newElement, componentFn);
+  globalRerender = () => renderInner(newElement, topTuple);
 }
 
 // hooks ////
@@ -110,3 +97,14 @@ function useState<T>(this: IState, init: T): [T, (newVal: T) => void] {
   };
   return [gettor, settor];
 }
+
+// entry point //////////
+
+export function renderJsx(elementId: string, jsx: JsxTree): void {
+  const oldElement = document.getElementById(elementId) as JsxElement;
+  if (!oldElement) return console.error(elementId, "not found in document");
+  renderInner(oldElement, jsx);
+}
+
+export const renderFn = (elementId: string, componentFn: (props: any, state: IState & any) => JsxTree, props?: object) =>
+  renderJsx(elementId, [JsxSymbol, componentFn, props, []]);
