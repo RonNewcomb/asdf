@@ -7,11 +7,14 @@ declare namespace JSX {
     onKeyDown?: (event: KeyboardEvent) => any;
     onKeyDownCapture?: (event: KeyboardEvent) => any;
   }
+  interface ButtonTypes {
+    type: "button" | "submit";
+  }
 
   interface IntrinsicElements {
     div: MostElements;
     span: MostElements;
-    button: MostElements;
+    button: MostElements | ButtonTypes;
     br: {};
   }
 }

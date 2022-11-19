@@ -46,6 +46,7 @@ export function expandTuplesRecursively(tree: any, childIndex: number, parentSta
   parentState.childStates[childIndex] ||= newState();
   const state = parentState.childStates[childIndex];
   state.privatesIndex = 0;
+  props ? (props.children = children) : (props = { children });
   const tuple = nameOrFn.call(state, props, state);
   return expandTuplesRecursively(tuple, 0, state);
 }
