@@ -16,7 +16,7 @@ interface JsxElement extends Element {
 
 export type IProps = Record<string, any> | null | undefined;
 export type JxsTagname = string | ((props?: IProps, state?: IState) => JsxTree);
-const JsxSymbol = Symbol("JSX");
+export const JsxSymbol = Symbol("JSX");
 export type JsxTree = [symbol, JxsTagname, IProps, any[]];
 export const isJsxTree = (tuple: any[]) => tuple && tuple[0] === JsxSymbol;
 const testjsx = () => <div></div>;
@@ -75,7 +75,7 @@ export function rerender(this: IState): void {
   if (!timer) timer = setTimeout(globalRerender);
 }
 
-function renderInner(oldElement: JsxElement, topTuple: JsxTree): void {
+function renderInner(oldElement: JsxElement, topTuple: JsxTree): [JsxElement, JsxTree] {
   const rootTuple: JsxTree = expandTuplesRecursively(topTuple, 0, globalState);
   console.log({ rootTuple });
   const newElement = tupleToElement(rootTuple);
@@ -83,6 +83,7 @@ function renderInner(oldElement: JsxElement, topTuple: JsxTree): void {
   oldElement.replaceWith(newElement);
   timer = 0;
   globalRerender = () => renderInner(newElement, topTuple);
+  return [newElement, rootTuple];
 }
 
 // hooks ////
@@ -100,10 +101,10 @@ function useState<T>(this: IState, init: T): [T, (newVal: T) => void] {
 
 // entry point //////////
 
-export function renderJsx(elementId: string, jsx: JsxTree): void {
+export function renderJsx(elementId: string, jsx: JsxTree): [JsxElement, JsxTree] | void {
   const oldElement = document.getElementById(elementId) as JsxElement;
   if (!oldElement) return console.error(elementId, "not found in document");
-  renderInner(oldElement, jsx);
+  return renderInner(oldElement, jsx);
 }
 
 export const renderFn = (elementId: string, componentFn: (props: any, state: IState & any) => JsxTree, props?: object) =>

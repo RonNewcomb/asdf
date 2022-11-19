@@ -6,8 +6,8 @@ declare namespace JSX {
     onClickCapture?: (event: MouseEvent) => any;
     onKeyDown?: (event: KeyboardEvent) => any;
     onKeyDownCapture?: (event: KeyboardEvent) => any;
-    onChange?: (event: EventWithValue) => any;
-    onChangeCapture?: (event: EventWithValue) => any;
+    onChange?: (event: ValuedEvent) => any;
+    onChangeCapture?: (event: ValuedEvent) => any;
   }
   interface ButtonTypes {
     type: "button" | "submit";
@@ -16,7 +16,7 @@ declare namespace JSX {
     type?: "text" | "email" | "number";
     value?: any;
   }
-  interface EventWithValue extends Event {
+  interface ValuedEvent extends Event {
     currentTarget: EventTarget & { value: any };
     target: EventTarget & { value: any };
   }

@@ -1,4 +1,4 @@
-import { IState, jsx } from "../framework.js";
+import { IState, jsx } from "../lib/render/framework.js";
 
 export default function (props: unknown, { useState, render }: IState) {
   const [form, setForm] = useState({ name: "", email: "" });

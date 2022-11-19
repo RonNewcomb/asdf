@@ -1,4 +1,4 @@
-import { jsx } from "../framework.js";
+import { jsx } from "../lib/render/framework.js";
 export default function ({ x, children }, { useState }) {
     const [f, setf] = useState("large");
     const toggle = () => setf(f === "large" ? "small" : "large");

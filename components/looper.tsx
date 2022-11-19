@@ -1,4 +1,4 @@
-import { IState, jsx } from "../framework.js";
+import { IState, jsx } from "../lib/render/framework.js";
 import Fancify from "./fancify.js";
 
 export default function (props: unknown, { useState }: IState) {

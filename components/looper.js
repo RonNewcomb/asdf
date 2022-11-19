@@ -1,4 +1,4 @@
-import { jsx } from "../framework.js";
+import { jsx } from "../lib/render/framework.js";
 import Fancify from "./fancify.js";
 export default function (props, { useState }) {
     const [val, setVal] = useState("lkj");

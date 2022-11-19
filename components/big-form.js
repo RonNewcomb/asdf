@@ -1,4 +1,4 @@
-import { jsx } from "../framework.js";
+import { jsx } from "../lib/render/framework.js";
 export default function (props, { useState, render }) {
     const [form, setForm] = useState({ name: "", email: "" });
     return (jsx("form", null,

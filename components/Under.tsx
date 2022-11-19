@@ -1,4 +1,4 @@
-import { IState, jsx } from "../framework.js";
+import { IState, jsx } from "../lib/render/framework.js";
 
 export default function Under({ x }: { x: number }, { useState }: IState) {
   console.log("Under.state = ");

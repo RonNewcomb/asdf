@@ -1,4 +1,4 @@
-import { jsx, renderJsx } from "../framework.js";
+import { jsx, renderJsx } from "../lib/render/framework.js";
 import BigForm from "./big-form.js";
 import Looper from "./looper.js";
 import Under from "./Under.js";

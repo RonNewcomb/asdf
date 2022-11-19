@@ -1,4 +1,4 @@
-import { IState, jsx } from "../framework.js";
+import { IState, jsx } from "../lib/render/framework.js";
 
 export default function ({ x, children }: { x: any; children?: any }, { useState }: IState) {
   const [f, setf] = useState("large");
