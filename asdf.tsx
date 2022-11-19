@@ -12,15 +12,17 @@ interface JsxElement extends Element {
   state?: IState;
 }
 
-const newState = (): IState => ({
-  privates: [],
-  privatesIndex: 0,
-  childStates: [],
-  render: rerender,
-  useState: function <T>(this: IState, init: T) {
-    return use(this, init);
-  },
-});
+const newState = (): IState => {
+  const state: IState = {
+    privates: [],
+    privatesIndex: 0,
+    childStates: [],
+    render: rerender,
+    useState: null as any,
+  };
+  state.useState = useState.bind(state) as <T>(init: T) => [T, (newValue: T) => void];
+  return state;
+};
 
 // jsx ///////
 
@@ -44,7 +46,7 @@ export function expandTuplesRecursively(tree: any, childIndex: number, parentSta
   parentState.childStates[childIndex] ||= newState();
   const state = parentState.childStates[childIndex];
   state.privatesIndex = 0;
-  const tuple = nameOrFn(props, state);
+  const tuple = nameOrFn.call(state, props, state);
   return expandTuplesRecursively(tuple, 0, state);
 }
 
@@ -77,7 +79,7 @@ export function render(elementId: string, componentFn: CompFn): void {
 
 function renderInner(oldElement: JsxElement, componentFn: CompFn): void {
   globalState.privatesIndex = 0;
-  const tuple = componentFn(null, globalState);
+  const tuple = componentFn.call(globalState, null, globalState);
   const topTuple: JsxTree = expandTuplesRecursively(tuple, 0, globalState);
   console.log({ topTuple }); //////
   const newElement = tupleToElement(topTuple);
@@ -89,13 +91,13 @@ function renderInner(oldElement: JsxElement, componentFn: CompFn): void {
 
 // hooks ////
 
-export function use<T>(state: IState, init: T): [T, (newVal: T) => void] {
-  const i = state.privatesIndex++;
-  if (state.privates.length - 1 < i) state.privates[i] = init;
-  const gettor = state.privates[i];
+function useState<T>(this: IState, init: T): [T, (newVal: T) => void] {
+  const i = this.privatesIndex++;
+  if (this.privates.length - 1 < i) this.privates[i] = init;
+  const gettor = this.privates[i];
   const settor = (newValue: T) => {
-    state.privates[i] = newValue;
-    state.render();
+    this.privates[i] = newValue;
+    this.render();
   };
   return [gettor, settor];
 }
