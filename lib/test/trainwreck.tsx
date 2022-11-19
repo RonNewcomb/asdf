@@ -7,31 +7,34 @@ function div(id?: string, display?: string) {
   return div;
 }
 
-function pre() {
+function pre(innerText?: string) {
   const el = document.createElement("pre");
   el.style.margin = "16";
+  if (innerText) el.innerText = innerText;
   return el;
+}
+
+function attach(parent: Element, childs: (Element | undefined)[]): Element {
+  childs.forEach(child => child && parent.appendChild(child));
+  return parent;
 }
 
 document.body.appendChild(div("test-output"));
 const specFileToAutoload = new URL(location.href).search.slice(1);
 if (specFileToAutoload) import("./" + specFileToAutoload).catch(e => document.body.insertAdjacentText("afterbegin", e));
 
-export async function diff<T>(nestedThing1: T, nestedThing2: T, testFn: Function): Promise<DiffReport | null> {
-  const container = document.getElementById("test-output")!;
-  const outer = div("", "flex");
-  const left = pre();
-  const right = pre();
-  left.innerText = JSON.stringify(nestedThing1, undefined, 2);
-  right.innerText = JSON.stringify(nestedThing2, undefined, 2);
-  outer.appendChild(left);
-  outer.appendChild(right);
-  if (testFn) {
-    const code = pre();
-    code.innerText = testFn.toString();
-    outer.appendChild(code);
-  }
-  container?.appendChild(outer);
+async function diff<T>(
+  nestedThing1: T,
+  nestedThing2: T,
+  testFn: Function,
+  id: string,
+  container: HTMLDivElement
+): Promise<DiffReport | null> {
+  attach(container.appendChild(div("", "flex")), [
+    pre(JSON.stringify(nestedThing1, undefined, 2)),
+    pre(JSON.stringify(nestedThing2, undefined, 2)),
+    testFn && pre(testFn.toString()),
+  ]);
   return null;
 }
 
@@ -39,9 +42,21 @@ interface ShortDiff {
   <T>(nestedThing1: T, nestedThing2: T): Promise<DiffReport | null>;
 }
 
-export async function test(fn: (pkg: { diff: ShortDiff }) => void): Promise<any> {
-  const shortDiff: ShortDiff = <T,>(nestedThing1: T, nestedThing2: T) => diff(nestedThing1, nestedThing2, fn);
-  return fn({ diff: shortDiff });
+function iframe(id: string) {
+  const el = document.createElement("iframe");
+  if (id) el.setAttribute("name", id);
+  if (id) el.setAttribute("title", id);
+  return el;
+}
+
+export async function test(fn: (pkg: { diff: ShortDiff; id: string; playground: HTMLDivElement }) => void): Promise<any> {
+  const id = new Date().getTime().toString();
+  const testarea = div();
+  const frame = iframe(id);
+  const userplayground = div(id);
+  document.getElementById("test-output")!.appendChild(testarea).appendChild(frame).appendChild(userplayground);
+  const shortDiff: ShortDiff = <T,>(nestedThing1: T, nestedThing2: T) => diff(nestedThing1, nestedThing2, fn, id, testarea);
+  return fn({ diff: shortDiff, id, playground: userplayground });
 }
 
 export function orThrow(message: string) {
