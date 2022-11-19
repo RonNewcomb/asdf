@@ -1,4 +1,5 @@
 import { jsx, render } from "../framework.js";
+import Looper from "./looper.js";
 import Under from "./Under.js";
 
 export default function AppStart(props: unknown, state: any) {
@@ -15,6 +16,7 @@ export default function AppStart(props: unknown, state: any) {
       <button onClick={pressed} onKeyDown={pressed}>
         z is {z}
       </button>
+      <Looper />
     </span>
   );
 }

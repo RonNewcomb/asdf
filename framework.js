@@ -19,9 +19,9 @@ export function expandTuplesRecursively(tree, childIndex, parentState) {
     var _a;
     if (!Array.isArray(tree))
         return tree;
-    if (tree[0] !== JsxSymbol)
-        return tree.map((c, i) => expandTuplesRecursively(c, i, parentState)); // array of components from a .map
     let [id, nameOrFn, props, children] = tree;
+    if (id !== JsxSymbol)
+        return [JsxSymbol, "array-items", null, tree.map((c, i) => expandTuplesRecursively(c, i, parentState))]; // array of components from a .map
     if (typeof nameOrFn !== "function")
         return [id, nameOrFn, props, children.map((c, i) => expandTuplesRecursively(c, i, parentState))]; // then a <div> or <span>
     (_a = parentState.childStates)[childIndex] || (_a[childIndex] = newState());
@@ -31,6 +31,8 @@ export function expandTuplesRecursively(tree, childIndex, parentState) {
     return expandTuplesRecursively(tuple, 0, state);
 }
 export function tupleToElement([id, nameOrFn, props, children]) {
+    if (id !== JsxSymbol)
+        throw Error("non-tuple array passed to elementalize");
     if (typeof nameOrFn === "function")
         throw Error("tuples weren't fully expanded");
     const element = document.createElement(nameOrFn);
@@ -41,8 +43,20 @@ export function tupleToElement([id, nameOrFn, props, children]) {
             element.addEventListener(key.slice(2).replace("Capture", "").toLowerCase(), props[key], key.endsWith("Capture"));
     }
     if (children)
-        children.forEach(c => element.append(isJsxTree(c) ? tupleToElement(c) : c));
+        children.forEach(c => {
+            if (isJsxTree(c))
+                element.append(tupleToElement(c));
+            else
+                element.append(c);
+        });
     return element;
+}
+// entry point //////////
+export function render(elementId, componentFn) {
+    const oldElement = document.getElementById(elementId);
+    if (!oldElement)
+        return console.error(elementId, "not found in document");
+    renderInner(oldElement, componentFn);
 }
 // framework /////
 const globalState = newState();
@@ -52,17 +66,12 @@ export function rerender() {
     if (!timer)
         timer = setTimeout(globalRerender);
 }
-export function render(elementId, componentFn) {
-    const oldElement = document.getElementById(elementId);
-    if (!oldElement)
-        return console.error(elementId, "not found in document");
-    renderInner(oldElement, componentFn);
-}
 function renderInner(oldElement, componentFn) {
     globalState.privatesIndex = 0;
     const tuple = componentFn.call(globalState, null, globalState);
     const topTuple = expandTuplesRecursively(tuple, 0, globalState);
     console.log({ topTuple }); //////
+    //console.log(JSON.stringify(topTuple, undefined, 2));
     const newElement = tupleToElement(topTuple);
     newElement.state = oldElement.state;
     oldElement.replaceWith(newElement);

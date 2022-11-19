@@ -1,4 +1,5 @@
 import { jsx, render } from "../framework.js";
+import Looper from "./looper.js";
 import Under from "./Under.js";
 export default function AppStart(props, state) {
     console.log("app-start state", state);
@@ -10,6 +11,7 @@ export default function AppStart(props, state) {
         jsx(Under, { x: 5 }),
         jsx("button", { onClick: pressed, onKeyDown: pressed },
             "z is ",
-            z)));
+            z),
+        jsx(Looper, null)));
 }
 render("app-start", AppStart);
