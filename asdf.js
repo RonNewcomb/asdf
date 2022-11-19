@@ -14,33 +14,29 @@ const testjsx = () => jsx("div", null);
 // ordered ////
 export const jsx = (nameOrFn, props, ...children) => [JsxSymbol, nameOrFn, props, children];
 export function expandTuplesRecursively(tree, childIndex, parentState) {
-    if (!tree || tree[0] !== JsxSymbol)
+    var _a;
+    if (!Array.isArray(tree))
         return tree;
-    const [id, nameOrFn, props, children] = tree;
-    if (typeof nameOrFn === "function") {
-        if (!parentState)
-            throw Error("parentState missing");
-        if (!parentState.childStates[childIndex])
-            parentState.childStates[childIndex] = newState();
-        const state = parentState.childStates[childIndex];
-        state.privatesIndex = 0;
-        const tuple = nameOrFn(props, state);
-        return expandTuplesRecursively(tuple, 0, state);
-    }
-    const adults = Array.isArray(children)
-        ? children.map((c, i) => expandTuplesRecursively(c, i, parentState))
-        : expandTuplesRecursively(children, 0, parentState);
-    return [JsxSymbol, nameOrFn, props, adults];
+    if (tree[0] !== JsxSymbol)
+        return tree.map((c, i) => expandTuplesRecursively(c, i, parentState)); // array of components from a .map
+    let [id, nameOrFn, props, children] = tree;
+    if (typeof nameOrFn !== "function")
+        return [id, nameOrFn, props, children.map((c, i) => expandTuplesRecursively(c, i, parentState))]; // then a <div> or <span>
+    (_a = parentState.childStates)[childIndex] || (_a[childIndex] = newState());
+    const state = parentState.childStates[childIndex];
+    state.privatesIndex = 0;
+    const tuple = nameOrFn(props, state);
+    return expandTuplesRecursively(tuple, 0, state);
 }
 export function tupleToElement([id, nameOrFn, props, children]) {
     if (typeof nameOrFn === "function")
         throw Error("tuples weren't fully expanded");
     const element = document.createElement(nameOrFn);
     for (const key in props) {
-        if (key.startsWith("on"))
-            element.addEventListener(key.slice(2).toLowerCase(), props[key]);
-        else
+        if (!key.startsWith("on"))
             element.setAttribute(key, props[key]);
+        else
+            element.addEventListener(key.slice(2).replace("Capture", "").toLowerCase(), props[key], key.endsWith("Capture"));
     }
     if (children)
         children.forEach(c => element.append(isJsxTree(c) ? tupleToElement(c) : c));
