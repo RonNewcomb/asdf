@@ -1,6 +1,8 @@
 import { jsx, JsxTree, renderJsx } from "../lib/render/framework.js";
-import { orThrow, test } from "../lib/test/trainwreck.js";
+import { orThrow, test, TestCaseSettings } from "../lib/test/trainwreck.js";
 import AppStart from "./app-start.js";
+
+const isolated: TestCaseSettings = { test, useIframe: true };
 
 test(({ diff, id, playground }) => {
   const result: JsxTree = <AppStart seed="foo" />;
@@ -12,7 +14,7 @@ test(({ diff, id, playground }) => {
   );
 });
 
-test(({ diff, id, playground }) => {
+isolated.test(({ diff, id, playground }) => {
   const result: JsxTree = <AppStart seed="foo" />;
   diff(result, jsx("div", { seed: "foo" }, []));
   const [topElement, tree] = renderJsx(id, result)! || orThrow("failed to render");

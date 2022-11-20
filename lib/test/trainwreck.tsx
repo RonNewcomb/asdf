@@ -2,24 +2,32 @@ interface DiffReport {}
 
 // elements ////////
 
-function div(id?: string, display?: string) {
-  const div = document.createElement("div");
-  if (id) div.setAttribute("id", id);
-  if (display) div.style.display = display;
-  return div;
+function styling(el: HTMLElement, [key, value]: [key: string, value: any]) {
+  el.style[key as any] = value;
 }
 
-function pre(innerText?: string) {
-  const el = document.createElement("pre");
-  el.style.margin = "16";
-  if (innerText) el.innerText = innerText;
+function div(id?: string, display?: string, style?: Record<string, any>) {
+  const el = document.createElement("div");
+  if (id) el.setAttribute("id", id);
+  if (display) el.style.display = display;
+  if (style) Object.entries(style).forEach(entry => styling(el, entry));
   return el;
 }
 
-function iframe(id: string) {
+function pre(innerText?: string, style?: Record<string, any>) {
+  const el = document.createElement("pre");
+  el.style.padding = "16";
+  if (innerText) el.innerText = innerText;
+  if (style) Object.entries(style).forEach(entry => styling(el, entry));
+  return el;
+}
+
+function iframe(id: string, style?: Record<string, any>) {
   const el = document.createElement("iframe");
+  el.setAttribute("width", "99%");
   if (id) el.setAttribute("name", id);
   if (id) el.setAttribute("title", id);
+  if (style) Object.entries(style).forEach(entry => styling(el, entry));
   return el;
 }
 
@@ -37,23 +45,17 @@ export function orThrow(message: string) {
 }
 
 function formatXml(xml: string, tab: string = "   "): string {
-  let formatted = "";
+  const formatted: string[] = [];
   let indent = "";
-  xml.split(/>\s*</).forEach(function (node) {
+  xml.split(/>\s*</).forEach(node => {
     if (node.match(/^\/\w/)) indent = indent.substring(tab.length); // decrease indent by one 'tab'
-    formatted += indent + "<" + node + ">\r\n";
+    formatted.push(indent + "<" + node + ">\r\n");
     if (node.match(/^<?\w[^>]*[^\/]$/)) indent += tab; // increase indent
   });
-  return formatted.substring(1, formatted.length - 3);
+  return formatted.join("").substring(1, formatted.length - 3);
 }
 
-async function diff<T>(
-  nestedThing1: T,
-  nestedThing2: T,
-  testFn: Function,
-  id: string,
-  container: HTMLDivElement
-): Promise<DiffReport | null> {
+async function diff<T>(nestedThing1: T, nestedThing2: T, testFn: Function, id: string, container: HTMLDivElement): Promise<DiffReport | null> {
   attach(container.appendChild(div("", "flex")), [
     pre(typeof nestedThing1 === "string" ? formatXml(nestedThing1) : JSON.stringify(nestedThing1, undefined, 2)),
     pre(typeof nestedThing2 === "string" ? formatXml(nestedThing2) : JSON.stringify(nestedThing2, undefined, 2)),
@@ -74,12 +76,38 @@ if (specFileToAutoload) import("./" + specFileToAutoload).catch(e => document.bo
 
 // entry ////////
 
-export async function test(fn: (pkg: { diff: ShortDiff; id: string; playground: HTMLDivElement }) => void): Promise<any> {
+export interface TestCase {
+  (pkg: { diff: ShortDiff; id: string; playground: HTMLDivElement }): void;
+}
+
+export interface TestCaseSettings {
+  useIframe?: boolean;
+  test: (this: TestCaseSettings | void, fn: TestCase) => Promise<any>;
+}
+
+const globalTestCaseSettings: TestCaseSettings = {
+  test,
+  useIframe: false,
+};
+
+export async function test(this: TestCaseSettings | void, fn: TestCase): Promise<any> {
   const id = new Date().getTime().toString();
   const testarea = div();
-  const frame = iframe(id);
+  document.getElementById("test-output")!.appendChild(testarea);
+  testarea.appendChild(document.createElement("hr"));
+  const playgroundWrapper = div(undefined, undefined, { border: "2px inset", padding: "5px" });
   const userplayground = div(id);
-  document.getElementById("test-output")!.appendChild(testarea).appendChild(frame).appendChild(userplayground);
+  if ((this || globalTestCaseSettings).useIframe) {
+    const frame = iframe(id);
+    testarea.appendChild(frame);
+    frame.contentWindow!.document.body.appendChild(userplayground);
+  } else testarea.appendChild(playgroundWrapper).appendChild(userplayground);
+
   const shortDiff: ShortDiff = <T,>(nestedThing1: T, nestedThing2: T) => diff(nestedThing1, nestedThing2, fn, id, testarea);
-  return fn({ diff: shortDiff, id, playground: userplayground });
+
+  try {
+    return fn({ diff: shortDiff, id, playground: userplayground });
+  } catch (e: any) {
+    testarea.appendChild(pre(e, { "background-color": "brown" }));
+  }
 }
