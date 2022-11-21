@@ -4,7 +4,7 @@ import AppStart from "./app-start.js";
 
 const isolated: TestCaseSettings = { test, useIframe: true };
 
-test("test A", ({ diff, id, playground, name }) => {
+test("should render", ({ diff, id, playground, name }) => {
   const result: JsxTree = <AppStart seed="foo" />;
   diff(result, [JsxSymbol, "div", { seed: "foo" }, []]);
   const [topElement, tree] = renderJsx(id, result)! || orThrow(name + " failed to render");
@@ -14,7 +14,7 @@ test("test A", ({ diff, id, playground, name }) => {
   );
 });
 
-isolated.test("test B", ({ diff, id, playground, name, orThrow }) => {
+isolated.test("should render again", ({ diff, id, playground, name, orThrow }) => {
   const result: JsxTree = <AppStart seed="foo" />;
   diff(result, [JsxSymbol, "div", { seed: "foo" }, []]);
   const [topElement, tree] = renderJsx(id, result)! || orThrow();

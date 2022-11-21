@@ -4,7 +4,7 @@ import ComponentUnderTest from "./looper.js";
 
 const isolated: TestCaseSettings = { test, useIframe: true };
 
-test("looper test A", ({ diff, id, playground, name }) => {
+test("looper should render", ({ diff, id, playground, name }) => {
   const result: JsxTree = <ComponentUnderTest />;
   diff(result, [JsxSymbol, "div", {}, []]);
   const [topElement, tree] = renderJsx(id, result)! || orThrow(name + " failed to render");
@@ -14,7 +14,7 @@ test("looper test A", ({ diff, id, playground, name }) => {
   );
 });
 
-isolated.test("looper test B", ({ diff, id, playground, name, orThrow }) => {
+isolated.test("looper should render again", ({ diff, id, playground, name, orThrow }) => {
   const result: JsxTree = <ComponentUnderTest />;
   diff(result, [JsxSymbol, "div", {}, []]);
   const [topElement, tree] = renderJsx(id, result)! || orThrow();

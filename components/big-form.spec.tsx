@@ -4,7 +4,7 @@ import ComponentUnderTest from "./big-form.js";
 
 const isolated: TestCaseSettings = { test, useIframe: true };
 
-test("big-form test A", ({ diff, id, playground, name }) => {
+test("big-form should render", ({ diff, id, playground, name }) => {
   const result: JsxTree = <ComponentUnderTest />;
   diff(result, [JsxSymbol, "div", null, []]);
   const [topElement, tree] = renderJsx(id, result)! || orThrow(name + " failed to render");
@@ -14,7 +14,7 @@ test("big-form test A", ({ diff, id, playground, name }) => {
   );
 });
 
-isolated.test("big-form test B", ({ diff, id, playground, name, orThrow }) => {
+isolated.test("big-form should render again", ({ diff, id, playground, name, orThrow }) => {
   const result: JsxTree = <ComponentUnderTest />;
   diff(result, [JsxSymbol, "div", null, []]);
   const [topElement, tree] = renderJsx(id, result)! || orThrow();

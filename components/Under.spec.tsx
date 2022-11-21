@@ -4,7 +4,7 @@ import ComponentUnderTest from "./Under.js";
 
 const isolated: TestCaseSettings = { test, useIframe: true };
 
-test("Under test A", ({ diff, id, playground, name }) => {
+test("Under should render", ({ diff, id, playground, name }) => {
   const result: JsxTree = <ComponentUnderTest x={15} />;
   diff(result, [JsxSymbol, "div", { x: "15" }, []]);
   const [topElement, tree] = renderJsx(id, result)! || orThrow(name + " failed to render");
@@ -14,7 +14,7 @@ test("Under test A", ({ diff, id, playground, name }) => {
   );
 });
 
-isolated.test("Under test B", ({ diff, id, playground, name, orThrow }) => {
+isolated.test("Under should render again", ({ diff, id, playground, name, orThrow }) => {
   const result: JsxTree = <ComponentUnderTest x={15} />;
   diff(result, [JsxSymbol, "div", { x: "15" }, []]);
   const [topElement, tree] = renderJsx(id, result)! || orThrow();

@@ -114,18 +114,16 @@ export const globalTestCaseSettings: TestCaseSettings = {
 };
 
 export async function test(this: TestCaseSettings | void, name: string, fn: TestCaseFn): Promise<any> {
+  const settings = this || globalTestCaseSettings;
   const id = new Date().getTime().toString();
-  const testarea = div({ class: "testarea" });
-  testarea.appendChild(div({ innerText: name }));
-  document.getElementById("test-output")!.appendChild(testarea);
-  const playgroundWrapper = div(undefined, { border: "2px inset", padding: "5px" });
-  const userplayground = div({ id });
-  if ((this || globalTestCaseSettings).useIframe) {
-    const frame = iframe(id);
-    console.log("using", { frame });
-    testarea.appendChild(frame);
-    frame.contentWindow!.document.body.appendChild(userplayground);
-  } else testarea.appendChild(playgroundWrapper).appendChild(userplayground);
+
+  const testarea = document.getElementById("test-output")!.appendChild(div({ class: "testarea" }));
+  const headline = testarea.appendChild(div({ innerText: name }));
+
+  const wrapper = settings.useIframe
+    ? testarea.appendChild(iframe(id)).contentWindow!.document.body
+    : testarea.appendChild(div({}, { border: "2px inset", padding: "5px" }));
+  const userplayground = wrapper.appendChild(div({ id }));
 
   try {
     let retval = fn({
@@ -138,6 +136,6 @@ export async function test(this: TestCaseSettings | void, name: string, fn: Test
     if (retval instanceof Promise) retval = await retval;
     return retval;
   } catch (e: any) {
-    testarea.insertAdjacentElement("afterbegin", pre(e, { backgroundColor: "brown" }));
+    headline.insertAdjacentElement("afterend", pre(e, { backgroundColor: "brown" }));
   }
 }

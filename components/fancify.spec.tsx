@@ -4,7 +4,7 @@ import ComponentUnderTest from "./fancify.js";
 
 const isolated: TestCaseSettings = { test, useIframe: true };
 
-test("fancify test A", ({ diff, id, playground, name }) => {
+test("fancify should render", ({ diff, id, playground, name }) => {
   const result: JsxTree = <ComponentUnderTest x={99} />;
   diff(result, [JsxSymbol, "div", { seed: "foo" }, []]);
   const [topElement, tree] = renderJsx(id, result)! || orThrow(name + " failed to render");
@@ -14,7 +14,7 @@ test("fancify test A", ({ diff, id, playground, name }) => {
   );
 });
 
-isolated.test("fancify test B", ({ diff, id, playground, name, orThrow }) => {
+isolated.test("fancify should render again", ({ diff, id, playground, name, orThrow }) => {
   const result: JsxTree = <ComponentUnderTest x={99} />;
   diff(result, [JsxSymbol, "div", { seed: "foo" }, []]);
   const [topElement, tree] = renderJsx(id, result)! || orThrow();

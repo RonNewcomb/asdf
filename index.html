@@ -5,22 +5,30 @@
       background-color: darkblue;
       font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
     }
-    .scripttag {
-      color: gray;
-    }
     a {
       color: yellowgreen;
     }
     a:hover {
       color: yellow;
     }
+    #main {
+      margin: auto;
+      line-height: 2em;
+      width: 40em;
+    }
   </style>
 
-  <div><a href="./app.html">App</a></div>
-  <div><a href="./lib/test/trainwreck.html">Trainwreck (testing framework)</a></div>
-  <div><a href="http://localhost/asdf/lib/test/trainwreck.html?../../components/app-start.spec.js">app-start.spec.js</a></div>
-  <div><a href="http://localhost/asdf/lib/test/trainwreck.html?../../components/Under.spec.js">Under.spec.js</a></div>
-  <div><a href="http://localhost/asdf/lib/test/trainwreck.html?../../components/looper.spec.js">looper.spec.js</a></div>
-  <div><a href="http://localhost/asdf/lib/test/trainwreck.html?../../components/fancify.spec.js">fancify.spec.js</a></div>
-  <div><a href="http://localhost/asdf/lib/test/trainwreck.html?../../components/big-form.spec.js">big-form.spec.js</a></div>
+  <div id="main">
+    <div><a href="./app.html">App</a></div>
+    <div><a href="./lib/test/trainwreck.html">Trainwreck (testing framework)</a></div>
+  </div>
+
+  <script>
+    ["app-start.spec.js", "big-form.spec.js", "fancify.spec.js", "looper.spec.js", "Under.spec.js"].forEach(filename => {
+      const a = document.createElement("a");
+      a.href = "http://localhost/asdf/lib/test/trainwreck.html?../../components/" + filename;
+      a.innerText = filename;
+      document.getElementById("main").appendChild(document.createElement("div")).appendChild(a);
+    });
+  </script>
 </body>
