@@ -1,7 +1,7 @@
 import { jsx, renderJsx } from "../lib/render/framework.js";
-import BigForm from "./big-form.js
-import Looper from "./looper.js
-import Under from "./Under.js
+import BigForm from "./big-form.js";
+import Looper from "./looper.js";
+import Under from "./Under.js";
 export default function AppStart(props, state) {
     console.log("app-start state", state);
     console.log("app-start props ", props);

@@ -1,0 +1,396 @@
+{
+  "type": "Program",
+  "start": 0,
+  "end": 331,
+  "body": [
+    {
+      "type": "ImportDeclaration",
+      "start": 0,
+      "end": 49,
+      "specifiers": [
+        {
+          "type": "ImportSpecifier",
+          "start": 9,
+          "end": 12,
+          "imported": {
+            "type": "Identifier",
+            "start": 9,
+            "end": 12,
+            "name": "jsx"
+          },
+          "local": {
+            "type": "Identifier",
+            "start": 9,
+            "end": 12,
+            "name": "jsx"
+          }
+        }
+      ],
+      "source": {
+        "type": "Literal",
+        "start": 20,
+        "end": 48,
+        "value": "../lib/render/framework.js",
+        "raw": "\"../lib/render/framework.js\""
+      }
+    },
+    {
+      "type": "ExportDefaultDeclaration",
+      "start": 50,
+      "end": 330,
+      "declaration": {
+        "type": "FunctionDeclaration",
+        "start": 65,
+        "end": 330,
+        "id": null,
+        "expression": false,
+        "generator": false,
+        "async": false,
+        "params": [
+          {
+            "type": "ObjectPattern",
+            "start": 75,
+            "end": 90,
+            "properties": [
+              {
+                "type": "Property",
+                "start": 77,
+                "end": 78,
+                "method": false,
+                "shorthand": true,
+                "computed": false,
+                "key": {
+                  "type": "Identifier",
+                  "start": 77,
+                  "end": 78,
+                  "name": "x"
+                },
+                "kind": "init",
+                "value": {
+                  "type": "Identifier",
+                  "start": 77,
+                  "end": 78,
+                  "name": "x"
+                }
+              },
+              {
+                "type": "Property",
+                "start": 80,
+                "end": 88,
+                "method": false,
+                "shorthand": true,
+                "computed": false,
+                "key": {
+                  "type": "Identifier",
+                  "start": 80,
+                  "end": 88,
+                  "name": "children"
+                },
+                "kind": "init",
+                "value": {
+                  "type": "Identifier",
+                  "start": 80,
+                  "end": 88,
+                  "name": "children"
+                }
+              }
+            ]
+          },
+          {
+            "type": "ObjectPattern",
+            "start": 92,
+            "end": 104,
+            "properties": [
+              {
+                "type": "Property",
+                "start": 94,
+                "end": 102,
+                "method": false,
+                "shorthand": true,
+                "computed": false,
+                "key": {
+                  "type": "Identifier",
+                  "start": 94,
+                  "end": 102,
+                  "name": "useState"
+                },
+                "kind": "init",
+                "value": {
+                  "type": "Identifier",
+                  "start": 94,
+                  "end": 102,
+                  "name": "useState"
+                }
+              }
+            ]
+          }
+        ],
+        "body": {
+          "type": "BlockStatement",
+          "start": 106,
+          "end": 330,
+          "body": [
+            {
+              "type": "VariableDeclaration",
+              "start": 112,
+              "end": 148,
+              "declarations": [
+                {
+                  "type": "VariableDeclarator",
+                  "start": 118,
+                  "end": 147,
+                  "id": {
+                    "type": "ArrayPattern",
+                    "start": 118,
+                    "end": 127,
+                    "elements": [
+                      {
+                        "type": "Identifier",
+                        "start": 119,
+                        "end": 120,
+                        "name": "f"
+                      },
+                      {
+                        "type": "Identifier",
+                        "start": 122,
+                        "end": 126,
+                        "name": "setf"
+                      }
+                    ]
+                  },
+                  "init": {
+                    "type": "CallExpression",
+                    "start": 130,
+                    "end": 147,
+                    "callee": {
+                      "type": "Identifier",
+                      "start": 130,
+                      "end": 138,
+                      "name": "useState"
+                    },
+                    "arguments": [
+                      {
+                        "type": "Literal",
+                        "start": 139,
+                        "end": 146,
+                        "value": "large",
+                        "raw": "\"large\""
+                      }
+                    ],
+                    "optional": false
+                  }
+                }
+              ],
+              "kind": "const"
+            },
+            {
+              "type": "VariableDeclaration",
+              "start": 153,
+              "end": 214,
+              "declarations": [
+                {
+                  "type": "VariableDeclarator",
+                  "start": 159,
+                  "end": 213,
+                  "id": {
+                    "type": "Identifier",
+                    "start": 159,
+                    "end": 165,
+                    "name": "toggle"
+                  },
+                  "init": {
+                    "type": "ArrowFunctionExpression",
+                    "start": 168,
+                    "end": 213,
+                    "id": null,
+                    "expression": true,
+                    "generator": false,
+                    "async": false,
+                    "params": [],
+                    "body": {
+                      "type": "CallExpression",
+                      "start": 174,
+                      "end": 213,
+                      "callee": {
+                        "type": "Identifier",
+                        "start": 174,
+                        "end": 178,
+                        "name": "setf"
+                      },
+                      "arguments": [
+                        {
+                          "type": "ConditionalExpression",
+                          "start": 179,
+                          "end": 212,
+                          "test": {
+                            "type": "BinaryExpression",
+                            "start": 179,
+                            "end": 192,
+                            "left": {
+                              "type": "Identifier",
+                              "start": 179,
+                              "end": 180,
+                              "name": "f"
+                            },
+                            "operator": "===",
+                            "right": {
+                              "type": "Literal",
+                              "start": 185,
+                              "end": 192,
+                              "value": "large",
+                              "raw": "\"large\""
+                            }
+                          },
+                          "consequent": {
+                            "type": "Literal",
+                            "start": 195,
+                            "end": 202,
+                            "value": "small",
+                            "raw": "\"small\""
+                          },
+                          "alternate": {
+                            "type": "Literal",
+                            "start": 205,
+                            "end": 212,
+                            "value": "large",
+                            "raw": "\"large\""
+                          }
+                        }
+                      ],
+                      "optional": false
+                    }
+                  }
+                }
+              ],
+              "kind": "const"
+            },
+            {
+              "type": "ReturnStatement",
+              "start": 219,
+              "end": 328,
+              "argument": {
+                "type": "CallExpression",
+                "start": 227,
+                "end": 326,
+                "callee": {
+                  "type": "Identifier",
+                  "start": 227,
+                  "end": 230,
+                  "name": "jsx"
+                },
+                "arguments": [
+                  {
+                    "type": "Literal",
+                    "start": 231,
+                    "end": 236,
+                    "value": "div",
+                    "raw": "\"div\""
+                  },
+                  {
+                    "type": "ObjectExpression",
+                    "start": 238,
+                    "end": 283,
+                    "properties": [
+                      {
+                        "type": "Property",
+                        "start": 240,
+                        "end": 264,
+                        "method": false,
+                        "shorthand": false,
+                        "computed": false,
+                        "key": {
+                          "type": "Identifier",
+                          "start": 240,
+                          "end": 245,
+                          "name": "style"
+                        },
+                        "value": {
+                          "type": "TemplateLiteral",
+                          "start": 247,
+                          "end": 264,
+                          "expressions": [
+                            {
+                              "type": "Identifier",
+                              "start": 261,
+                              "end": 262,
+                              "name": "f"
+                            }
+                          ],
+                          "quasis": [
+                            {
+                              "type": "TemplateElement",
+                              "start": 248,
+                              "end": 259,
+                              "value": {
+                                "raw": "font-size: ",
+                                "cooked": "font-size: "
+                              },
+                              "tail": false
+                            },
+                            {
+                              "type": "TemplateElement",
+                              "start": 263,
+                              "end": 263,
+                              "value": {
+                                "raw": "",
+                                "cooked": ""
+                              },
+                              "tail": true
+                            }
+                          ]
+                        },
+                        "kind": "init"
+                      },
+                      {
+                        "type": "Property",
+                        "start": 266,
+                        "end": 281,
+                        "method": false,
+                        "shorthand": false,
+                        "computed": false,
+                        "key": {
+                          "type": "Identifier",
+                          "start": 266,
+                          "end": 273,
+                          "name": "onClick"
+                        },
+                        "value": {
+                          "type": "Identifier",
+                          "start": 275,
+                          "end": 281,
+                          "name": "toggle"
+                        },
+                        "kind": "init"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Identifier",
+                    "start": 293,
+                    "end": 301,
+                    "name": "children"
+                  },
+                  {
+                    "type": "Literal",
+                    "start": 311,
+                    "end": 314,
+                    "value": " ",
+                    "raw": "\" \""
+                  },
+                  {
+                    "type": "Identifier",
+                    "start": 324,
+                    "end": 325,
+                    "name": "x"
+                  }
+                ],
+                "optional": false
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "sourceType": "module"
+}

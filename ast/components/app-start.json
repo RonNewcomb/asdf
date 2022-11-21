@@ -1,0 +1,923 @@
+{
+  "type": "Program",
+  "start": 0,
+  "end": 965,
+  "body": [
+    {
+      "type": "ImportDeclaration",
+      "start": 0,
+      "end": 60,
+      "specifiers": [
+        {
+          "type": "ImportSpecifier",
+          "start": 9,
+          "end": 12,
+          "imported": {
+            "type": "Identifier",
+            "start": 9,
+            "end": 12,
+            "name": "jsx"
+          },
+          "local": {
+            "type": "Identifier",
+            "start": 9,
+            "end": 12,
+            "name": "jsx"
+          }
+        },
+        {
+          "type": "ImportSpecifier",
+          "start": 14,
+          "end": 23,
+          "imported": {
+            "type": "Identifier",
+            "start": 14,
+            "end": 23,
+            "name": "renderJsx"
+          },
+          "local": {
+            "type": "Identifier",
+            "start": 14,
+            "end": 23,
+            "name": "renderJsx"
+          }
+        }
+      ],
+      "source": {
+        "type": "Literal",
+        "start": 31,
+        "end": 59,
+        "value": "../lib/render/framework.js",
+        "raw": "\"../lib/render/framework.js\""
+      }
+    },
+    {
+      "type": "ImportDeclaration",
+      "start": 61,
+      "end": 97,
+      "specifiers": [
+        {
+          "type": "ImportDefaultSpecifier",
+          "start": 68,
+          "end": 75,
+          "local": {
+            "type": "Identifier",
+            "start": 68,
+            "end": 75,
+            "name": "BigForm"
+          }
+        }
+      ],
+      "source": {
+        "type": "Literal",
+        "start": 81,
+        "end": 96,
+        "value": "./big-form.js",
+        "raw": "\"./big-form.js\""
+      }
+    },
+    {
+      "type": "ImportDeclaration",
+      "start": 98,
+      "end": 131,
+      "specifiers": [
+        {
+          "type": "ImportDefaultSpecifier",
+          "start": 105,
+          "end": 111,
+          "local": {
+            "type": "Identifier",
+            "start": 105,
+            "end": 111,
+            "name": "Looper"
+          }
+        }
+      ],
+      "source": {
+        "type": "Literal",
+        "start": 117,
+        "end": 130,
+        "value": "./looper.js",
+        "raw": "\"./looper.js\""
+      }
+    },
+    {
+      "type": "ImportDeclaration",
+      "start": 132,
+      "end": 163,
+      "specifiers": [
+        {
+          "type": "ImportDefaultSpecifier",
+          "start": 139,
+          "end": 144,
+          "local": {
+            "type": "Identifier",
+            "start": 139,
+            "end": 144,
+            "name": "Under"
+          }
+        }
+      ],
+      "source": {
+        "type": "Literal",
+        "start": 150,
+        "end": 162,
+        "value": "./Under.js",
+        "raw": "\"./Under.js\""
+      }
+    },
+    {
+      "type": "ExportDefaultDeclaration",
+      "start": 164,
+      "end": 747,
+      "declaration": {
+        "type": "FunctionDeclaration",
+        "start": 179,
+        "end": 747,
+        "id": {
+          "type": "Identifier",
+          "start": 188,
+          "end": 196,
+          "name": "AppStart"
+        },
+        "expression": false,
+        "generator": false,
+        "async": false,
+        "params": [
+          {
+            "type": "Identifier",
+            "start": 197,
+            "end": 202,
+            "name": "props"
+          },
+          {
+            "type": "Identifier",
+            "start": 204,
+            "end": 209,
+            "name": "state"
+          }
+        ],
+        "body": {
+          "type": "BlockStatement",
+          "start": 211,
+          "end": 747,
+          "body": [
+            {
+              "type": "ExpressionStatement",
+              "start": 217,
+              "end": 255,
+              "expression": {
+                "type": "CallExpression",
+                "start": 217,
+                "end": 254,
+                "callee": {
+                  "type": "MemberExpression",
+                  "start": 217,
+                  "end": 228,
+                  "object": {
+                    "type": "Identifier",
+                    "start": 217,
+                    "end": 224,
+                    "name": "console"
+                  },
+                  "property": {
+                    "type": "Identifier",
+                    "start": 225,
+                    "end": 228,
+                    "name": "log"
+                  },
+                  "computed": false,
+                  "optional": false
+                },
+                "arguments": [
+                  {
+                    "type": "Literal",
+                    "start": 229,
+                    "end": 246,
+                    "value": "app-start state",
+                    "raw": "\"app-start state\""
+                  },
+                  {
+                    "type": "Identifier",
+                    "start": 248,
+                    "end": 253,
+                    "name": "state"
+                  }
+                ],
+                "optional": false
+              }
+            },
+            {
+              "type": "ExpressionStatement",
+              "start": 260,
+              "end": 299,
+              "expression": {
+                "type": "CallExpression",
+                "start": 260,
+                "end": 298,
+                "callee": {
+                  "type": "MemberExpression",
+                  "start": 260,
+                  "end": 271,
+                  "object": {
+                    "type": "Identifier",
+                    "start": 260,
+                    "end": 267,
+                    "name": "console"
+                  },
+                  "property": {
+                    "type": "Identifier",
+                    "start": 268,
+                    "end": 271,
+                    "name": "log"
+                  },
+                  "computed": false,
+                  "optional": false
+                },
+                "arguments": [
+                  {
+                    "type": "Literal",
+                    "start": 272,
+                    "end": 290,
+                    "value": "app-start props ",
+                    "raw": "\"app-start props \""
+                  },
+                  {
+                    "type": "Identifier",
+                    "start": 292,
+                    "end": 297,
+                    "name": "props"
+                  }
+                ],
+                "optional": false
+              }
+            },
+            {
+              "type": "ExpressionStatement",
+              "start": 304,
+              "end": 336,
+              "expression": {
+                "type": "AssignmentExpression",
+                "start": 304,
+                "end": 335,
+                "operator": "=",
+                "left": {
+                  "type": "MemberExpression",
+                  "start": 304,
+                  "end": 312,
+                  "object": {
+                    "type": "Identifier",
+                    "start": 304,
+                    "end": 309,
+                    "name": "state"
+                  },
+                  "property": {
+                    "type": "Identifier",
+                    "start": 310,
+                    "end": 312,
+                    "name": "as"
+                  },
+                  "computed": false,
+                  "optional": false
+                },
+                "right": {
+                  "type": "Literal",
+                  "start": 315,
+                  "end": 335,
+                  "value": "appstart.state.as!",
+                  "raw": "\"appstart.state.as!\""
+                }
+              }
+            },
+            {
+              "type": "VariableDeclaration",
+              "start": 341,
+              "end": 378,
+              "declarations": [
+                {
+                  "type": "VariableDeclarator",
+                  "start": 347,
+                  "end": 377,
+                  "id": {
+                    "type": "ArrayPattern",
+                    "start": 347,
+                    "end": 356,
+                    "elements": [
+                      {
+                        "type": "Identifier",
+                        "start": 348,
+                        "end": 349,
+                        "name": "z"
+                      },
+                      {
+                        "type": "Identifier",
+                        "start": 351,
+                        "end": 355,
+                        "name": "setZ"
+                      }
+                    ]
+                  },
+                  "init": {
+                    "type": "CallExpression",
+                    "start": 359,
+                    "end": 377,
+                    "callee": {
+                      "type": "MemberExpression",
+                      "start": 359,
+                      "end": 373,
+                      "object": {
+                        "type": "Identifier",
+                        "start": 359,
+                        "end": 364,
+                        "name": "state"
+                      },
+                      "property": {
+                        "type": "Identifier",
+                        "start": 365,
+                        "end": 373,
+                        "name": "useState"
+                      },
+                      "computed": false,
+                      "optional": false
+                    },
+                    "arguments": [
+                      {
+                        "type": "Literal",
+                        "start": 374,
+                        "end": 376,
+                        "value": 65,
+                        "raw": "65"
+                      }
+                    ],
+                    "optional": false
+                  }
+                }
+              ],
+              "kind": "const"
+            },
+            {
+              "type": "VariableDeclaration",
+              "start": 383,
+              "end": 417,
+              "declarations": [
+                {
+                  "type": "VariableDeclarator",
+                  "start": 389,
+                  "end": 416,
+                  "id": {
+                    "type": "Identifier",
+                    "start": 389,
+                    "end": 396,
+                    "name": "pressed"
+                  },
+                  "init": {
+                    "type": "ArrowFunctionExpression",
+                    "start": 399,
+                    "end": 416,
+                    "id": null,
+                    "expression": true,
+                    "generator": false,
+                    "async": false,
+                    "params": [],
+                    "body": {
+                      "type": "CallExpression",
+                      "start": 405,
+                      "end": 416,
+                      "callee": {
+                        "type": "Identifier",
+                        "start": 405,
+                        "end": 409,
+                        "name": "setZ"
+                      },
+                      "arguments": [
+                        {
+                          "type": "BinaryExpression",
+                          "start": 410,
+                          "end": 415,
+                          "left": {
+                            "type": "Identifier",
+                            "start": 410,
+                            "end": 411,
+                            "name": "z"
+                          },
+                          "operator": "+",
+                          "right": {
+                            "type": "Literal",
+                            "start": 414,
+                            "end": 415,
+                            "value": 5,
+                            "raw": "5"
+                          }
+                        }
+                      ],
+                      "optional": false
+                    }
+                  }
+                }
+              ],
+              "kind": "const"
+            },
+            {
+              "type": "ReturnStatement",
+              "start": 422,
+              "end": 745,
+              "argument": {
+                "type": "CallExpression",
+                "start": 430,
+                "end": 743,
+                "callee": {
+                  "type": "Identifier",
+                  "start": 430,
+                  "end": 433,
+                  "name": "jsx"
+                },
+                "arguments": [
+                  {
+                    "type": "Literal",
+                    "start": 434,
+                    "end": 439,
+                    "value": "div",
+                    "raw": "\"div\""
+                  },
+                  {
+                    "type": "ObjectExpression",
+                    "start": 441,
+                    "end": 463,
+                    "properties": [
+                      {
+                        "type": "Property",
+                        "start": 443,
+                        "end": 461,
+                        "method": false,
+                        "shorthand": false,
+                        "computed": false,
+                        "key": {
+                          "type": "Identifier",
+                          "start": 443,
+                          "end": 448,
+                          "name": "class"
+                        },
+                        "value": {
+                          "type": "Literal",
+                          "start": 450,
+                          "end": 461,
+                          "value": "app-start",
+                          "raw": "\"app-start\""
+                        },
+                        "kind": "init"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "CallExpression",
+                    "start": 473,
+                    "end": 498,
+                    "callee": {
+                      "type": "Identifier",
+                      "start": 473,
+                      "end": 476,
+                      "name": "jsx"
+                    },
+                    "arguments": [
+                      {
+                        "type": "Literal",
+                        "start": 477,
+                        "end": 483,
+                        "value": "span",
+                        "raw": "\"span\""
+                      },
+                      {
+                        "type": "Literal",
+                        "start": 485,
+                        "end": 489,
+                        "value": null,
+                        "raw": "null"
+                      },
+                      {
+                        "type": "Literal",
+                        "start": 491,
+                        "end": 497,
+                        "value": "yee ",
+                        "raw": "\"yee \""
+                      }
+                    ],
+                    "optional": false
+                  },
+                  {
+                    "type": "CallExpression",
+                    "start": 508,
+                    "end": 528,
+                    "callee": {
+                      "type": "Identifier",
+                      "start": 508,
+                      "end": 511,
+                      "name": "jsx"
+                    },
+                    "arguments": [
+                      {
+                        "type": "Identifier",
+                        "start": 512,
+                        "end": 517,
+                        "name": "Under"
+                      },
+                      {
+                        "type": "ObjectExpression",
+                        "start": 519,
+                        "end": 527,
+                        "properties": [
+                          {
+                            "type": "Property",
+                            "start": 521,
+                            "end": 525,
+                            "method": false,
+                            "shorthand": false,
+                            "computed": false,
+                            "key": {
+                              "type": "Identifier",
+                              "start": 521,
+                              "end": 522,
+                              "name": "x"
+                            },
+                            "value": {
+                              "type": "Literal",
+                              "start": 524,
+                              "end": 525,
+                              "value": 5,
+                              "raw": "5"
+                            },
+                            "kind": "init"
+                          }
+                        ]
+                      }
+                    ],
+                    "optional": false
+                  },
+                  {
+                    "type": "CallExpression",
+                    "start": 538,
+                    "end": 645,
+                    "callee": {
+                      "type": "Identifier",
+                      "start": 538,
+                      "end": 541,
+                      "name": "jsx"
+                    },
+                    "arguments": [
+                      {
+                        "type": "Literal",
+                        "start": 542,
+                        "end": 550,
+                        "value": "button",
+                        "raw": "\"button\""
+                      },
+                      {
+                        "type": "ObjectExpression",
+                        "start": 552,
+                        "end": 608,
+                        "properties": [
+                          {
+                            "type": "Property",
+                            "start": 554,
+                            "end": 568,
+                            "method": false,
+                            "shorthand": false,
+                            "computed": false,
+                            "key": {
+                              "type": "Identifier",
+                              "start": 554,
+                              "end": 558,
+                              "name": "type"
+                            },
+                            "value": {
+                              "type": "Literal",
+                              "start": 560,
+                              "end": 568,
+                              "value": "button",
+                              "raw": "\"button\""
+                            },
+                            "kind": "init"
+                          },
+                          {
+                            "type": "Property",
+                            "start": 570,
+                            "end": 586,
+                            "method": false,
+                            "shorthand": false,
+                            "computed": false,
+                            "key": {
+                              "type": "Identifier",
+                              "start": 570,
+                              "end": 577,
+                              "name": "onClick"
+                            },
+                            "value": {
+                              "type": "Identifier",
+                              "start": 579,
+                              "end": 586,
+                              "name": "pressed"
+                            },
+                            "kind": "init"
+                          },
+                          {
+                            "type": "Property",
+                            "start": 588,
+                            "end": 606,
+                            "method": false,
+                            "shorthand": false,
+                            "computed": false,
+                            "key": {
+                              "type": "Identifier",
+                              "start": 588,
+                              "end": 597,
+                              "name": "onKeyDown"
+                            },
+                            "value": {
+                              "type": "Identifier",
+                              "start": 599,
+                              "end": 606,
+                              "name": "pressed"
+                            },
+                            "kind": "init"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "Literal",
+                        "start": 622,
+                        "end": 629,
+                        "value": "z is ",
+                        "raw": "\"z is \""
+                      },
+                      {
+                        "type": "Identifier",
+                        "start": 643,
+                        "end": 644,
+                        "name": "z"
+                      }
+                    ],
+                    "optional": false
+                  },
+                  {
+                    "type": "CallExpression",
+                    "start": 655,
+                    "end": 672,
+                    "callee": {
+                      "type": "Identifier",
+                      "start": 655,
+                      "end": 658,
+                      "name": "jsx"
+                    },
+                    "arguments": [
+                      {
+                        "type": "Identifier",
+                        "start": 659,
+                        "end": 665,
+                        "name": "Looper"
+                      },
+                      {
+                        "type": "Literal",
+                        "start": 667,
+                        "end": 671,
+                        "value": null,
+                        "raw": "null"
+                      }
+                    ],
+                    "optional": false
+                  },
+                  {
+                    "type": "CallExpression",
+                    "start": 682,
+                    "end": 700,
+                    "callee": {
+                      "type": "Identifier",
+                      "start": 682,
+                      "end": 685,
+                      "name": "jsx"
+                    },
+                    "arguments": [
+                      {
+                        "type": "Identifier",
+                        "start": 686,
+                        "end": 693,
+                        "name": "BigForm"
+                      },
+                      {
+                        "type": "Literal",
+                        "start": 695,
+                        "end": 699,
+                        "value": null,
+                        "raw": "null"
+                      }
+                    ],
+                    "optional": false
+                  },
+                  {
+                    "type": "CallExpression",
+                    "start": 710,
+                    "end": 742,
+                    "callee": {
+                      "type": "Identifier",
+                      "start": 710,
+                      "end": 713,
+                      "name": "jsx"
+                    },
+                    "arguments": [
+                      {
+                        "type": "Literal",
+                        "start": 714,
+                        "end": 719,
+                        "value": "div",
+                        "raw": "\"div\""
+                      },
+                      {
+                        "type": "Literal",
+                        "start": 721,
+                        "end": 725,
+                        "value": null,
+                        "raw": "null"
+                      },
+                      {
+                        "type": "MemberExpression",
+                        "start": 727,
+                        "end": 741,
+                        "object": {
+                          "type": "Identifier",
+                          "start": 727,
+                          "end": 732,
+                          "name": "props"
+                        },
+                        "property": {
+                          "type": "Identifier",
+                          "start": 733,
+                          "end": 741,
+                          "name": "children"
+                        },
+                        "computed": false,
+                        "optional": false
+                      }
+                    ],
+                    "optional": false
+                  }
+                ],
+                "optional": false
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "ExpressionStatement",
+      "start": 809,
+      "end": 964,
+      "expression": {
+        "type": "CallExpression",
+        "start": 809,
+        "end": 963,
+        "callee": {
+          "type": "Identifier",
+          "start": 809,
+          "end": 818,
+          "name": "renderJsx"
+        },
+        "arguments": [
+          {
+            "type": "Literal",
+            "start": 819,
+            "end": 830,
+            "value": "app-start",
+            "raw": "\"app-start\""
+          },
+          {
+            "type": "CallExpression",
+            "start": 832,
+            "end": 962,
+            "callee": {
+              "type": "Identifier",
+              "start": 832,
+              "end": 835,
+              "name": "jsx"
+            },
+            "arguments": [
+              {
+                "type": "Identifier",
+                "start": 836,
+                "end": 844,
+                "name": "AppStart"
+              },
+              {
+                "type": "ObjectExpression",
+                "start": 846,
+                "end": 868,
+                "properties": [
+                  {
+                    "type": "Property",
+                    "start": 848,
+                    "end": 866,
+                    "method": false,
+                    "shorthand": false,
+                    "computed": false,
+                    "key": {
+                      "type": "Identifier",
+                      "start": 848,
+                      "end": 852,
+                      "name": "seed"
+                    },
+                    "value": {
+                      "type": "Literal",
+                      "start": 854,
+                      "end": 866,
+                      "value": "seed value",
+                      "raw": "\"seed value\""
+                    },
+                    "kind": "init"
+                  }
+                ]
+              },
+              {
+                "type": "CallExpression",
+                "start": 874,
+                "end": 961,
+                "callee": {
+                  "type": "Identifier",
+                  "start": 874,
+                  "end": 877,
+                  "name": "jsx"
+                },
+                "arguments": [
+                  {
+                    "type": "Literal",
+                    "start": 878,
+                    "end": 883,
+                    "value": "div",
+                    "raw": "\"div\""
+                  },
+                  {
+                    "type": "Literal",
+                    "start": 885,
+                    "end": 889,
+                    "value": null,
+                    "raw": "null"
+                  },
+                  {
+                    "type": "Literal",
+                    "start": 899,
+                    "end": 906,
+                    "value": "inner",
+                    "raw": "\"inner\""
+                  },
+                  {
+                    "type": "CallExpression",
+                    "start": 916,
+                    "end": 943,
+                    "callee": {
+                      "type": "Identifier",
+                      "start": 916,
+                      "end": 919,
+                      "name": "jsx"
+                    },
+                    "arguments": [
+                      {
+                        "type": "Literal",
+                        "start": 920,
+                        "end": 925,
+                        "value": "div",
+                        "raw": "\"div\""
+                      },
+                      {
+                        "type": "Literal",
+                        "start": 927,
+                        "end": 931,
+                        "value": null,
+                        "raw": "null"
+                      },
+                      {
+                        "type": "Literal",
+                        "start": 933,
+                        "end": 942,
+                        "value": "asdfdsf",
+                        "raw": "\"asdfdsf\""
+                      }
+                    ],
+                    "optional": false
+                  },
+                  {
+                    "type": "Literal",
+                    "start": 953,
+                    "end": 960,
+                    "value": "l;kj?",
+                    "raw": "\"l;kj?\""
+                  }
+                ],
+                "optional": false
+              }
+            ],
+            "optional": false
+          }
+        ],
+        "optional": false
+      }
+    }
+  ],
+  "sourceType": "module"
+}

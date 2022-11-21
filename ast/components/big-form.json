@@ -1,0 +1,764 @@
+{
+  "type": "Program",
+  "start": 0,
+  "end": 625,
+  "body": [
+    {
+      "type": "ImportDeclaration",
+      "start": 0,
+      "end": 49,
+      "specifiers": [
+        {
+          "type": "ImportSpecifier",
+          "start": 9,
+          "end": 12,
+          "imported": {
+            "type": "Identifier",
+            "start": 9,
+            "end": 12,
+            "name": "jsx"
+          },
+          "local": {
+            "type": "Identifier",
+            "start": 9,
+            "end": 12,
+            "name": "jsx"
+          }
+        }
+      ],
+      "source": {
+        "type": "Literal",
+        "start": 20,
+        "end": 48,
+        "value": "../lib/render/framework.js",
+        "raw": "\"../lib/render/framework.js\""
+      }
+    },
+    {
+      "type": "ExportDefaultDeclaration",
+      "start": 50,
+      "end": 624,
+      "declaration": {
+        "type": "FunctionDeclaration",
+        "start": 65,
+        "end": 624,
+        "id": null,
+        "expression": false,
+        "generator": false,
+        "async": false,
+        "params": [
+          {
+            "type": "Identifier",
+            "start": 75,
+            "end": 80,
+            "name": "props"
+          },
+          {
+            "type": "ObjectPattern",
+            "start": 82,
+            "end": 102,
+            "properties": [
+              {
+                "type": "Property",
+                "start": 84,
+                "end": 92,
+                "method": false,
+                "shorthand": true,
+                "computed": false,
+                "key": {
+                  "type": "Identifier",
+                  "start": 84,
+                  "end": 92,
+                  "name": "useState"
+                },
+                "kind": "init",
+                "value": {
+                  "type": "Identifier",
+                  "start": 84,
+                  "end": 92,
+                  "name": "useState"
+                }
+              },
+              {
+                "type": "Property",
+                "start": 94,
+                "end": 100,
+                "method": false,
+                "shorthand": true,
+                "computed": false,
+                "key": {
+                  "type": "Identifier",
+                  "start": 94,
+                  "end": 100,
+                  "name": "render"
+                },
+                "kind": "init",
+                "value": {
+                  "type": "Identifier",
+                  "start": 94,
+                  "end": 100,
+                  "name": "render"
+                }
+              }
+            ]
+          }
+        ],
+        "body": {
+          "type": "BlockStatement",
+          "start": 104,
+          "end": 624,
+          "body": [
+            {
+              "type": "VariableDeclaration",
+              "start": 110,
+              "end": 168,
+              "declarations": [
+                {
+                  "type": "VariableDeclarator",
+                  "start": 116,
+                  "end": 167,
+                  "id": {
+                    "type": "ArrayPattern",
+                    "start": 116,
+                    "end": 131,
+                    "elements": [
+                      {
+                        "type": "Identifier",
+                        "start": 117,
+                        "end": 121,
+                        "name": "form"
+                      },
+                      {
+                        "type": "Identifier",
+                        "start": 123,
+                        "end": 130,
+                        "name": "setForm"
+                      }
+                    ]
+                  },
+                  "init": {
+                    "type": "CallExpression",
+                    "start": 134,
+                    "end": 167,
+                    "callee": {
+                      "type": "Identifier",
+                      "start": 134,
+                      "end": 142,
+                      "name": "useState"
+                    },
+                    "arguments": [
+                      {
+                        "type": "ObjectExpression",
+                        "start": 143,
+                        "end": 166,
+                        "properties": [
+                          {
+                            "type": "Property",
+                            "start": 145,
+                            "end": 153,
+                            "method": false,
+                            "shorthand": false,
+                            "computed": false,
+                            "key": {
+                              "type": "Identifier",
+                              "start": 145,
+                              "end": 149,
+                              "name": "name"
+                            },
+                            "value": {
+                              "type": "Literal",
+                              "start": 151,
+                              "end": 153,
+                              "value": "",
+                              "raw": "\"\""
+                            },
+                            "kind": "init"
+                          },
+                          {
+                            "type": "Property",
+                            "start": 155,
+                            "end": 164,
+                            "method": false,
+                            "shorthand": false,
+                            "computed": false,
+                            "key": {
+                              "type": "Identifier",
+                              "start": 155,
+                              "end": 160,
+                              "name": "email"
+                            },
+                            "value": {
+                              "type": "Literal",
+                              "start": 162,
+                              "end": 164,
+                              "value": "",
+                              "raw": "\"\""
+                            },
+                            "kind": "init"
+                          }
+                        ]
+                      }
+                    ],
+                    "optional": false
+                  }
+                }
+              ],
+              "kind": "const"
+            },
+            {
+              "type": "ReturnStatement",
+              "start": 173,
+              "end": 622,
+              "argument": {
+                "type": "CallExpression",
+                "start": 181,
+                "end": 620,
+                "callee": {
+                  "type": "Identifier",
+                  "start": 181,
+                  "end": 184,
+                  "name": "jsx"
+                },
+                "arguments": [
+                  {
+                    "type": "Literal",
+                    "start": 185,
+                    "end": 191,
+                    "value": "form",
+                    "raw": "\"form\""
+                  },
+                  {
+                    "type": "Literal",
+                    "start": 193,
+                    "end": 197,
+                    "value": null,
+                    "raw": "null"
+                  },
+                  {
+                    "type": "CallExpression",
+                    "start": 207,
+                    "end": 360,
+                    "callee": {
+                      "type": "Identifier",
+                      "start": 207,
+                      "end": 210,
+                      "name": "jsx"
+                    },
+                    "arguments": [
+                      {
+                        "type": "Literal",
+                        "start": 211,
+                        "end": 216,
+                        "value": "div",
+                        "raw": "\"div\""
+                      },
+                      {
+                        "type": "Literal",
+                        "start": 218,
+                        "end": 222,
+                        "value": null,
+                        "raw": "null"
+                      },
+                      {
+                        "type": "Literal",
+                        "start": 236,
+                        "end": 244,
+                        "value": "Name: ",
+                        "raw": "\"Name: \""
+                      },
+                      {
+                        "type": "CallExpression",
+                        "start": 258,
+                        "end": 359,
+                        "callee": {
+                          "type": "Identifier",
+                          "start": 258,
+                          "end": 261,
+                          "name": "jsx"
+                        },
+                        "arguments": [
+                          {
+                            "type": "Literal",
+                            "start": 262,
+                            "end": 269,
+                            "value": "input",
+                            "raw": "\"input\""
+                          },
+                          {
+                            "type": "ObjectExpression",
+                            "start": 271,
+                            "end": 358,
+                            "properties": [
+                              {
+                                "type": "Property",
+                                "start": 273,
+                                "end": 285,
+                                "method": false,
+                                "shorthand": false,
+                                "computed": false,
+                                "key": {
+                                  "type": "Identifier",
+                                  "start": 273,
+                                  "end": 277,
+                                  "name": "type"
+                                },
+                                "value": {
+                                  "type": "Literal",
+                                  "start": 279,
+                                  "end": 285,
+                                  "value": "text",
+                                  "raw": "\"text\""
+                                },
+                                "kind": "init"
+                              },
+                              {
+                                "type": "Property",
+                                "start": 287,
+                                "end": 303,
+                                "method": false,
+                                "shorthand": false,
+                                "computed": false,
+                                "key": {
+                                  "type": "Identifier",
+                                  "start": 287,
+                                  "end": 292,
+                                  "name": "value"
+                                },
+                                "value": {
+                                  "type": "MemberExpression",
+                                  "start": 294,
+                                  "end": 303,
+                                  "object": {
+                                    "type": "Identifier",
+                                    "start": 294,
+                                    "end": 298,
+                                    "name": "form"
+                                  },
+                                  "property": {
+                                    "type": "Identifier",
+                                    "start": 299,
+                                    "end": 303,
+                                    "name": "name"
+                                  },
+                                  "computed": false,
+                                  "optional": false
+                                },
+                                "kind": "init"
+                              },
+                              {
+                                "type": "Property",
+                                "start": 305,
+                                "end": 356,
+                                "method": false,
+                                "shorthand": false,
+                                "computed": false,
+                                "key": {
+                                  "type": "Identifier",
+                                  "start": 305,
+                                  "end": 313,
+                                  "name": "onChange"
+                                },
+                                "value": {
+                                  "type": "ArrowFunctionExpression",
+                                  "start": 315,
+                                  "end": 356,
+                                  "id": null,
+                                  "expression": true,
+                                  "generator": false,
+                                  "async": false,
+                                  "params": [
+                                    {
+                                      "type": "Identifier",
+                                      "start": 315,
+                                      "end": 316,
+                                      "name": "e"
+                                    }
+                                  ],
+                                  "body": {
+                                    "type": "CallExpression",
+                                    "start": 320,
+                                    "end": 356,
+                                    "callee": {
+                                      "type": "Identifier",
+                                      "start": 320,
+                                      "end": 326,
+                                      "name": "render"
+                                    },
+                                    "arguments": [
+                                      {
+                                        "type": "AssignmentExpression",
+                                        "start": 328,
+                                        "end": 354,
+                                        "operator": "=",
+                                        "left": {
+                                          "type": "MemberExpression",
+                                          "start": 328,
+                                          "end": 337,
+                                          "object": {
+                                            "type": "Identifier",
+                                            "start": 328,
+                                            "end": 332,
+                                            "name": "form"
+                                          },
+                                          "property": {
+                                            "type": "Identifier",
+                                            "start": 333,
+                                            "end": 337,
+                                            "name": "name"
+                                          },
+                                          "computed": false,
+                                          "optional": false
+                                        },
+                                        "right": {
+                                          "type": "MemberExpression",
+                                          "start": 340,
+                                          "end": 354,
+                                          "object": {
+                                            "type": "MemberExpression",
+                                            "start": 340,
+                                            "end": 348,
+                                            "object": {
+                                              "type": "Identifier",
+                                              "start": 340,
+                                              "end": 341,
+                                              "name": "e"
+                                            },
+                                            "property": {
+                                              "type": "Identifier",
+                                              "start": 342,
+                                              "end": 348,
+                                              "name": "target"
+                                            },
+                                            "computed": false,
+                                            "optional": false
+                                          },
+                                          "property": {
+                                            "type": "Identifier",
+                                            "start": 349,
+                                            "end": 354,
+                                            "name": "value"
+                                          },
+                                          "computed": false,
+                                          "optional": false
+                                        }
+                                      }
+                                    ],
+                                    "optional": false
+                                  }
+                                },
+                                "kind": "init"
+                              }
+                            ]
+                          }
+                        ],
+                        "optional": false
+                      }
+                    ],
+                    "optional": false
+                  },
+                  {
+                    "type": "CallExpression",
+                    "start": 370,
+                    "end": 527,
+                    "callee": {
+                      "type": "Identifier",
+                      "start": 370,
+                      "end": 373,
+                      "name": "jsx"
+                    },
+                    "arguments": [
+                      {
+                        "type": "Literal",
+                        "start": 374,
+                        "end": 379,
+                        "value": "div",
+                        "raw": "\"div\""
+                      },
+                      {
+                        "type": "Literal",
+                        "start": 381,
+                        "end": 385,
+                        "value": null,
+                        "raw": "null"
+                      },
+                      {
+                        "type": "Literal",
+                        "start": 399,
+                        "end": 408,
+                        "value": "Email: ",
+                        "raw": "\"Email: \""
+                      },
+                      {
+                        "type": "CallExpression",
+                        "start": 422,
+                        "end": 526,
+                        "callee": {
+                          "type": "Identifier",
+                          "start": 422,
+                          "end": 425,
+                          "name": "jsx"
+                        },
+                        "arguments": [
+                          {
+                            "type": "Literal",
+                            "start": 426,
+                            "end": 433,
+                            "value": "input",
+                            "raw": "\"input\""
+                          },
+                          {
+                            "type": "ObjectExpression",
+                            "start": 435,
+                            "end": 525,
+                            "properties": [
+                              {
+                                "type": "Property",
+                                "start": 437,
+                                "end": 450,
+                                "method": false,
+                                "shorthand": false,
+                                "computed": false,
+                                "key": {
+                                  "type": "Identifier",
+                                  "start": 437,
+                                  "end": 441,
+                                  "name": "type"
+                                },
+                                "value": {
+                                  "type": "Literal",
+                                  "start": 443,
+                                  "end": 450,
+                                  "value": "email",
+                                  "raw": "\"email\""
+                                },
+                                "kind": "init"
+                              },
+                              {
+                                "type": "Property",
+                                "start": 452,
+                                "end": 469,
+                                "method": false,
+                                "shorthand": false,
+                                "computed": false,
+                                "key": {
+                                  "type": "Identifier",
+                                  "start": 452,
+                                  "end": 457,
+                                  "name": "value"
+                                },
+                                "value": {
+                                  "type": "MemberExpression",
+                                  "start": 459,
+                                  "end": 469,
+                                  "object": {
+                                    "type": "Identifier",
+                                    "start": 459,
+                                    "end": 463,
+                                    "name": "form"
+                                  },
+                                  "property": {
+                                    "type": "Identifier",
+                                    "start": 464,
+                                    "end": 469,
+                                    "name": "email"
+                                  },
+                                  "computed": false,
+                                  "optional": false
+                                },
+                                "kind": "init"
+                              },
+                              {
+                                "type": "Property",
+                                "start": 471,
+                                "end": 523,
+                                "method": false,
+                                "shorthand": false,
+                                "computed": false,
+                                "key": {
+                                  "type": "Identifier",
+                                  "start": 471,
+                                  "end": 479,
+                                  "name": "onChange"
+                                },
+                                "value": {
+                                  "type": "ArrowFunctionExpression",
+                                  "start": 481,
+                                  "end": 523,
+                                  "id": null,
+                                  "expression": true,
+                                  "generator": false,
+                                  "async": false,
+                                  "params": [
+                                    {
+                                      "type": "Identifier",
+                                      "start": 481,
+                                      "end": 482,
+                                      "name": "e"
+                                    }
+                                  ],
+                                  "body": {
+                                    "type": "CallExpression",
+                                    "start": 486,
+                                    "end": 523,
+                                    "callee": {
+                                      "type": "Identifier",
+                                      "start": 486,
+                                      "end": 492,
+                                      "name": "render"
+                                    },
+                                    "arguments": [
+                                      {
+                                        "type": "AssignmentExpression",
+                                        "start": 494,
+                                        "end": 521,
+                                        "operator": "=",
+                                        "left": {
+                                          "type": "MemberExpression",
+                                          "start": 494,
+                                          "end": 504,
+                                          "object": {
+                                            "type": "Identifier",
+                                            "start": 494,
+                                            "end": 498,
+                                            "name": "form"
+                                          },
+                                          "property": {
+                                            "type": "Identifier",
+                                            "start": 499,
+                                            "end": 504,
+                                            "name": "email"
+                                          },
+                                          "computed": false,
+                                          "optional": false
+                                        },
+                                        "right": {
+                                          "type": "MemberExpression",
+                                          "start": 507,
+                                          "end": 521,
+                                          "object": {
+                                            "type": "MemberExpression",
+                                            "start": 507,
+                                            "end": 515,
+                                            "object": {
+                                              "type": "Identifier",
+                                              "start": 507,
+                                              "end": 508,
+                                              "name": "e"
+                                            },
+                                            "property": {
+                                              "type": "Identifier",
+                                              "start": 509,
+                                              "end": 515,
+                                              "name": "target"
+                                            },
+                                            "computed": false,
+                                            "optional": false
+                                          },
+                                          "property": {
+                                            "type": "Identifier",
+                                            "start": 516,
+                                            "end": 521,
+                                            "name": "value"
+                                          },
+                                          "computed": false,
+                                          "optional": false
+                                        }
+                                      }
+                                    ],
+                                    "optional": false
+                                  }
+                                },
+                                "kind": "init"
+                              }
+                            ]
+                          }
+                        ],
+                        "optional": false
+                      }
+                    ],
+                    "optional": false
+                  },
+                  {
+                    "type": "CallExpression",
+                    "start": 537,
+                    "end": 619,
+                    "callee": {
+                      "type": "Identifier",
+                      "start": 537,
+                      "end": 540,
+                      "name": "jsx"
+                    },
+                    "arguments": [
+                      {
+                        "type": "Literal",
+                        "start": 541,
+                        "end": 546,
+                        "value": "div",
+                        "raw": "\"div\""
+                      },
+                      {
+                        "type": "Literal",
+                        "start": 548,
+                        "end": 552,
+                        "value": null,
+                        "raw": "null"
+                      },
+                      {
+                        "type": "MemberExpression",
+                        "start": 566,
+                        "end": 575,
+                        "object": {
+                          "type": "Identifier",
+                          "start": 566,
+                          "end": 570,
+                          "name": "form"
+                        },
+                        "property": {
+                          "type": "Identifier",
+                          "start": 571,
+                          "end": 575,
+                          "name": "name"
+                        },
+                        "computed": false,
+                        "optional": false
+                      },
+                      {
+                        "type": "Literal",
+                        "start": 589,
+                        "end": 594,
+                        "value": " @ ",
+                        "raw": "\" @ \""
+                      },
+                      {
+                        "type": "MemberExpression",
+                        "start": 608,
+                        "end": 618,
+                        "object": {
+                          "type": "Identifier",
+                          "start": 608,
+                          "end": 612,
+                          "name": "form"
+                        },
+                        "property": {
+                          "type": "Identifier",
+                          "start": 613,
+                          "end": 618,
+                          "name": "email"
+                        },
+                        "computed": false,
+                        "optional": false
+                      }
+                    ],
+                    "optional": false
+                  }
+                ],
+                "optional": false
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "sourceType": "module"
+}
