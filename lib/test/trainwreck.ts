@@ -1,20 +1,42 @@
-interface DiffReport {}
+// interfaces
+
+export interface DiffReport {}
+
+export interface ShortDiff {
+  <T>(nestedThing1: T, nestedThing2: T): Promise<DiffReport | null>;
+}
+
+export interface InputsToTestCase {
+  diff: ShortDiff;
+  id: string;
+  container: HTMLDivElement;
+  name: string;
+  fail: (msg?: string) => void;
+}
+
+export interface TestCaseFn {
+  (pkg: InputsToTestCase): void | Promise<void>;
+}
+
+export interface TestCaseSettings {
+  useIframe?: boolean;
+  test: (this: TestCaseSettings | void, name: string, fn: TestCaseFn) => Promise<any>;
+}
 
 // elements ////////
 
-const styling = (el: HTMLElement, [key, value]: [key: string, value: any]) => (el.style[key as any] = value);
-
-function elment(tag: string, props?: Record<string, any>, style?: Partial<CSSStyleDeclaration>): any {
+function newEl(tag: string, props?: Record<string, any>, style?: Partial<CSSStyleDeclaration>): any {
   const el: any = document.createElement(tag);
-  if (style) Object.entries(style).forEach(entry => styling(el, entry));
+  if (style) Object.entries(style).forEach(entry => styleEl(el, entry));
   if (props) Object.entries(props).forEach(([key, val]) => (["innerText", "innerHTML"].includes(key) ? (el[key] = val) : el.setAttribute(key, val)));
   return el;
 }
 
-const div = (props?: Record<string, any>, style?: Partial<CSSStyleDeclaration>): HTMLDivElement => elment("div", props, style);
-const iframe = (name: string, style?: Partial<CSSStyleDeclaration>): HTMLIFrameElement => elment("iframe", { name, title: name, width: "99%" }, style);
+const styleEl = (el: HTMLElement, [key, value]: [key: string, value: any]) => (el.style[key as any] = value);
+const div = (props?: Record<string, any>, style?: Partial<CSSStyleDeclaration>): HTMLDivElement => newEl("div", props, style);
+const iframe = (name: string, style?: Partial<CSSStyleDeclaration>): HTMLIFrameElement => newEl("iframe", { name, title: name, width: "99%" }, style);
 const pre = (innerText?: string, style?: Partial<CSSStyleDeclaration>): HTMLPreElement =>
-  elment("pre", { innerText }, Object.assign({}, style, { padding: "16" }));
+  newEl("pre", { innerText }, Object.assign({}, style, { padding: "16" }));
 
 function attach(parent: Element, childs: (Element | undefined)[]): Element {
   childs.forEach(child => child && parent.appendChild(child));
@@ -37,7 +59,7 @@ function formatXml(xml: string, tab: string = "   "): string {
 
 // tools /////////
 
-export function orThrow(message: string) {
+export function fail(message: string) {
   throw Error(message);
 }
 
@@ -50,13 +72,12 @@ async function diff<T>(nestedThing1: T, nestedThing2: T, testFn: Function, id: s
   return null;
 }
 
-interface ShortDiff {
-  <T>(nestedThing1: T, nestedThing2: T): Promise<DiffReport | null>;
-}
-
 // init ////////
 
-const css = `
+document.body.appendChild(div({ id: "test-output" }));
+const specFileToAutoload = new URL(location.href).search.slice(1);
+if (specFileToAutoload) import("./" + specFileToAutoload).catch(e => document.body.insertAdjacentText("afterbegin", e));
+document.body.appendChild(document.createElement("style")).innerHTML = `
 body {
   color: white;
   background-color: #00051c;
@@ -84,29 +105,7 @@ a:hover {
 }
 `;
 
-document.body.appendChild(document.createElement("style")).innerHTML = css;
-document.body.appendChild(div({ id: "test-output" }));
-const specFileToAutoload = new URL(location.href).search.slice(1);
-if (specFileToAutoload) import("./" + specFileToAutoload).catch(e => document.body.insertAdjacentText("afterbegin", e));
-
 // entry //////////
-
-export interface InputsToTestCase {
-  diff: ShortDiff;
-  id: string;
-  playground: HTMLDivElement;
-  name: string;
-  orThrow: (msg?: string) => void;
-}
-
-export interface TestCaseFn {
-  (pkg: InputsToTestCase): void | Promise<void>;
-}
-
-export interface TestCaseSettings {
-  useIframe?: boolean;
-  test: (this: TestCaseSettings | void, name: string, fn: TestCaseFn) => Promise<any>;
-}
 
 export const globalTestCaseSettings: TestCaseSettings = {
   test,
@@ -119,7 +118,6 @@ export async function test(this: TestCaseSettings | void, name: string, fn: Test
 
   const testarea = document.getElementById("test-output")!.appendChild(div({ class: "testarea" }));
   const headline = testarea.appendChild(div({ innerText: name }));
-
   const wrapper = settings.useIframe
     ? testarea.appendChild(iframe(id)).contentWindow!.document.body
     : testarea.appendChild(div({}, { border: "2px inset", padding: "5px" }));
@@ -129,9 +127,9 @@ export async function test(this: TestCaseSettings | void, name: string, fn: Test
     let retval = fn({
       diff: <T>(nestedThing1: T, nestedThing2: T) => diff(nestedThing1, nestedThing2, fn, id, testarea),
       id,
-      playground: userplayground,
+      container: userplayground,
       name,
-      orThrow: (msg: string = "failed to render") => orThrow(`${name}: ${msg}`),
+      fail: (msg: string = "failed to render") => fail(`${name}: ${msg}`),
     });
     if (retval instanceof Promise) retval = await retval;
     return retval;
