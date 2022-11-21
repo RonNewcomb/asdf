@@ -16,12 +16,12 @@ const iframe = (name: string, style?: Partial<CSSStyleDeclaration>): HTMLIFrameE
 const pre = (innerText?: string, style?: Partial<CSSStyleDeclaration>): HTMLPreElement =>
   elment("pre", { innerText }, Object.assign({}, style, { padding: "16" }));
 
-// helpers /////////
-
 function attach(parent: Element, childs: (Element | undefined)[]): Element {
   childs.forEach(child => child && parent.appendChild(child));
   return parent;
 }
+
+// helpers /////////
 
 function formatXml(xml: string, tab: string = "   "): string {
   const formatted: string[] = [];
@@ -56,14 +56,40 @@ interface ShortDiff {
 
 // init ////////
 
-const styleSheet = document.createElement("style");
-styleSheet.innerText = ".testarea { border: 1px solid white; border-radius: 10px; margin: 5px; padding: 5px; margin-bottom: 3em; background-color: darkblue }";
-document.body.appendChild(styleSheet);
+const css = `
+body {
+  color: white;
+  background-color: #00051c;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+.scripttag {
+  color: gray;
+}
+a {
+  color: yellowgreen;
+}
+a:hover {
+  color: yellow;
+}
+.dont {
+  text-decoration: line-through;
+}
+.testarea {
+  border: 1px solid white; 
+  border-radius: 10px; 
+  margin: 5px; 
+  padding: 5px; 
+  margin-bottom: 3em; 
+  background-color: darkblue 
+}
+`;
+
+document.body.appendChild(document.createElement("style")).innerHTML = css;
 document.body.appendChild(div({ id: "test-output" }));
 const specFileToAutoload = new URL(location.href).search.slice(1);
 if (specFileToAutoload) import("./" + specFileToAutoload).catch(e => document.body.insertAdjacentText("afterbegin", e));
 
-// entry ////////
+// entry //////////
 
 export interface InputsToTestCase {
   diff: ShortDiff;
@@ -97,7 +123,7 @@ export async function test(this: TestCaseSettings | void, name: string, fn: (pkg
     frame.contentWindow!.document.body.appendChild(userplayground);
   } else testarea.appendChild(playgroundWrapper).appendChild(userplayground);
 
-  const shortDiff: ShortDiff = <T,>(nestedThing1: T, nestedThing2: T) => diff(nestedThing1, nestedThing2, fn, id, testarea);
+  const shortDiff: ShortDiff = <T>(nestedThing1: T, nestedThing2: T) => diff(nestedThing1, nestedThing2, fn, id, testarea);
 
   try {
     return fn({
