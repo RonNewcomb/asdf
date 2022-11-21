@@ -99,9 +99,13 @@ export interface InputsToTestCase {
   orThrow: (msg?: string) => void;
 }
 
+export interface TestCaseFn {
+  (pkg: InputsToTestCase): void | Promise<void>;
+}
+
 export interface TestCaseSettings {
   useIframe?: boolean;
-  test: (this: TestCaseSettings | void, name: string, fn: (pkg: InputsToTestCase) => void) => Promise<any>;
+  test: (this: TestCaseSettings | void, name: string, fn: TestCaseFn) => Promise<any>;
 }
 
 export const globalTestCaseSettings: TestCaseSettings = {
@@ -109,7 +113,7 @@ export const globalTestCaseSettings: TestCaseSettings = {
   useIframe: false,
 };
 
-export async function test(this: TestCaseSettings | void, name: string, fn: (pkg: InputsToTestCase) => void): Promise<any> {
+export async function test(this: TestCaseSettings | void, name: string, fn: TestCaseFn): Promise<any> {
   const id = new Date().getTime().toString();
   const testarea = div({ class: "testarea" });
   testarea.appendChild(div({ innerText: name }));
@@ -123,16 +127,16 @@ export async function test(this: TestCaseSettings | void, name: string, fn: (pkg
     frame.contentWindow!.document.body.appendChild(userplayground);
   } else testarea.appendChild(playgroundWrapper).appendChild(userplayground);
 
-  const shortDiff: ShortDiff = <T>(nestedThing1: T, nestedThing2: T) => diff(nestedThing1, nestedThing2, fn, id, testarea);
-
   try {
-    return fn({
-      diff: shortDiff,
+    let retval = fn({
+      diff: <T>(nestedThing1: T, nestedThing2: T) => diff(nestedThing1, nestedThing2, fn, id, testarea),
       id,
       playground: userplayground,
       name,
       orThrow: (msg: string = "failed to render") => orThrow(`${name}: ${msg}`),
     });
+    if (retval instanceof Promise) retval = await retval;
+    return retval;
   } catch (e: any) {
     testarea.insertAdjacentElement("afterbegin", pre(e, { backgroundColor: "brown" }));
   }

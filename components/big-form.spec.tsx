@@ -1,12 +1,12 @@
 import { jsx, JsxSymbol, JsxTree, renderJsx } from "../lib/render/framework.js";
 import { orThrow, test, TestCaseSettings } from "../lib/test/trainwreck.js";
-import AppStart from "./app-start.js";
+import ComponentUnderTest from "./big-form.js";
 
 const isolated: TestCaseSettings = { test, useIframe: true };
 
-test("test A", ({ diff, id, playground, name }) => {
-  const result: JsxTree = <AppStart seed="foo" />;
-  diff(result, [JsxSymbol, "div", { seed: "foo" }, []]);
+test("big-form test A", ({ diff, id, playground, name }) => {
+  const result: JsxTree = <ComponentUnderTest />;
+  diff(result, [JsxSymbol, "div", null, []]);
   const [topElement, tree] = renderJsx(id, result)! || orThrow(name + " failed to render");
   diff(
     topElement.innerHTML,
@@ -14,9 +14,9 @@ test("test A", ({ diff, id, playground, name }) => {
   );
 });
 
-isolated.test("test B", ({ diff, id, playground, name, orThrow }) => {
-  const result: JsxTree = <AppStart seed="foo" />;
-  diff(result, [JsxSymbol, "div", { seed: "foo" }, []]);
+isolated.test("big-form test B", ({ diff, id, playground, name, orThrow }) => {
+  const result: JsxTree = <ComponentUnderTest />;
+  diff(result, [JsxSymbol, "div", null, []]);
   const [topElement, tree] = renderJsx(id, result)! || orThrow();
   diff(
     topElement.innerHTML,
