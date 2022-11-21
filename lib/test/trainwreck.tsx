@@ -2,34 +2,19 @@ interface DiffReport {}
 
 // elements ////////
 
-function styling(el: HTMLElement, [key, value]: [key: string, value: any]) {
-  el.style[key as any] = value;
-}
+const styling = (el: HTMLElement, [key, value]: [key: string, value: any]) => (el.style[key as any] = value);
 
-function div(id?: string, display?: string, style?: Record<string, any>) {
-  const el = document.createElement("div");
-  if (id) el.setAttribute("id", id);
-  if (display) el.style.display = display;
+function elment(tag: string, props?: Record<string, any>, style?: Partial<CSSStyleDeclaration>): any {
+  const el: any = document.createElement(tag);
   if (style) Object.entries(style).forEach(entry => styling(el, entry));
+  if (props) Object.entries(props).forEach(([key, val]) => (["innerText", "innerHTML"].includes(key) ? (el[key] = val) : el.setAttribute(key, val)));
   return el;
 }
 
-function pre(innerText?: string, style?: Record<string, any>) {
-  const el = document.createElement("pre");
-  el.style.padding = "16";
-  if (innerText) el.innerText = innerText;
-  if (style) Object.entries(style).forEach(entry => styling(el, entry));
-  return el;
-}
-
-function iframe(id: string, style?: Record<string, any>) {
-  const el = document.createElement("iframe");
-  el.setAttribute("width", "99%");
-  if (id) el.setAttribute("name", id);
-  if (id) el.setAttribute("title", id);
-  if (style) Object.entries(style).forEach(entry => styling(el, entry));
-  return el;
-}
+const div = (props?: Record<string, any>, style?: Partial<CSSStyleDeclaration>): HTMLDivElement => elment("div", props, style);
+const iframe = (name: string, style?: Partial<CSSStyleDeclaration>): HTMLIFrameElement => elment("iframe", { name, title: name, width: "99%" }, style);
+const pre = (innerText?: string, style?: Partial<CSSStyleDeclaration>): HTMLPreElement =>
+  elment("pre", { innerText }, Object.assign({}, style, { padding: "16" }));
 
 // helpers /////////
 
@@ -38,26 +23,26 @@ function attach(parent: Element, childs: (Element | undefined)[]): Element {
   return parent;
 }
 
-// tools /////////
-
-export function orThrow(message: string) {
-  throw Error(message);
-}
-
 function formatXml(xml: string, tab: string = "   "): string {
   const formatted: string[] = [];
   let indent = "";
   xml.split(/>\s*</).forEach(node => {
     if (node.match(/^\/\w/)) indent = indent.substring(tab.length); // decrease indent by one 'tab'
-    formatted.push(indent + "<" + node + ">\r\n");
+    formatted.push(indent, "<", node, ">\r\n");
     if (node.match(/^<?\w[^>]*[^\/]$/)) indent += tab; // increase indent
   });
   const bigString = formatted.join("");
   return bigString.substring(1, bigString.length - 3);
 }
 
+// tools /////////
+
+export function orThrow(message: string) {
+  throw Error(message);
+}
+
 async function diff<T>(nestedThing1: T, nestedThing2: T, testFn: Function, id: string, container: HTMLDivElement): Promise<DiffReport | null> {
-  attach(container.appendChild(div("", "flex")), [
+  attach(container.appendChild(div({}, { display: "flex" })), [
     pre(typeof nestedThing1 === "string" ? formatXml(nestedThing1) : JSON.stringify(nestedThing1, undefined, 2)),
     pre(typeof nestedThing2 === "string" ? formatXml(nestedThing2) : JSON.stringify(nestedThing2, undefined, 2)),
     testFn && pre(testFn.toString()),
@@ -71,35 +56,43 @@ interface ShortDiff {
 
 // init ////////
 
-document.body.appendChild(div("test-output"));
+const styleSheet = document.createElement("style");
+styleSheet.innerText = ".testarea { border: 1px solid white; border-radius: 10px; margin: 5px; padding: 5px; margin-bottom: 3em; background-color: darkblue }";
+document.body.appendChild(styleSheet);
+document.body.appendChild(div({ id: "test-output" }));
 const specFileToAutoload = new URL(location.href).search.slice(1);
 if (specFileToAutoload) import("./" + specFileToAutoload).catch(e => document.body.insertAdjacentText("afterbegin", e));
 
 // entry ////////
 
-export interface TestCase {
-  (pkg: { diff: ShortDiff; id: string; playground: HTMLDivElement }): void;
+export interface InputsToTestCase {
+  diff: ShortDiff;
+  id: string;
+  playground: HTMLDivElement;
+  name: string;
+  orThrow: (msg?: string) => void;
 }
 
 export interface TestCaseSettings {
   useIframe?: boolean;
-  test: (this: TestCaseSettings | void, fn: TestCase) => Promise<any>;
+  test: (this: TestCaseSettings | void, name: string, fn: (pkg: InputsToTestCase) => void) => Promise<any>;
 }
 
-const globalTestCaseSettings: TestCaseSettings = {
+export const globalTestCaseSettings: TestCaseSettings = {
   test,
   useIframe: false,
 };
 
-export async function test(this: TestCaseSettings | void, fn: TestCase): Promise<any> {
+export async function test(this: TestCaseSettings | void, name: string, fn: (pkg: InputsToTestCase) => void): Promise<any> {
   const id = new Date().getTime().toString();
-  const testarea = div();
+  const testarea = div({ class: "testarea" });
+  testarea.appendChild(div({ innerText: name }));
   document.getElementById("test-output")!.appendChild(testarea);
-  testarea.appendChild(document.createElement("hr"));
-  const playgroundWrapper = div(undefined, undefined, { border: "2px inset", padding: "5px" });
-  const userplayground = div(id);
+  const playgroundWrapper = div(undefined, { border: "2px inset", padding: "5px" });
+  const userplayground = div({ id });
   if ((this || globalTestCaseSettings).useIframe) {
     const frame = iframe(id);
+    console.log("using", { frame });
     testarea.appendChild(frame);
     frame.contentWindow!.document.body.appendChild(userplayground);
   } else testarea.appendChild(playgroundWrapper).appendChild(userplayground);
@@ -107,8 +100,14 @@ export async function test(this: TestCaseSettings | void, fn: TestCase): Promise
   const shortDiff: ShortDiff = <T,>(nestedThing1: T, nestedThing2: T) => diff(nestedThing1, nestedThing2, fn, id, testarea);
 
   try {
-    return fn({ diff: shortDiff, id, playground: userplayground });
+    return fn({
+      diff: shortDiff,
+      id,
+      playground: userplayground,
+      name,
+      orThrow: (msg: string = "failed to render") => orThrow(`${name}: ${msg}`),
+    });
   } catch (e: any) {
-    testarea.appendChild(pre(e, { "background-color": "brown" }));
+    testarea.insertAdjacentElement("afterbegin", pre(e, { backgroundColor: "brown" }));
   }
 }
