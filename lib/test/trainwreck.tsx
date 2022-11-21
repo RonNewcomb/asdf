@@ -52,7 +52,8 @@ function formatXml(xml: string, tab: string = "   "): string {
     formatted.push(indent + "<" + node + ">\r\n");
     if (node.match(/^<?\w[^>]*[^\/]$/)) indent += tab; // increase indent
   });
-  return formatted.join("").substring(1, formatted.length - 3);
+  const bigString = formatted.join("");
+  return bigString.substring(1, bigString.length - 3);
 }
 
 async function diff<T>(nestedThing1: T, nestedThing2: T, testFn: Function, id: string, container: HTMLDivElement): Promise<DiffReport | null> {

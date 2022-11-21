@@ -1,0 +1,45 @@
+<body>
+  <style>
+    body {
+      color: white;
+      background-color: darkblue;
+      font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+    }
+    .scripttag {
+      color: gray;
+    }
+    a {
+      color: yellowgreen;
+    }
+    a:hover {
+      color: yellow;
+    }
+    .dont {
+      text-decoration: line-through;
+    }
+  </style>
+  <div>
+    <p>
+      You can include spec files directly with <span class="scripttag">&lt;script type="module" src='components/app-start.spec.js'&gt;&lt;/script&gt;</span>
+    </p>
+    <p>
+      Or, load/include <span class="scripttag">&lt;script type="module" src='lib/test/trainwreck.js'&gt;&lt;/script&gt;</span> and optionally put the filepath
+      to a *.spec.js file in the URL immediately after the ? to run tests in that file: <a id="current"></a>
+    </p>
+    <p>
+      But you CAN'T navigate directly to the spec file with <a id="spec" class="dont"></a> because you'll just get the source text shown as if plain text...
+    </p>
+  </div>
+  <script type="module" src="./trainwreck.js"></script>
+  <script>
+    const basehref = location.origin + "/" + location.pathname.split("/").filter(x => x)[0];
+    const current = document.getElementById("current");
+    current.innerText = current.href = location.href.split("?")[0] + "?../../components/app-start.spec.js";
+
+    const msg2 = basehref + "/components/app-start.spec.js";
+    const spec = document.getElementById("spec");
+    spec.innerText = spec.href = msg2;
+    const spec2 = document.getElementById("spec2");
+    spec2.innerText = spec2.href = msg2;
+  </script>
+</body>
