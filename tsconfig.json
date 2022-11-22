@@ -6,6 +6,7 @@
     "jsx": "react",
     "jsxFactory": "jsx",
     "strict": true,
-    "watch": true,
-  }
+    "watch": true
+  },
+  "exclude": ["./crow.ts", "./rook.ts"]
 }

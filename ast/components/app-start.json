@@ -1,6 +1,6 @@
 {
   "pos": 0,
-  "end": 992,
+  "end": 956,
   "flags": 0,
   "modifierFlagsCache": 0,
   "transformFlags": 1155,
@@ -99,22 +99,22 @@
     },
     {
       "pos": 68,
-      "end": 106,
+      "end": 105,
       "flags": 0,
       "modifierFlagsCache": 0,
       "transformFlags": 0,
       "kind": 269,
       "importClause": {
-        "pos": 76,
-        "end": 84,
+        "pos": 75,
+        "end": 83,
         "flags": 0,
         "modifierFlagsCache": 0,
         "transformFlags": 0,
         "kind": 270,
         "isTypeOnly": false,
         "name": {
-          "pos": 76,
-          "end": 84,
+          "pos": 75,
+          "end": 83,
           "flags": 0,
           "modifierFlagsCache": 0,
           "transformFlags": 0,
@@ -123,8 +123,8 @@
         }
       },
       "moduleSpecifier": {
-        "pos": 89,
-        "end": 105,
+        "pos": 88,
+        "end": 104,
         "flags": 0,
         "modifierFlagsCache": 0,
         "transformFlags": 0,
@@ -134,23 +134,23 @@
       }
     },
     {
-      "pos": 106,
-      "end": 141,
+      "pos": 105,
+      "end": 139,
       "flags": 0,
       "modifierFlagsCache": 0,
       "transformFlags": 0,
       "kind": 269,
       "importClause": {
-        "pos": 114,
-        "end": 121,
+        "pos": 112,
+        "end": 119,
         "flags": 0,
         "modifierFlagsCache": 0,
         "transformFlags": 0,
         "kind": 270,
         "isTypeOnly": false,
         "name": {
-          "pos": 114,
-          "end": 121,
+          "pos": 112,
+          "end": 119,
           "flags": 0,
           "modifierFlagsCache": 0,
           "transformFlags": 0,
@@ -159,8 +159,8 @@
         }
       },
       "moduleSpecifier": {
-        "pos": 126,
-        "end": 140,
+        "pos": 124,
+        "end": 138,
         "flags": 0,
         "modifierFlagsCache": 0,
         "transformFlags": 0,
@@ -170,23 +170,23 @@
       }
     },
     {
-      "pos": 141,
-      "end": 174,
+      "pos": 139,
+      "end": 171,
       "flags": 0,
       "modifierFlagsCache": 0,
       "transformFlags": 0,
       "kind": 269,
       "importClause": {
-        "pos": 149,
-        "end": 155,
+        "pos": 146,
+        "end": 152,
         "flags": 0,
         "modifierFlagsCache": 0,
         "transformFlags": 0,
         "kind": 270,
         "isTypeOnly": false,
         "name": {
-          "pos": 149,
-          "end": 155,
+          "pos": 146,
+          "end": 152,
           "flags": 0,
           "modifierFlagsCache": 0,
           "transformFlags": 0,
@@ -195,8 +195,8 @@
         }
       },
       "moduleSpecifier": {
-        "pos": 160,
-        "end": 173,
+        "pos": 157,
+        "end": 170,
         "flags": 0,
         "modifierFlagsCache": 0,
         "transformFlags": 0,
@@ -206,15 +206,15 @@
       }
     },
     {
-      "pos": 174,
-      "end": 786,
+      "pos": 171,
+      "end": 761,
       "flags": 0,
       "modifierFlagsCache": 0,
       "transformFlags": 4457603,
       "kind": 259,
       "name": {
-        "pos": 201,
-        "end": 210,
+        "pos": 196,
+        "end": 205,
         "flags": 0,
         "modifierFlagsCache": 0,
         "transformFlags": 0,
@@ -223,16 +223,16 @@
       },
       "modifiers": [
         {
-          "pos": 174,
-          "end": 184,
+          "pos": 171,
+          "end": 179,
           "flags": 0,
           "modifierFlagsCache": 0,
           "transformFlags": 0,
           "kind": 93
         },
         {
-          "pos": 184,
-          "end": 192,
+          "pos": 179,
+          "end": 187,
           "flags": 0,
           "modifierFlagsCache": 0,
           "transformFlags": 0,
@@ -241,15 +241,15 @@
       ],
       "parameters": [
         {
-          "pos": 211,
-          "end": 250,
+          "pos": 206,
+          "end": 245,
           "flags": 0,
           "modifierFlagsCache": 0,
           "transformFlags": 1,
           "kind": 166,
           "name": {
-            "pos": 211,
-            "end": 216,
+            "pos": 206,
+            "end": 211,
             "flags": 0,
             "modifierFlagsCache": 0,
             "transformFlags": 0,
@@ -257,23 +257,23 @@
             "escapedText": "props"
           },
           "type": {
-            "pos": 217,
-            "end": 250,
+            "pos": 212,
+            "end": 245,
             "flags": 0,
             "modifierFlagsCache": 0,
             "transformFlags": 1,
             "kind": 184,
             "members": [
               {
-                "pos": 219,
-                "end": 233,
+                "pos": 214,
+                "end": 228,
                 "flags": 0,
                 "modifierFlagsCache": 0,
                 "transformFlags": 1,
                 "kind": 168,
                 "name": {
-                  "pos": 219,
-                  "end": 224,
+                  "pos": 214,
+                  "end": 219,
                   "flags": 0,
                   "modifierFlagsCache": 0,
                   "transformFlags": 0,
@@ -281,8 +281,8 @@
                   "escapedText": "seed"
                 },
                 "type": {
-                  "pos": 225,
-                  "end": 232,
+                  "pos": 220,
+                  "end": 227,
                   "flags": 0,
                   "modifierFlagsCache": 0,
                   "transformFlags": 1,
@@ -290,15 +290,15 @@
                 }
               },
               {
-                "pos": 233,
-                "end": 248,
+                "pos": 228,
+                "end": 243,
                 "flags": 0,
                 "modifierFlagsCache": 0,
                 "transformFlags": 1,
                 "kind": 168,
                 "name": {
-                  "pos": 233,
-                  "end": 242,
+                  "pos": 228,
+                  "end": 237,
                   "flags": 0,
                   "modifierFlagsCache": 0,
                   "transformFlags": 0,
@@ -306,16 +306,16 @@
                   "escapedText": "children"
                 },
                 "type": {
-                  "pos": 244,
-                  "end": 248,
+                  "pos": 239,
+                  "end": 243,
                   "flags": 0,
                   "modifierFlagsCache": 0,
                   "transformFlags": 1,
                   "kind": 131
                 },
                 "questionToken": {
-                  "pos": 242,
-                  "end": 243,
+                  "pos": 237,
+                  "end": 238,
                   "flags": 0,
                   "modifierFlagsCache": 0,
                   "transformFlags": 0,
@@ -326,15 +326,15 @@
           }
         },
         {
-          "pos": 251,
-          "end": 282,
+          "pos": 246,
+          "end": 277,
           "flags": 0,
           "modifierFlagsCache": 0,
           "transformFlags": 1,
           "kind": 166,
           "name": {
-            "pos": 251,
-            "end": 257,
+            "pos": 246,
+            "end": 252,
             "flags": 0,
             "modifierFlagsCache": 0,
             "transformFlags": 0,
@@ -342,23 +342,23 @@
             "escapedText": "state"
           },
           "type": {
-            "pos": 258,
-            "end": 282,
+            "pos": 253,
+            "end": 277,
             "flags": 0,
             "modifierFlagsCache": 0,
             "transformFlags": 1,
             "kind": 190,
             "types": [
               {
-                "pos": 258,
-                "end": 265,
+                "pos": 253,
+                "end": 260,
                 "flags": 0,
                 "modifierFlagsCache": 0,
                 "transformFlags": 1,
                 "kind": 180,
                 "typeName": {
-                  "pos": 258,
-                  "end": 265,
+                  "pos": 253,
+                  "end": 260,
                   "flags": 0,
                   "modifierFlagsCache": 0,
                   "transformFlags": 0,
@@ -367,23 +367,23 @@
                 }
               },
               {
-                "pos": 267,
-                "end": 282,
+                "pos": 262,
+                "end": 277,
                 "flags": 0,
                 "modifierFlagsCache": 0,
                 "transformFlags": 1,
                 "kind": 184,
                 "members": [
                   {
-                    "pos": 269,
-                    "end": 280,
+                    "pos": 264,
+                    "end": 275,
                     "flags": 0,
                     "modifierFlagsCache": 0,
                     "transformFlags": 1,
                     "kind": 168,
                     "name": {
-                      "pos": 269,
-                      "end": 272,
+                      "pos": 264,
+                      "end": 267,
                       "flags": 0,
                       "modifierFlagsCache": 0,
                       "transformFlags": 0,
@@ -392,8 +392,8 @@
                       "escapedText": "as"
                     },
                     "type": {
-                      "pos": 273,
-                      "end": 280,
+                      "pos": 268,
+                      "end": 275,
                       "flags": 0,
                       "modifierFlagsCache": 0,
                       "transformFlags": 1,
@@ -407,37 +407,37 @@
         }
       ],
       "body": {
-        "pos": 283,
-        "end": 786,
+        "pos": 278,
+        "end": 761,
         "flags": 0,
         "modifierFlagsCache": 0,
         "transformFlags": 4457602,
         "kind": 238,
         "statements": [
           {
-            "pos": 285,
-            "end": 327,
+            "pos": 280,
+            "end": 321,
             "flags": 0,
             "modifierFlagsCache": 0,
             "transformFlags": 0,
             "kind": 241,
             "expression": {
-              "pos": 285,
-              "end": 326,
+              "pos": 280,
+              "end": 320,
               "flags": 0,
               "modifierFlagsCache": 0,
               "transformFlags": 0,
               "kind": 210,
               "expression": {
-                "pos": 285,
-                "end": 300,
+                "pos": 280,
+                "end": 294,
                 "flags": 0,
                 "modifierFlagsCache": 0,
                 "transformFlags": 0,
                 "kind": 208,
                 "expression": {
-                  "pos": 285,
-                  "end": 296,
+                  "pos": 280,
+                  "end": 290,
                   "flags": 0,
                   "modifierFlagsCache": 0,
                   "transformFlags": 0,
@@ -445,8 +445,8 @@
                   "escapedText": "console"
                 },
                 "name": {
-                  "pos": 297,
-                  "end": 300,
+                  "pos": 291,
+                  "end": 294,
                   "flags": 0,
                   "modifierFlagsCache": 0,
                   "transformFlags": 0,
@@ -456,8 +456,8 @@
               },
               "arguments": [
                 {
-                  "pos": 301,
-                  "end": 318,
+                  "pos": 295,
+                  "end": 312,
                   "flags": 0,
                   "modifierFlagsCache": 0,
                   "transformFlags": 0,
@@ -466,8 +466,8 @@
                   "hasExtendedUnicodeEscape": false
                 },
                 {
-                  "pos": 319,
-                  "end": 325,
+                  "pos": 313,
+                  "end": 319,
                   "flags": 0,
                   "modifierFlagsCache": 0,
                   "transformFlags": 0,
@@ -478,29 +478,29 @@
             }
           },
           {
-            "pos": 327,
-            "end": 370,
+            "pos": 321,
+            "end": 363,
             "flags": 0,
             "modifierFlagsCache": 0,
             "transformFlags": 0,
             "kind": 241,
             "expression": {
-              "pos": 327,
-              "end": 369,
+              "pos": 321,
+              "end": 362,
               "flags": 0,
               "modifierFlagsCache": 0,
               "transformFlags": 0,
               "kind": 210,
               "expression": {
-                "pos": 327,
-                "end": 342,
+                "pos": 321,
+                "end": 335,
                 "flags": 0,
                 "modifierFlagsCache": 0,
                 "transformFlags": 0,
                 "kind": 208,
                 "expression": {
-                  "pos": 327,
-                  "end": 338,
+                  "pos": 321,
+                  "end": 331,
                   "flags": 0,
                   "modifierFlagsCache": 0,
                   "transformFlags": 0,
@@ -508,8 +508,8 @@
                   "escapedText": "console"
                 },
                 "name": {
-                  "pos": 339,
-                  "end": 342,
+                  "pos": 332,
+                  "end": 335,
                   "flags": 0,
                   "modifierFlagsCache": 0,
                   "transformFlags": 0,
@@ -519,8 +519,8 @@
               },
               "arguments": [
                 {
-                  "pos": 343,
-                  "end": 361,
+                  "pos": 336,
+                  "end": 354,
                   "flags": 0,
                   "modifierFlagsCache": 0,
                   "transformFlags": 0,
@@ -529,8 +529,8 @@
                   "hasExtendedUnicodeEscape": false
                 },
                 {
-                  "pos": 362,
-                  "end": 368,
+                  "pos": 355,
+                  "end": 361,
                   "flags": 0,
                   "modifierFlagsCache": 0,
                   "transformFlags": 0,
@@ -541,29 +541,29 @@
             }
           },
           {
-            "pos": 370,
-            "end": 406,
+            "pos": 363,
+            "end": 398,
             "flags": 0,
             "modifierFlagsCache": 0,
             "transformFlags": 0,
             "kind": 241,
             "expression": {
-              "pos": 370,
-              "end": 405,
+              "pos": 363,
+              "end": 397,
               "flags": 0,
               "modifierFlagsCache": 0,
               "transformFlags": 0,
               "kind": 223,
               "left": {
-                "pos": 370,
-                "end": 382,
+                "pos": 363,
+                "end": 374,
                 "flags": 0,
                 "modifierFlagsCache": 0,
                 "transformFlags": 0,
                 "kind": 208,
                 "expression": {
-                  "pos": 370,
-                  "end": 379,
+                  "pos": 363,
+                  "end": 371,
                   "flags": 0,
                   "modifierFlagsCache": 0,
                   "transformFlags": 0,
@@ -571,8 +571,8 @@
                   "escapedText": "state"
                 },
                 "name": {
-                  "pos": 380,
-                  "end": 382,
+                  "pos": 372,
+                  "end": 374,
                   "flags": 0,
                   "modifierFlagsCache": 0,
                   "transformFlags": 0,
@@ -582,16 +582,16 @@
                 }
               },
               "operatorToken": {
-                "pos": 382,
-                "end": 384,
+                "pos": 374,
+                "end": 376,
                 "flags": 0,
                 "modifierFlagsCache": 0,
                 "transformFlags": 0,
                 "kind": 63
               },
               "right": {
-                "pos": 384,
-                "end": 405,
+                "pos": 376,
+                "end": 397,
                 "flags": 0,
                 "modifierFlagsCache": 0,
                 "transformFlags": 0,
@@ -602,45 +602,45 @@
             }
           },
           {
-            "pos": 406,
-            "end": 447,
+            "pos": 398,
+            "end": 438,
             "flags": 0,
             "modifierFlagsCache": 0,
             "transformFlags": 4457472,
             "kind": 240,
             "declarationList": {
-              "pos": 406,
-              "end": 446,
+              "pos": 398,
+              "end": 437,
               "flags": 2,
               "modifierFlagsCache": 0,
               "transformFlags": 4981760,
               "kind": 258,
               "declarations": [
                 {
-                  "pos": 415,
-                  "end": 446,
+                  "pos": 406,
+                  "end": 437,
                   "flags": 0,
                   "modifierFlagsCache": 0,
                   "transformFlags": 525312,
                   "kind": 257,
                   "name": {
-                    "pos": 415,
-                    "end": 425,
+                    "pos": 406,
+                    "end": 416,
                     "flags": 0,
                     "modifierFlagsCache": 0,
                     "transformFlags": 525312,
                     "kind": 204,
                     "elements": [
                       {
-                        "pos": 417,
-                        "end": 418,
+                        "pos": 408,
+                        "end": 409,
                         "flags": 0,
                         "modifierFlagsCache": 0,
                         "transformFlags": 1024,
                         "kind": 205,
                         "name": {
-                          "pos": 417,
-                          "end": 418,
+                          "pos": 408,
+                          "end": 409,
                           "flags": 0,
                           "modifierFlagsCache": 0,
                           "transformFlags": 0,
@@ -649,15 +649,15 @@
                         }
                       },
                       {
-                        "pos": 419,
-                        "end": 424,
+                        "pos": 410,
+                        "end": 415,
                         "flags": 0,
                         "modifierFlagsCache": 0,
                         "transformFlags": 1024,
                         "kind": 205,
                         "name": {
-                          "pos": 419,
-                          "end": 424,
+                          "pos": 410,
+                          "end": 415,
                           "flags": 0,
                           "modifierFlagsCache": 0,
                           "transformFlags": 0,
@@ -668,22 +668,22 @@
                     ]
                   },
                   "initializer": {
-                    "pos": 427,
-                    "end": 446,
+                    "pos": 418,
+                    "end": 437,
                     "flags": 0,
                     "modifierFlagsCache": 0,
                     "transformFlags": 0,
                     "kind": 210,
                     "expression": {
-                      "pos": 427,
-                      "end": 442,
+                      "pos": 418,
+                      "end": 433,
                       "flags": 0,
                       "modifierFlagsCache": 0,
                       "transformFlags": 0,
                       "kind": 208,
                       "expression": {
-                        "pos": 427,
-                        "end": 433,
+                        "pos": 418,
+                        "end": 424,
                         "flags": 0,
                         "modifierFlagsCache": 0,
                         "transformFlags": 0,
@@ -691,8 +691,8 @@
                         "escapedText": "state"
                       },
                       "name": {
-                        "pos": 434,
-                        "end": 442,
+                        "pos": 425,
+                        "end": 433,
                         "flags": 0,
                         "modifierFlagsCache": 0,
                         "transformFlags": 0,
@@ -702,8 +702,8 @@
                     },
                     "arguments": [
                       {
-                        "pos": 443,
-                        "end": 445,
+                        "pos": 434,
+                        "end": 436,
                         "flags": 0,
                         "modifierFlagsCache": 0,
                         "transformFlags": 0,
@@ -718,30 +718,30 @@
             }
           },
           {
-            "pos": 447,
-            "end": 487,
+            "pos": 438,
+            "end": 476,
             "flags": 0,
             "modifierFlagsCache": 0,
             "transformFlags": 4457472,
             "kind": 240,
             "declarationList": {
-              "pos": 447,
-              "end": 486,
+              "pos": 438,
+              "end": 475,
               "flags": 2,
               "modifierFlagsCache": 0,
               "transformFlags": 4457472,
               "kind": 258,
               "declarations": [
                 {
-                  "pos": 458,
-                  "end": 486,
+                  "pos": 447,
+                  "end": 475,
                   "flags": 0,
                   "modifierFlagsCache": 0,
                   "transformFlags": 1024,
                   "kind": 257,
                   "name": {
-                    "pos": 458,
-                    "end": 466,
+                    "pos": 447,
+                    "end": 455,
                     "flags": 0,
                     "modifierFlagsCache": 0,
                     "transformFlags": 0,
@@ -749,23 +749,23 @@
                     "escapedText": "pressed"
                   },
                   "initializer": {
-                    "pos": 468,
-                    "end": 486,
+                    "pos": 457,
+                    "end": 475,
                     "flags": 0,
                     "modifierFlagsCache": 0,
                     "transformFlags": 1024,
                     "kind": 216,
                     "parameters": [],
                     "body": {
-                      "pos": 474,
-                      "end": 486,
+                      "pos": 463,
+                      "end": 475,
                       "flags": 0,
                       "modifierFlagsCache": 0,
                       "transformFlags": 0,
                       "kind": 210,
                       "expression": {
-                        "pos": 474,
-                        "end": 479,
+                        "pos": 463,
+                        "end": 468,
                         "flags": 0,
                         "modifierFlagsCache": 0,
                         "transformFlags": 0,
@@ -774,15 +774,15 @@
                       },
                       "arguments": [
                         {
-                          "pos": 480,
-                          "end": 485,
+                          "pos": 469,
+                          "end": 474,
                           "flags": 0,
                           "modifierFlagsCache": 0,
                           "transformFlags": 0,
                           "kind": 223,
                           "left": {
-                            "pos": 480,
-                            "end": 481,
+                            "pos": 469,
+                            "end": 470,
                             "flags": 0,
                             "modifierFlagsCache": 0,
                             "transformFlags": 0,
@@ -790,16 +790,16 @@
                             "escapedText": "z"
                           },
                           "operatorToken": {
-                            "pos": 481,
-                            "end": 483,
+                            "pos": 470,
+                            "end": 472,
                             "flags": 0,
                             "modifierFlagsCache": 0,
                             "transformFlags": 0,
                             "kind": 39
                           },
                           "right": {
-                            "pos": 483,
-                            "end": 485,
+                            "pos": 472,
+                            "end": 474,
                             "flags": 0,
                             "modifierFlagsCache": 0,
                             "transformFlags": 0,
@@ -811,8 +811,8 @@
                       ]
                     },
                     "equalsGreaterThanToken": {
-                      "pos": 471,
-                      "end": 474,
+                      "pos": 460,
+                      "end": 463,
                       "flags": 0,
                       "modifierFlagsCache": 0,
                       "transformFlags": 0,
@@ -824,36 +824,36 @@
             }
           },
           {
-            "pos": 487,
-            "end": 783,
+            "pos": 476,
+            "end": 759,
             "flags": 0,
             "modifierFlagsCache": 0,
             "transformFlags": 4194434,
             "kind": 250,
             "expression": {
-              "pos": 499,
-              "end": 782,
+              "pos": 486,
+              "end": 758,
               "flags": 0,
               "modifierFlagsCache": 0,
               "transformFlags": 2,
               "kind": 214,
               "expression": {
-                "pos": 501,
-                "end": 777,
+                "pos": 488,
+                "end": 754,
                 "flags": 0,
                 "modifierFlagsCache": 0,
                 "transformFlags": 2,
                 "kind": 281,
                 "openingElement": {
-                  "pos": 501,
-                  "end": 530,
+                  "pos": 488,
+                  "end": 516,
                   "flags": 0,
                   "modifierFlagsCache": 0,
                   "transformFlags": 2,
                   "kind": 283,
                   "tagName": {
-                    "pos": 508,
-                    "end": 511,
+                    "pos": 494,
+                    "end": 497,
                     "flags": 0,
                     "modifierFlagsCache": 0,
                     "transformFlags": 0,
@@ -861,23 +861,23 @@
                     "escapedText": "div"
                   },
                   "attributes": {
-                    "pos": 511,
-                    "end": 529,
+                    "pos": 497,
+                    "end": 515,
                     "flags": 0,
                     "modifierFlagsCache": 0,
                     "transformFlags": 2,
                     "kind": 289,
                     "properties": [
                       {
-                        "pos": 511,
-                        "end": 529,
+                        "pos": 497,
+                        "end": 515,
                         "flags": 0,
                         "modifierFlagsCache": 0,
                         "transformFlags": 2,
                         "kind": 288,
                         "name": {
-                          "pos": 511,
-                          "end": 517,
+                          "pos": 497,
+                          "end": 503,
                           "flags": 0,
                           "modifierFlagsCache": 0,
                           "transformFlags": 0,
@@ -886,8 +886,8 @@
                           "escapedText": "class"
                         },
                         "initializer": {
-                          "pos": 518,
-                          "end": 529,
+                          "pos": 504,
+                          "end": 515,
                           "flags": 0,
                           "modifierFlagsCache": 0,
                           "transformFlags": 0,
@@ -901,32 +901,32 @@
                 },
                 "children": [
                   {
-                    "pos": 530,
-                    "end": 538,
+                    "pos": 516,
+                    "end": 523,
                     "flags": 0,
                     "modifierFlagsCache": 0,
                     "transformFlags": 2,
                     "kind": 11,
-                    "text": "\r\n      ",
+                    "text": "\n      ",
                     "containsOnlyTriviaWhiteSpaces": true
                   },
                   {
-                    "pos": 538,
-                    "end": 555,
+                    "pos": 523,
+                    "end": 540,
                     "flags": 0,
                     "modifierFlagsCache": 0,
                     "transformFlags": 2,
                     "kind": 281,
                     "openingElement": {
-                      "pos": 538,
-                      "end": 544,
+                      "pos": 523,
+                      "end": 529,
                       "flags": 0,
                       "modifierFlagsCache": 0,
                       "transformFlags": 2,
                       "kind": 283,
                       "tagName": {
-                        "pos": 539,
-                        "end": 543,
+                        "pos": 524,
+                        "end": 528,
                         "flags": 0,
                         "modifierFlagsCache": 0,
                         "transformFlags": 0,
@@ -934,8 +934,8 @@
                         "escapedText": "span"
                       },
                       "attributes": {
-                        "pos": 543,
-                        "end": 543,
+                        "pos": 528,
+                        "end": 528,
                         "flags": 0,
                         "modifierFlagsCache": 0,
                         "transformFlags": 2,
@@ -945,8 +945,8 @@
                     },
                     "children": [
                       {
-                        "pos": 544,
-                        "end": 548,
+                        "pos": 529,
+                        "end": 533,
                         "flags": 0,
                         "modifierFlagsCache": 0,
                         "transformFlags": 2,
@@ -956,15 +956,15 @@
                       }
                     ],
                     "closingElement": {
-                      "pos": 548,
-                      "end": 555,
+                      "pos": 533,
+                      "end": 540,
                       "flags": 0,
                       "modifierFlagsCache": 0,
                       "transformFlags": 2,
                       "kind": 284,
                       "tagName": {
-                        "pos": 550,
-                        "end": 554,
+                        "pos": 535,
+                        "end": 539,
                         "flags": 0,
                         "modifierFlagsCache": 0,
                         "transformFlags": 0,
@@ -974,25 +974,25 @@
                     }
                   },
                   {
-                    "pos": 555,
-                    "end": 563,
+                    "pos": 540,
+                    "end": 547,
                     "flags": 0,
                     "modifierFlagsCache": 0,
                     "transformFlags": 2,
                     "kind": 11,
-                    "text": "\r\n      ",
+                    "text": "\n      ",
                     "containsOnlyTriviaWhiteSpaces": true
                   },
                   {
-                    "pos": 563,
-                    "end": 590,
+                    "pos": 547,
+                    "end": 574,
                     "flags": 0,
                     "modifierFlagsCache": 0,
                     "transformFlags": 2,
                     "kind": 282,
                     "tagName": {
-                      "pos": 564,
-                      "end": 569,
+                      "pos": 548,
+                      "end": 553,
                       "flags": 0,
                       "modifierFlagsCache": 0,
                       "transformFlags": 0,
@@ -1000,23 +1000,23 @@
                       "escapedText": "Under"
                     },
                     "attributes": {
-                      "pos": 569,
-                      "end": 587,
+                      "pos": 553,
+                      "end": 571,
                       "flags": 0,
                       "modifierFlagsCache": 0,
                       "transformFlags": 2,
                       "kind": 289,
                       "properties": [
                         {
-                          "pos": 569,
-                          "end": 587,
+                          "pos": 553,
+                          "end": 571,
                           "flags": 0,
                           "modifierFlagsCache": 0,
                           "transformFlags": 2,
                           "kind": 288,
                           "name": {
-                            "pos": 569,
-                            "end": 583,
+                            "pos": 553,
+                            "end": 567,
                             "flags": 0,
                             "modifierFlagsCache": 0,
                             "transformFlags": 0,
@@ -1024,15 +1024,15 @@
                             "escapedText": "aNumericInput"
                           },
                           "initializer": {
-                            "pos": 584,
-                            "end": 587,
+                            "pos": 568,
+                            "end": 571,
                             "flags": 0,
                             "modifierFlagsCache": 0,
                             "transformFlags": 2,
                             "kind": 291,
                             "expression": {
-                              "pos": 585,
-                              "end": 586,
+                              "pos": 569,
+                              "end": 570,
                               "flags": 0,
                               "modifierFlagsCache": 0,
                               "transformFlags": 0,
@@ -1046,32 +1046,32 @@
                     }
                   },
                   {
-                    "pos": 590,
-                    "end": 598,
+                    "pos": 574,
+                    "end": 581,
                     "flags": 0,
                     "modifierFlagsCache": 0,
                     "transformFlags": 2,
                     "kind": 11,
-                    "text": "\r\n      ",
+                    "text": "\n      ",
                     "containsOnlyTriviaWhiteSpaces": true
                   },
                   {
-                    "pos": 598,
-                    "end": 693,
+                    "pos": 581,
+                    "end": 674,
                     "flags": 0,
                     "modifierFlagsCache": 0,
                     "transformFlags": 2,
                     "kind": 281,
                     "openingElement": {
-                      "pos": 598,
-                      "end": 658,
+                      "pos": 581,
+                      "end": 641,
                       "flags": 0,
                       "modifierFlagsCache": 0,
                       "transformFlags": 2,
                       "kind": 283,
                       "tagName": {
-                        "pos": 599,
-                        "end": 605,
+                        "pos": 582,
+                        "end": 588,
                         "flags": 0,
                         "modifierFlagsCache": 0,
                         "transformFlags": 0,
@@ -1079,23 +1079,23 @@
                         "escapedText": "button"
                       },
                       "attributes": {
-                        "pos": 605,
-                        "end": 657,
+                        "pos": 588,
+                        "end": 640,
                         "flags": 0,
                         "modifierFlagsCache": 0,
                         "transformFlags": 2,
                         "kind": 289,
                         "properties": [
                           {
-                            "pos": 605,
-                            "end": 619,
+                            "pos": 588,
+                            "end": 602,
                             "flags": 0,
                             "modifierFlagsCache": 0,
                             "transformFlags": 2,
                             "kind": 288,
                             "name": {
-                              "pos": 605,
-                              "end": 610,
+                              "pos": 588,
+                              "end": 593,
                               "flags": 0,
                               "modifierFlagsCache": 0,
                               "transformFlags": 0,
@@ -1104,8 +1104,8 @@
                               "escapedText": "type"
                             },
                             "initializer": {
-                              "pos": 611,
-                              "end": 619,
+                              "pos": 594,
+                              "end": 602,
                               "flags": 0,
                               "modifierFlagsCache": 0,
                               "transformFlags": 0,
@@ -1115,15 +1115,15 @@
                             }
                           },
                           {
-                            "pos": 619,
-                            "end": 637,
+                            "pos": 602,
+                            "end": 620,
                             "flags": 0,
                             "modifierFlagsCache": 0,
                             "transformFlags": 2,
                             "kind": 288,
                             "name": {
-                              "pos": 619,
-                              "end": 627,
+                              "pos": 602,
+                              "end": 610,
                               "flags": 0,
                               "modifierFlagsCache": 0,
                               "transformFlags": 0,
@@ -1131,15 +1131,15 @@
                               "escapedText": "onClick"
                             },
                             "initializer": {
-                              "pos": 628,
-                              "end": 637,
+                              "pos": 611,
+                              "end": 620,
                               "flags": 0,
                               "modifierFlagsCache": 0,
                               "transformFlags": 2,
                               "kind": 291,
                               "expression": {
-                                "pos": 629,
-                                "end": 636,
+                                "pos": 612,
+                                "end": 619,
                                 "flags": 0,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -1149,15 +1149,15 @@
                             }
                           },
                           {
-                            "pos": 637,
-                            "end": 657,
+                            "pos": 620,
+                            "end": 640,
                             "flags": 0,
                             "modifierFlagsCache": 0,
                             "transformFlags": 2,
                             "kind": 288,
                             "name": {
-                              "pos": 637,
-                              "end": 647,
+                              "pos": 620,
+                              "end": 630,
                               "flags": 0,
                               "modifierFlagsCache": 0,
                               "transformFlags": 0,
@@ -1165,15 +1165,15 @@
                               "escapedText": "onKeyDown"
                             },
                             "initializer": {
-                              "pos": 648,
-                              "end": 657,
+                              "pos": 631,
+                              "end": 640,
                               "flags": 0,
                               "modifierFlagsCache": 0,
                               "transformFlags": 2,
                               "kind": 291,
                               "expression": {
-                                "pos": 649,
-                                "end": 656,
+                                "pos": 632,
+                                "end": 639,
                                 "flags": 0,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -1187,25 +1187,25 @@
                     },
                     "children": [
                       {
-                        "pos": 658,
-                        "end": 673,
+                        "pos": 641,
+                        "end": 655,
                         "flags": 0,
                         "modifierFlagsCache": 0,
                         "transformFlags": 2,
                         "kind": 11,
-                        "text": "\r\n        z is ",
+                        "text": "\n        z is ",
                         "containsOnlyTriviaWhiteSpaces": false
                       },
                       {
-                        "pos": 673,
-                        "end": 676,
+                        "pos": 655,
+                        "end": 658,
                         "flags": 0,
                         "modifierFlagsCache": 0,
                         "transformFlags": 2,
                         "kind": 291,
                         "expression": {
-                          "pos": 674,
-                          "end": 675,
+                          "pos": 656,
+                          "end": 657,
                           "flags": 0,
                           "modifierFlagsCache": 0,
                           "transformFlags": 0,
@@ -1214,26 +1214,26 @@
                         }
                       },
                       {
-                        "pos": 676,
-                        "end": 684,
+                        "pos": 658,
+                        "end": 665,
                         "flags": 0,
                         "modifierFlagsCache": 0,
                         "transformFlags": 2,
                         "kind": 11,
-                        "text": "\r\n      ",
+                        "text": "\n      ",
                         "containsOnlyTriviaWhiteSpaces": true
                       }
                     ],
                     "closingElement": {
-                      "pos": 684,
-                      "end": 693,
+                      "pos": 665,
+                      "end": 674,
                       "flags": 0,
                       "modifierFlagsCache": 0,
                       "transformFlags": 2,
                       "kind": 284,
                       "tagName": {
-                        "pos": 686,
-                        "end": 692,
+                        "pos": 667,
+                        "end": 673,
                         "flags": 0,
                         "modifierFlagsCache": 0,
                         "transformFlags": 0,
@@ -1243,25 +1243,25 @@
                     }
                   },
                   {
-                    "pos": 693,
-                    "end": 701,
+                    "pos": 674,
+                    "end": 681,
                     "flags": 0,
                     "modifierFlagsCache": 0,
                     "transformFlags": 2,
                     "kind": 11,
-                    "text": "\r\n      ",
+                    "text": "\n      ",
                     "containsOnlyTriviaWhiteSpaces": true
                   },
                   {
-                    "pos": 701,
-                    "end": 711,
+                    "pos": 681,
+                    "end": 691,
                     "flags": 0,
                     "modifierFlagsCache": 0,
                     "transformFlags": 2,
                     "kind": 282,
                     "tagName": {
-                      "pos": 702,
-                      "end": 708,
+                      "pos": 682,
+                      "end": 688,
                       "flags": 0,
                       "modifierFlagsCache": 0,
                       "transformFlags": 0,
@@ -1269,8 +1269,8 @@
                       "escapedText": "Looper"
                     },
                     "attributes": {
-                      "pos": 708,
-                      "end": 708,
+                      "pos": 688,
+                      "end": 688,
                       "flags": 0,
                       "modifierFlagsCache": 0,
                       "transformFlags": 2,
@@ -1279,25 +1279,25 @@
                     }
                   },
                   {
-                    "pos": 711,
-                    "end": 719,
+                    "pos": 691,
+                    "end": 698,
                     "flags": 0,
                     "modifierFlagsCache": 0,
                     "transformFlags": 2,
                     "kind": 11,
-                    "text": "\r\n      ",
+                    "text": "\n      ",
                     "containsOnlyTriviaWhiteSpaces": true
                   },
                   {
-                    "pos": 719,
-                    "end": 730,
+                    "pos": 698,
+                    "end": 709,
                     "flags": 0,
                     "modifierFlagsCache": 0,
                     "transformFlags": 2,
                     "kind": 282,
                     "tagName": {
-                      "pos": 720,
-                      "end": 727,
+                      "pos": 699,
+                      "end": 706,
                       "flags": 0,
                       "modifierFlagsCache": 0,
                       "transformFlags": 0,
@@ -1305,8 +1305,8 @@
                       "escapedText": "BigForm"
                     },
                     "attributes": {
-                      "pos": 727,
-                      "end": 727,
+                      "pos": 706,
+                      "end": 706,
                       "flags": 0,
                       "modifierFlagsCache": 0,
                       "transformFlags": 2,
@@ -1315,32 +1315,32 @@
                     }
                   },
                   {
-                    "pos": 730,
-                    "end": 738,
+                    "pos": 709,
+                    "end": 716,
                     "flags": 0,
                     "modifierFlagsCache": 0,
                     "transformFlags": 2,
                     "kind": 11,
-                    "text": "\r\n      ",
+                    "text": "\n      ",
                     "containsOnlyTriviaWhiteSpaces": true
                   },
                   {
-                    "pos": 738,
-                    "end": 765,
+                    "pos": 716,
+                    "end": 743,
                     "flags": 0,
                     "modifierFlagsCache": 0,
                     "transformFlags": 2,
                     "kind": 281,
                     "openingElement": {
-                      "pos": 738,
-                      "end": 743,
+                      "pos": 716,
+                      "end": 721,
                       "flags": 0,
                       "modifierFlagsCache": 0,
                       "transformFlags": 2,
                       "kind": 283,
                       "tagName": {
-                        "pos": 739,
-                        "end": 742,
+                        "pos": 717,
+                        "end": 720,
                         "flags": 0,
                         "modifierFlagsCache": 0,
                         "transformFlags": 0,
@@ -1348,8 +1348,8 @@
                         "escapedText": "div"
                       },
                       "attributes": {
-                        "pos": 742,
-                        "end": 742,
+                        "pos": 720,
+                        "end": 720,
                         "flags": 0,
                         "modifierFlagsCache": 0,
                         "transformFlags": 2,
@@ -1359,22 +1359,22 @@
                     },
                     "children": [
                       {
-                        "pos": 743,
-                        "end": 759,
+                        "pos": 721,
+                        "end": 737,
                         "flags": 0,
                         "modifierFlagsCache": 0,
                         "transformFlags": 2,
                         "kind": 291,
                         "expression": {
-                          "pos": 744,
-                          "end": 758,
+                          "pos": 722,
+                          "end": 736,
                           "flags": 0,
                           "modifierFlagsCache": 0,
                           "transformFlags": 0,
                           "kind": 208,
                           "expression": {
-                            "pos": 744,
-                            "end": 749,
+                            "pos": 722,
+                            "end": 727,
                             "flags": 0,
                             "modifierFlagsCache": 0,
                             "transformFlags": 0,
@@ -1382,8 +1382,8 @@
                             "escapedText": "props"
                           },
                           "name": {
-                            "pos": 750,
-                            "end": 758,
+                            "pos": 728,
+                            "end": 736,
                             "flags": 0,
                             "modifierFlagsCache": 0,
                             "transformFlags": 0,
@@ -1394,15 +1394,15 @@
                       }
                     ],
                     "closingElement": {
-                      "pos": 759,
-                      "end": 765,
+                      "pos": 737,
+                      "end": 743,
                       "flags": 0,
                       "modifierFlagsCache": 0,
                       "transformFlags": 2,
                       "kind": 284,
                       "tagName": {
-                        "pos": 761,
-                        "end": 764,
+                        "pos": 739,
+                        "end": 742,
                         "flags": 0,
                         "modifierFlagsCache": 0,
                         "transformFlags": 0,
@@ -1412,26 +1412,26 @@
                     }
                   },
                   {
-                    "pos": 765,
-                    "end": 771,
+                    "pos": 743,
+                    "end": 748,
                     "flags": 0,
                     "modifierFlagsCache": 0,
                     "transformFlags": 2,
                     "kind": 11,
-                    "text": "\r\n    ",
+                    "text": "\n    ",
                     "containsOnlyTriviaWhiteSpaces": true
                   }
                 ],
                 "closingElement": {
-                  "pos": 771,
-                  "end": 777,
+                  "pos": 748,
+                  "end": 754,
                   "flags": 0,
                   "modifierFlagsCache": 0,
                   "transformFlags": 2,
                   "kind": 284,
                   "tagName": {
-                    "pos": 773,
-                    "end": 776,
+                    "pos": 750,
+                    "end": 753,
                     "flags": 0,
                     "modifierFlagsCache": 0,
                     "transformFlags": 0,
@@ -1447,22 +1447,22 @@
       }
     },
     {
-      "pos": 786,
-      "end": 990,
+      "pos": 761,
+      "end": 955,
       "flags": 0,
       "modifierFlagsCache": 0,
       "transformFlags": 2,
       "kind": 241,
       "expression": {
-        "pos": 786,
-        "end": 989,
+        "pos": 761,
+        "end": 954,
         "flags": 0,
         "modifierFlagsCache": 0,
         "transformFlags": 2,
         "kind": 210,
         "expression": {
-          "pos": 786,
-          "end": 861,
+          "pos": 761,
+          "end": 833,
           "flags": 0,
           "modifierFlagsCache": 0,
           "transformFlags": 0,
@@ -1471,8 +1471,8 @@
         },
         "arguments": [
           {
-            "pos": 862,
-            "end": 877,
+            "pos": 834,
+            "end": 848,
             "flags": 0,
             "modifierFlagsCache": 0,
             "transformFlags": 0,
@@ -1481,22 +1481,22 @@
             "hasExtendedUnicodeEscape": false
           },
           {
-            "pos": 878,
-            "end": 986,
+            "pos": 849,
+            "end": 952,
             "flags": 0,
             "modifierFlagsCache": 0,
             "transformFlags": 2,
             "kind": 281,
             "openingElement": {
-              "pos": 878,
-              "end": 912,
+              "pos": 849,
+              "end": 882,
               "flags": 0,
               "modifierFlagsCache": 0,
               "transformFlags": 2,
               "kind": 283,
               "tagName": {
-                "pos": 883,
-                "end": 891,
+                "pos": 853,
+                "end": 861,
                 "flags": 0,
                 "modifierFlagsCache": 0,
                 "transformFlags": 0,
@@ -1504,23 +1504,23 @@
                 "escapedText": "AppStart"
               },
               "attributes": {
-                "pos": 891,
-                "end": 911,
+                "pos": 861,
+                "end": 881,
                 "flags": 0,
                 "modifierFlagsCache": 0,
                 "transformFlags": 2,
                 "kind": 289,
                 "properties": [
                   {
-                    "pos": 891,
-                    "end": 911,
+                    "pos": 861,
+                    "end": 881,
                     "flags": 0,
                     "modifierFlagsCache": 0,
                     "transformFlags": 2,
                     "kind": 288,
                     "name": {
-                      "pos": 891,
-                      "end": 896,
+                      "pos": 861,
+                      "end": 866,
                       "flags": 0,
                       "modifierFlagsCache": 0,
                       "transformFlags": 0,
@@ -1528,15 +1528,15 @@
                       "escapedText": "seed"
                     },
                     "initializer": {
-                      "pos": 897,
-                      "end": 911,
+                      "pos": 867,
+                      "end": 881,
                       "flags": 0,
                       "modifierFlagsCache": 0,
                       "transformFlags": 2,
                       "kind": 291,
                       "expression": {
-                        "pos": 898,
-                        "end": 910,
+                        "pos": 868,
+                        "end": 880,
                         "flags": 0,
                         "modifierFlagsCache": 0,
                         "transformFlags": 0,
@@ -1551,32 +1551,32 @@
             },
             "children": [
               {
-                "pos": 912,
-                "end": 918,
+                "pos": 882,
+                "end": 887,
                 "flags": 0,
                 "modifierFlagsCache": 0,
                 "transformFlags": 2,
                 "kind": 11,
-                "text": "\r\n    ",
+                "text": "\n    ",
                 "containsOnlyTriviaWhiteSpaces": true
               },
               {
-                "pos": 918,
-                "end": 971,
+                "pos": 887,
+                "end": 938,
                 "flags": 0,
                 "modifierFlagsCache": 0,
                 "transformFlags": 2,
                 "kind": 281,
                 "openingElement": {
-                  "pos": 918,
-                  "end": 923,
+                  "pos": 887,
+                  "end": 892,
                   "flags": 0,
                   "modifierFlagsCache": 0,
                   "transformFlags": 2,
                   "kind": 283,
                   "tagName": {
-                    "pos": 919,
-                    "end": 922,
+                    "pos": 888,
+                    "end": 891,
                     "flags": 0,
                     "modifierFlagsCache": 0,
                     "transformFlags": 0,
@@ -1584,8 +1584,8 @@
                     "escapedText": "div"
                   },
                   "attributes": {
-                    "pos": 922,
-                    "end": 922,
+                    "pos": 891,
+                    "end": 891,
                     "flags": 0,
                     "modifierFlagsCache": 0,
                     "transformFlags": 2,
@@ -1595,32 +1595,32 @@
                 },
                 "children": [
                   {
-                    "pos": 923,
-                    "end": 936,
+                    "pos": 892,
+                    "end": 904,
                     "flags": 0,
                     "modifierFlagsCache": 0,
                     "transformFlags": 2,
                     "kind": 11,
-                    "text": "\r\n      inner",
+                    "text": "\n      inner",
                     "containsOnlyTriviaWhiteSpaces": false
                   },
                   {
-                    "pos": 936,
-                    "end": 954,
+                    "pos": 904,
+                    "end": 922,
                     "flags": 0,
                     "modifierFlagsCache": 0,
                     "transformFlags": 2,
                     "kind": 281,
                     "openingElement": {
-                      "pos": 936,
-                      "end": 941,
+                      "pos": 904,
+                      "end": 909,
                       "flags": 0,
                       "modifierFlagsCache": 0,
                       "transformFlags": 2,
                       "kind": 283,
                       "tagName": {
-                        "pos": 937,
-                        "end": 940,
+                        "pos": 905,
+                        "end": 908,
                         "flags": 0,
                         "modifierFlagsCache": 0,
                         "transformFlags": 0,
@@ -1628,8 +1628,8 @@
                         "escapedText": "div"
                       },
                       "attributes": {
-                        "pos": 940,
-                        "end": 940,
+                        "pos": 908,
+                        "end": 908,
                         "flags": 0,
                         "modifierFlagsCache": 0,
                         "transformFlags": 2,
@@ -1639,8 +1639,8 @@
                     },
                     "children": [
                       {
-                        "pos": 941,
-                        "end": 948,
+                        "pos": 909,
+                        "end": 916,
                         "flags": 0,
                         "modifierFlagsCache": 0,
                         "transformFlags": 2,
@@ -1650,15 +1650,15 @@
                       }
                     ],
                     "closingElement": {
-                      "pos": 948,
-                      "end": 954,
+                      "pos": 916,
+                      "end": 922,
                       "flags": 0,
                       "modifierFlagsCache": 0,
                       "transformFlags": 2,
                       "kind": 284,
                       "tagName": {
-                        "pos": 950,
-                        "end": 953,
+                        "pos": 918,
+                        "end": 921,
                         "flags": 0,
                         "modifierFlagsCache": 0,
                         "transformFlags": 0,
@@ -1668,26 +1668,26 @@
                     }
                   },
                   {
-                    "pos": 954,
-                    "end": 965,
+                    "pos": 922,
+                    "end": 932,
                     "flags": 0,
                     "modifierFlagsCache": 0,
                     "transformFlags": 2,
                     "kind": 11,
-                    "text": "l;kj?\r\n    ",
+                    "text": "l;kj?\n    ",
                     "containsOnlyTriviaWhiteSpaces": false
                   }
                 ],
                 "closingElement": {
-                  "pos": 965,
-                  "end": 971,
+                  "pos": 932,
+                  "end": 938,
                   "flags": 0,
                   "modifierFlagsCache": 0,
                   "transformFlags": 2,
                   "kind": 284,
                   "tagName": {
-                    "pos": 967,
-                    "end": 970,
+                    "pos": 934,
+                    "end": 937,
                     "flags": 0,
                     "modifierFlagsCache": 0,
                     "transformFlags": 0,
@@ -1697,26 +1697,26 @@
                 }
               },
               {
-                "pos": 971,
-                "end": 975,
+                "pos": 938,
+                "end": 941,
                 "flags": 0,
                 "modifierFlagsCache": 0,
                 "transformFlags": 2,
                 "kind": 11,
-                "text": "\r\n  ",
+                "text": "\n  ",
                 "containsOnlyTriviaWhiteSpaces": true
               }
             ],
             "closingElement": {
-              "pos": 975,
-              "end": 986,
+              "pos": 941,
+              "end": 952,
               "flags": 0,
               "modifierFlagsCache": 0,
               "transformFlags": 2,
               "kind": 284,
               "tagName": {
-                "pos": 977,
-                "end": 985,
+                "pos": 943,
+                "end": 951,
                 "flags": 0,
                 "modifierFlagsCache": 0,
                 "transformFlags": 0,
@@ -1730,15 +1730,15 @@
     }
   ],
   "endOfFileToken": {
-    "pos": 990,
-    "end": 992,
+    "pos": 955,
+    "end": 956,
     "flags": 0,
     "modifierFlagsCache": 0,
     "transformFlags": 0,
     "kind": 1
   },
   "fileName": "components/app-start.tsx",
-  "text": "import { IState, jsx, renderJsx } from \"../lib/render/framework.js\";\r\nimport BigForm from \"./big-form.js\";\r\nimport Looper from \"./looper.js\";\r\nimport Under from \"./Under.js\";\r\n\r\nexport default function AppStart(props: { seed: string; children?: any }, state: IState & { as: string }) {\r\n  console.log(\"app-start state\", state);\r\n  console.log(\"app-start props \", props);\r\n  state.as = \"appstart.state.as!\";\r\n  const [z, setZ] = state.useState(65);\r\n\r\n  const pressed = () => setZ(z + 5);\r\n\r\n  return (\r\n    <div class=\"app-start\">\r\n      <span>yee </span>\r\n      <Under aNumericInput={5} />\r\n      <button type=\"button\" onClick={pressed} onKeyDown={pressed}>\r\n        z is {z}\r\n      </button>\r\n      <Looper />\r\n      <BigForm />\r\n      <div>{props.children}</div>\r\n    </div>\r\n  );\r\n}\r\n\r\n//renderFn(\"app-start\", AppStart, { seed: \"seeded value\" });\r\nrenderJsx(\r\n  \"app-start\",\r\n  <AppStart seed={\"seed value\"}>\r\n    <div>\r\n      inner<div>asdfdsf</div>l;kj?\r\n    </div>\r\n  </AppStart>\r\n);\r\n",
+  "text": "import { IState, jsx, renderJsx } from \"../lib/render/framework.js\";\nimport BigForm from \"./big-form.js\";\nimport Looper from \"./looper.js\";\nimport Under from \"./Under.js\";\n\nexport default function AppStart(props: { seed: string; children?: any }, state: IState & { as: string }) {\n  console.log(\"app-start state\", state);\n  console.log(\"app-start props \", props);\n  state.as = \"appstart.state.as!\";\n  const [z, setZ] = state.useState(65);\n\n  const pressed = () => setZ(z + 5);\n\n  return (\n    <div class=\"app-start\">\n      <span>yee </span>\n      <Under aNumericInput={5} />\n      <button type=\"button\" onClick={pressed} onKeyDown={pressed}>\n        z is {z}\n      </button>\n      <Looper />\n      <BigForm />\n      <div>{props.children}</div>\n    </div>\n  );\n}\n\n//renderFn(\"app-start\", AppStart, { seed: \"seeded value\" });\nrenderJsx(\n  \"app-start\",\n  <AppStart seed={\"seed value\"}>\n    <div>\n      inner<div>asdfdsf</div>l;kj?\n    </div>\n  </AppStart>\n);\n",
   "languageVersion": 99,
   "languageVariant": 1,
   "scriptKind": 4,

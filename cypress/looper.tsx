@@ -18,24 +18,24 @@ describe('LOOPER', () => {
 /*
 [
    {
-      "pos": 94,
-      "end": 409,
+      "pos": 93,
+      "end": 395,
       "flags": 0,
       "modifierFlagsCache": 0,
       "transformFlags": 4981891,
       "kind": 259,
       "modifiers": [
          {
-            "pos": 94,
-            "end": 104,
+            "pos": 93,
+            "end": 101,
             "flags": 0,
             "modifierFlagsCache": 0,
             "transformFlags": 0,
             "kind": 93
          },
          {
-            "pos": 104,
-            "end": 112,
+            "pos": 101,
+            "end": 109,
             "flags": 0,
             "modifierFlagsCache": 0,
             "transformFlags": 0,
@@ -44,15 +44,15 @@ describe('LOOPER', () => {
       ],
       "parameters": [
          {
-            "pos": 123,
-            "end": 137,
+            "pos": 120,
+            "end": 134,
             "flags": 0,
             "modifierFlagsCache": 0,
             "transformFlags": 1,
             "kind": 166,
             "name": {
-               "pos": 123,
-               "end": 128,
+               "pos": 120,
+               "end": 125,
                "flags": 0,
                "modifierFlagsCache": 0,
                "transformFlags": 0,
@@ -60,8 +60,8 @@ describe('LOOPER', () => {
                "escapedText": "props"
             },
             "type": {
-               "pos": 129,
-               "end": 137,
+               "pos": 126,
+               "end": 134,
                "flags": 0,
                "modifierFlagsCache": 0,
                "transformFlags": 1,
@@ -69,30 +69,30 @@ describe('LOOPER', () => {
             }
          },
          {
-            "pos": 138,
-            "end": 159,
+            "pos": 135,
+            "end": 156,
             "flags": 0,
             "modifierFlagsCache": 0,
             "transformFlags": 525313,
             "kind": 166,
             "name": {
-               "pos": 138,
-               "end": 151,
+               "pos": 135,
+               "end": 148,
                "flags": 0,
                "modifierFlagsCache": 0,
                "transformFlags": 525312,
                "kind": 203,
                "elements": [
                   {
-                     "pos": 140,
-                     "end": 149,
+                     "pos": 137,
+                     "end": 146,
                      "flags": 0,
                      "modifierFlagsCache": 0,
                      "transformFlags": 1024,
                      "kind": 205,
                      "name": {
-                        "pos": 140,
-                        "end": 149,
+                        "pos": 137,
+                        "end": 146,
                         "flags": 0,
                         "modifierFlagsCache": 0,
                         "transformFlags": 0,
@@ -103,15 +103,15 @@ describe('LOOPER', () => {
                ]
             },
             "type": {
-               "pos": 152,
-               "end": 159,
+               "pos": 149,
+               "end": 156,
                "flags": 0,
                "modifierFlagsCache": 0,
                "transformFlags": 1,
                "kind": 180,
                "typeName": {
-                  "pos": 152,
-                  "end": 159,
+                  "pos": 149,
+                  "end": 156,
                   "flags": 0,
                   "modifierFlagsCache": 0,
                   "transformFlags": 0,
@@ -122,53 +122,53 @@ describe('LOOPER', () => {
          }
       ],
       "body": {
-         "pos": 160,
-         "end": 409,
+         "pos": 157,
+         "end": 395,
          "flags": 0,
          "modifierFlagsCache": 0,
          "transformFlags": 4457602,
          "kind": 238,
          "statements": [
             {
-               "pos": 162,
-               "end": 204,
+               "pos": 159,
+               "end": 200,
                "flags": 0,
                "modifierFlagsCache": 0,
                "transformFlags": 4457472,
                "kind": 240,
                "declarationList": {
-                  "pos": 162,
-                  "end": 203,
+                  "pos": 159,
+                  "end": 199,
                   "flags": 2,
                   "modifierFlagsCache": 0,
                   "transformFlags": 4981760,
                   "kind": 258,
                   "declarations": [
                      {
-                        "pos": 171,
-                        "end": 203,
+                        "pos": 167,
+                        "end": 199,
                         "flags": 0,
                         "modifierFlagsCache": 0,
                         "transformFlags": 525312,
                         "kind": 257,
                         "name": {
-                           "pos": 171,
-                           "end": 185,
+                           "pos": 167,
+                           "end": 181,
                            "flags": 0,
                            "modifierFlagsCache": 0,
                            "transformFlags": 525312,
                            "kind": 204,
                            "elements": [
                               {
-                                 "pos": 173,
-                                 "end": 176,
+                                 "pos": 169,
+                                 "end": 172,
                                  "flags": 0,
                                  "modifierFlagsCache": 0,
                                  "transformFlags": 1024,
                                  "kind": 205,
                                  "name": {
-                                    "pos": 173,
-                                    "end": 176,
+                                    "pos": 169,
+                                    "end": 172,
                                     "flags": 0,
                                     "modifierFlagsCache": 0,
                                     "transformFlags": 0,
@@ -177,15 +177,15 @@ describe('LOOPER', () => {
                                  }
                               },
                               {
-                                 "pos": 177,
-                                 "end": 184,
+                                 "pos": 173,
+                                 "end": 180,
                                  "flags": 0,
                                  "modifierFlagsCache": 0,
                                  "transformFlags": 1024,
                                  "kind": 205,
                                  "name": {
-                                    "pos": 177,
-                                    "end": 184,
+                                    "pos": 173,
+                                    "end": 180,
                                     "flags": 0,
                                     "modifierFlagsCache": 0,
                                     "transformFlags": 0,
@@ -196,15 +196,15 @@ describe('LOOPER', () => {
                            ]
                         },
                         "initializer": {
-                           "pos": 187,
-                           "end": 203,
+                           "pos": 183,
+                           "end": 199,
                            "flags": 0,
                            "modifierFlagsCache": 0,
                            "transformFlags": 0,
                            "kind": 210,
                            "expression": {
-                              "pos": 187,
-                              "end": 196,
+                              "pos": 183,
+                              "end": 192,
                               "flags": 0,
                               "modifierFlagsCache": 0,
                               "transformFlags": 0,
@@ -213,8 +213,8 @@ describe('LOOPER', () => {
                            },
                            "arguments": [
                               {
-                                 "pos": 197,
-                                 "end": 202,
+                                 "pos": 193,
+                                 "end": 198,
                                  "flags": 0,
                                  "modifierFlagsCache": 0,
                                  "transformFlags": 0,
@@ -229,30 +229,30 @@ describe('LOOPER', () => {
                }
             },
             {
-               "pos": 204,
-               "end": 232,
+               "pos": 200,
+               "end": 226,
                "flags": 0,
                "modifierFlagsCache": 0,
                "transformFlags": 4457472,
                "kind": 240,
                "declarationList": {
-                  "pos": 204,
-                  "end": 231,
+                  "pos": 200,
+                  "end": 225,
                   "flags": 2,
                   "modifierFlagsCache": 0,
                   "transformFlags": 4457472,
                   "kind": 258,
                   "declarations": [
                      {
-                        "pos": 215,
-                        "end": 231,
+                        "pos": 209,
+                        "end": 225,
                         "flags": 0,
                         "modifierFlagsCache": 0,
                         "transformFlags": 0,
                         "kind": 257,
                         "name": {
-                           "pos": 215,
-                           "end": 219,
+                           "pos": 209,
+                           "end": 213,
                            "flags": 0,
                            "modifierFlagsCache": 0,
                            "transformFlags": 0,
@@ -260,16 +260,16 @@ describe('LOOPER', () => {
                            "escapedText": "arr"
                         },
                         "initializer": {
-                           "pos": 221,
-                           "end": 231,
+                           "pos": 215,
+                           "end": 225,
                            "flags": 0,
                            "modifierFlagsCache": 0,
                            "transformFlags": 0,
                            "kind": 206,
                            "elements": [
                               {
-                                 "pos": 223,
-                                 "end": 224,
+                                 "pos": 217,
+                                 "end": 218,
                                  "flags": 0,
                                  "modifierFlagsCache": 0,
                                  "transformFlags": 0,
@@ -278,8 +278,8 @@ describe('LOOPER', () => {
                                  "numericLiteralFlags": 0
                               },
                               {
-                                 "pos": 225,
-                                 "end": 227,
+                                 "pos": 219,
+                                 "end": 221,
                                  "flags": 0,
                                  "modifierFlagsCache": 0,
                                  "transformFlags": 0,
@@ -288,8 +288,8 @@ describe('LOOPER', () => {
                                  "numericLiteralFlags": 0
                               },
                               {
-                                 "pos": 228,
-                                 "end": 230,
+                                 "pos": 222,
+                                 "end": 224,
                                  "flags": 0,
                                  "modifierFlagsCache": 0,
                                  "transformFlags": 0,
@@ -305,36 +305,36 @@ describe('LOOPER', () => {
                }
             },
             {
-               "pos": 232,
-               "end": 406,
+               "pos": 226,
+               "end": 393,
                "flags": 0,
                "modifierFlagsCache": 0,
                "transformFlags": 4195458,
                "kind": 250,
                "expression": {
-                  "pos": 242,
-                  "end": 405,
+                  "pos": 235,
+                  "end": 392,
                   "flags": 0,
                   "modifierFlagsCache": 0,
                   "transformFlags": 1026,
                   "kind": 214,
                   "expression": {
-                     "pos": 244,
-                     "end": 400,
+                     "pos": 237,
+                     "end": 388,
                      "flags": 0,
                      "modifierFlagsCache": 0,
                      "transformFlags": 1026,
                      "kind": 281,
                      "openingElement": {
-                        "pos": 244,
-                        "end": 299,
+                        "pos": 237,
+                        "end": 291,
                         "flags": 0,
                         "modifierFlagsCache": 0,
                         "transformFlags": 1026,
                         "kind": 283,
                         "tagName": {
-                           "pos": 251,
-                           "end": 254,
+                           "pos": 243,
+                           "end": 246,
                            "flags": 0,
                            "modifierFlagsCache": 0,
                            "transformFlags": 0,
@@ -342,23 +342,23 @@ describe('LOOPER', () => {
                            "escapedText": "div"
                         },
                         "attributes": {
-                           "pos": 254,
-                           "end": 298,
+                           "pos": 246,
+                           "end": 290,
                            "flags": 0,
                            "modifierFlagsCache": 0,
                            "transformFlags": 1026,
                            "kind": 289,
                            "properties": [
                               {
-                                 "pos": 254,
-                                 "end": 269,
+                                 "pos": 246,
+                                 "end": 261,
                                  "flags": 0,
                                  "modifierFlagsCache": 0,
                                  "transformFlags": 2,
                                  "kind": 288,
                                  "name": {
-                                    "pos": 254,
-                                    "end": 260,
+                                    "pos": 246,
+                                    "end": 252,
                                     "flags": 0,
                                     "modifierFlagsCache": 0,
                                     "transformFlags": 0,
@@ -367,8 +367,8 @@ describe('LOOPER', () => {
                                     "escapedText": "class"
                                  },
                                  "initializer": {
-                                    "pos": 261,
-                                    "end": 269,
+                                    "pos": 253,
+                                    "end": 261,
                                     "flags": 0,
                                     "modifierFlagsCache": 0,
                                     "transformFlags": 0,
@@ -378,15 +378,15 @@ describe('LOOPER', () => {
                                  }
                               },
                               {
-                                 "pos": 269,
-                                 "end": 298,
+                                 "pos": 261,
+                                 "end": 290,
                                  "flags": 0,
                                  "modifierFlagsCache": 0,
                                  "transformFlags": 1026,
                                  "kind": 288,
                                  "name": {
-                                    "pos": 269,
-                                    "end": 277,
+                                    "pos": 261,
+                                    "end": 269,
                                     "flags": 0,
                                     "modifierFlagsCache": 0,
                                     "transformFlags": 0,
@@ -394,30 +394,30 @@ describe('LOOPER', () => {
                                     "escapedText": "onClick"
                                  },
                                  "initializer": {
-                                    "pos": 278,
-                                    "end": 298,
+                                    "pos": 270,
+                                    "end": 290,
                                     "flags": 0,
                                     "modifierFlagsCache": 0,
                                     "transformFlags": 1026,
                                     "kind": 291,
                                     "expression": {
-                                       "pos": 279,
-                                       "end": 297,
+                                       "pos": 271,
+                                       "end": 289,
                                        "flags": 0,
                                        "modifierFlagsCache": 0,
                                        "transformFlags": 1024,
                                        "kind": 216,
                                        "parameters": [
                                           {
-                                             "pos": 279,
-                                             "end": 280,
+                                             "pos": 271,
+                                             "end": 272,
                                              "flags": 0,
                                              "modifierFlagsCache": 0,
                                              "transformFlags": 0,
                                              "kind": 166,
                                              "name": {
-                                                "pos": 279,
-                                                "end": 280,
+                                                "pos": 271,
+                                                "end": 272,
                                                 "flags": 0,
                                                 "modifierFlagsCache": 0,
                                                 "transformFlags": 0,
@@ -427,15 +427,15 @@ describe('LOOPER', () => {
                                           }
                                        ],
                                        "body": {
-                                          "pos": 283,
-                                          "end": 297,
+                                          "pos": 275,
+                                          "end": 289,
                                           "flags": 0,
                                           "modifierFlagsCache": 0,
                                           "transformFlags": 0,
                                           "kind": 210,
                                           "expression": {
-                                             "pos": 283,
-                                             "end": 290,
+                                             "pos": 275,
+                                             "end": 282,
                                              "flags": 0,
                                              "modifierFlagsCache": 0,
                                              "transformFlags": 0,
@@ -444,8 +444,8 @@ describe('LOOPER', () => {
                                           },
                                           "arguments": [
                                              {
-                                                "pos": 291,
-                                                "end": 296,
+                                                "pos": 283,
+                                                "end": 288,
                                                 "flags": 0,
                                                 "modifierFlagsCache": 0,
                                                 "transformFlags": 0,
@@ -456,8 +456,8 @@ describe('LOOPER', () => {
                                           ]
                                        },
                                        "equalsGreaterThanToken": {
-                                          "pos": 280,
-                                          "end": 283,
+                                          "pos": 272,
+                                          "end": 275,
                                           "flags": 0,
                                           "modifierFlagsCache": 0,
                                           "transformFlags": 0,
@@ -471,39 +471,39 @@ describe('LOOPER', () => {
                      },
                      "children": [
                         {
-                           "pos": 299,
-                           "end": 307,
+                           "pos": 291,
+                           "end": 298,
                            "flags": 0,
                            "modifierFlagsCache": 0,
                            "transformFlags": 2,
                            "kind": 11,
-                           "text": "\r\n      ",
+                           "text": "\n      ",
                            "containsOnlyTriviaWhiteSpaces": true
                         },
                         {
-                           "pos": 307,
-                           "end": 388,
+                           "pos": 298,
+                           "end": 377,
                            "flags": 0,
                            "modifierFlagsCache": 0,
                            "transformFlags": 1026,
                            "kind": 291,
                            "expression": {
-                              "pos": 308,
-                              "end": 387,
+                              "pos": 299,
+                              "end": 376,
                               "flags": 0,
                               "modifierFlagsCache": 0,
                               "transformFlags": 1026,
                               "kind": 210,
                               "expression": {
-                                 "pos": 308,
-                                 "end": 315,
+                                 "pos": 299,
+                                 "end": 306,
                                  "flags": 0,
                                  "modifierFlagsCache": 0,
                                  "transformFlags": 0,
                                  "kind": 208,
                                  "expression": {
-                                    "pos": 308,
-                                    "end": 311,
+                                    "pos": 299,
+                                    "end": 302,
                                     "flags": 0,
                                     "modifierFlagsCache": 0,
                                     "transformFlags": 0,
@@ -511,8 +511,8 @@ describe('LOOPER', () => {
                                     "escapedText": "arr"
                                  },
                                  "name": {
-                                    "pos": 312,
-                                    "end": 315,
+                                    "pos": 303,
+                                    "end": 306,
                                     "flags": 0,
                                     "modifierFlagsCache": 0,
                                     "transformFlags": 0,
@@ -522,23 +522,23 @@ describe('LOOPER', () => {
                               },
                               "arguments": [
                                  {
-                                    "pos": 316,
-                                    "end": 386,
+                                    "pos": 307,
+                                    "end": 375,
                                     "flags": 0,
                                     "modifierFlagsCache": 0,
                                     "transformFlags": 1026,
                                     "kind": 216,
                                     "parameters": [
                                        {
-                                          "pos": 316,
-                                          "end": 320,
+                                          "pos": 307,
+                                          "end": 311,
                                           "flags": 0,
                                           "modifierFlagsCache": 0,
                                           "transformFlags": 0,
                                           "kind": 166,
                                           "name": {
-                                             "pos": 316,
-                                             "end": 320,
+                                             "pos": 307,
+                                             "end": 311,
                                              "flags": 0,
                                              "modifierFlagsCache": 0,
                                              "transformFlags": 0,
@@ -548,29 +548,29 @@ describe('LOOPER', () => {
                                        }
                                     ],
                                     "body": {
-                                       "pos": 323,
-                                       "end": 386,
+                                       "pos": 314,
+                                       "end": 375,
                                        "flags": 0,
                                        "modifierFlagsCache": 0,
                                        "transformFlags": 2,
                                        "kind": 214,
                                        "expression": {
-                                          "pos": 325,
-                                          "end": 377,
+                                          "pos": 316,
+                                          "end": 367,
                                           "flags": 0,
                                           "modifierFlagsCache": 0,
                                           "transformFlags": 2,
                                           "kind": 281,
                                           "openingElement": {
-                                             "pos": 325,
-                                             "end": 353,
+                                             "pos": 316,
+                                             "end": 343,
                                              "flags": 0,
                                              "modifierFlagsCache": 0,
                                              "transformFlags": 2,
                                              "kind": 283,
                                              "tagName": {
-                                                "pos": 336,
-                                                "end": 343,
+                                                "pos": 326,
+                                                "end": 333,
                                                 "flags": 0,
                                                 "modifierFlagsCache": 0,
                                                 "transformFlags": 0,
@@ -578,23 +578,23 @@ describe('LOOPER', () => {
                                                 "escapedText": "Fancify"
                                              },
                                              "attributes": {
-                                                "pos": 343,
-                                                "end": 352,
+                                                "pos": 333,
+                                                "end": 342,
                                                 "flags": 0,
                                                 "modifierFlagsCache": 0,
                                                 "transformFlags": 2,
                                                 "kind": 289,
                                                 "properties": [
                                                    {
-                                                      "pos": 343,
-                                                      "end": 352,
+                                                      "pos": 333,
+                                                      "end": 342,
                                                       "flags": 0,
                                                       "modifierFlagsCache": 0,
                                                       "transformFlags": 2,
                                                       "kind": 288,
                                                       "name": {
-                                                         "pos": 343,
-                                                         "end": 345,
+                                                         "pos": 333,
+                                                         "end": 335,
                                                          "flags": 0,
                                                          "modifierFlagsCache": 0,
                                                          "transformFlags": 0,
@@ -602,15 +602,15 @@ describe('LOOPER', () => {
                                                          "escapedText": "x"
                                                       },
                                                       "initializer": {
-                                                         "pos": 346,
-                                                         "end": 352,
+                                                         "pos": 336,
+                                                         "end": 342,
                                                          "flags": 0,
                                                          "modifierFlagsCache": 0,
                                                          "transformFlags": 2,
                                                          "kind": 291,
                                                          "expression": {
-                                                            "pos": 347,
-                                                            "end": 351,
+                                                            "pos": 337,
+                                                            "end": 341,
                                                             "flags": 0,
                                                             "modifierFlagsCache": 0,
                                                             "transformFlags": 0,
@@ -624,8 +624,8 @@ describe('LOOPER', () => {
                                           },
                                           "children": [
                                              {
-                                                "pos": 353,
-                                                "end": 361,
+                                                "pos": 343,
+                                                "end": 351,
                                                 "flags": 0,
                                                 "modifierFlagsCache": 0,
                                                 "transformFlags": 2,
@@ -634,15 +634,15 @@ describe('LOOPER', () => {
                                                 "containsOnlyTriviaWhiteSpaces": false
                                              },
                                              {
-                                                "pos": 361,
-                                                "end": 366,
+                                                "pos": 351,
+                                                "end": 356,
                                                 "flags": 0,
                                                 "modifierFlagsCache": 0,
                                                 "transformFlags": 2,
                                                 "kind": 291,
                                                 "expression": {
-                                                   "pos": 362,
-                                                   "end": 365,
+                                                   "pos": 352,
+                                                   "end": 355,
                                                    "flags": 0,
                                                    "modifierFlagsCache": 0,
                                                    "transformFlags": 0,
@@ -651,8 +651,8 @@ describe('LOOPER', () => {
                                                 }
                                              },
                                              {
-                                                "pos": 366,
-                                                "end": 367,
+                                                "pos": 356,
+                                                "end": 357,
                                                 "flags": 0,
                                                 "modifierFlagsCache": 0,
                                                 "transformFlags": 2,
@@ -662,15 +662,15 @@ describe('LOOPER', () => {
                                              }
                                           ],
                                           "closingElement": {
-                                             "pos": 367,
-                                             "end": 377,
+                                             "pos": 357,
+                                             "end": 367,
                                              "flags": 0,
                                              "modifierFlagsCache": 0,
                                              "transformFlags": 2,
                                              "kind": 284,
                                              "tagName": {
-                                                "pos": 369,
-                                                "end": 376,
+                                                "pos": 359,
+                                                "end": 366,
                                                 "flags": 0,
                                                 "modifierFlagsCache": 0,
                                                 "transformFlags": 0,
@@ -681,8 +681,8 @@ describe('LOOPER', () => {
                                        }
                                     },
                                     "equalsGreaterThanToken": {
-                                       "pos": 320,
-                                       "end": 323,
+                                       "pos": 311,
+                                       "end": 314,
                                        "flags": 0,
                                        "modifierFlagsCache": 0,
                                        "transformFlags": 0,
@@ -693,26 +693,26 @@ describe('LOOPER', () => {
                            }
                         },
                         {
-                           "pos": 388,
-                           "end": 394,
+                           "pos": 377,
+                           "end": 382,
                            "flags": 0,
                            "modifierFlagsCache": 0,
                            "transformFlags": 2,
                            "kind": 11,
-                           "text": "\r\n    ",
+                           "text": "\n    ",
                            "containsOnlyTriviaWhiteSpaces": true
                         }
                      ],
                      "closingElement": {
-                        "pos": 394,
-                        "end": 400,
+                        "pos": 382,
+                        "end": 388,
                         "flags": 0,
                         "modifierFlagsCache": 0,
                         "transformFlags": 2,
                         "kind": 284,
                         "tagName": {
-                           "pos": 396,
-                           "end": 399,
+                           "pos": 384,
+                           "end": 387,
                            "flags": 0,
                            "modifierFlagsCache": 0,
                            "transformFlags": 0,
