@@ -1,8 +1,20 @@
 // $ node rook components/app-start.tsx
 
-const ts = require("typescript"); // couldn't grab the global one ??
+const childProcess = require('child_process');
 const fs = require("fs");
 const path = require("path");
+
+function requireGlobal(packageName) {
+  const globalNodeModules = childProcess.execSync('npm root -g').toString().trim();
+  let packageDir = path.join(globalNodeModules, packageName);
+  if (!fs.existsSync(packageDir)) packageDir = path.join(globalNodeModules, 'npm/node_modules', packageName); //find package required by old npm
+  if (!fs.existsSync(packageDir)) return undefined;
+  const packageMeta = JSON.parse(fs.readFileSync(path.join(packageDir, 'package.json')).toString());
+  const main = path.join(packageDir, packageMeta.main);
+  return require(main);
+}
+
+const ts = requireGlobal("typescript") || require('typescript'); // grab the global one 
 
 const outputBaseDir = "./ast/";
 const alreadyDone = []; // string[]
