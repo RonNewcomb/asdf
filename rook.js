@@ -79,3 +79,5 @@ function hunt(filename) {
 }
 
 hunt(firstFile);
+
+console.log('node crow ' + outputBaseDir);
