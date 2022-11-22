@@ -6,7 +6,7 @@ import LOOPER from '../components/looper.js'
 describe('LOOPER', () => {
 
     
-    it('uses custom text for the button label', () => {
+    it('renders', () => {
         cy.mount(<LOOPER>Click me!</LOOPER>)
         cy.get('button').should('contains.text', 'Click me!')
     });

@@ -8,5 +8,5 @@
     "strict": true,
     "watch": true
   },
-  "exclude": ["./crow.ts", "./rook.ts"]
+  "exclude": ["rook.cts", "crow.cts"]
 }

@@ -6,7 +6,7 @@ import Under from '../components/Under.js'
 describe('Under', () => {
 
     
-    it('uses custom text for the button label', () => {
+    it('renders', () => {
         cy.mount(<Under>Click me!</Under>)
         cy.get('button').should('contains.text', 'Click me!')
     });

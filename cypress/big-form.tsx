@@ -6,7 +6,7 @@ import { IForm } from '../components/big-form.js'
 describe('BIGFORM', () => {
 
     
-    it('uses custom text for the button label', () => {
+    it('renders', () => {
         cy.mount(<BIGFORM>Click me!</BIGFORM>)
         cy.get('button').should('contains.text', 'Click me!')
     });
@@ -17,7 +17,7 @@ describe('BIGFORM', () => {
 describe('IForm', () => {
 
     
-    it('uses custom text for the button label', () => {
+    it('renders', () => {
         cy.mount(<IForm>Click me!</IForm>)
         cy.get('button').should('contains.text', 'Click me!')
     });

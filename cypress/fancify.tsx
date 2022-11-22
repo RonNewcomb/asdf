@@ -6,7 +6,7 @@ import FANCIFY from '../components/fancify.js'
 describe('FANCIFY', () => {
 
     
-    it('uses custom text for the button label', () => {
+    it('renders', () => {
         cy.mount(<FANCIFY>Click me!</FANCIFY>)
         cy.get('button').should('contains.text', 'Click me!')
     });

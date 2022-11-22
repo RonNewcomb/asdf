@@ -1,11 +1,19 @@
-import AppStart from "../components/app-start.js";
 
-describe("AppStart", () => {
-  it("uses custom text for the button label", () => {
-    cy.mount(<AppStart>Click me!</AppStart>);
-    cy.get("button").should("contains.text", "Click me!");
-  });
+import AppStart from '../components/app-start.js'
+
+
+
+describe('AppStart', () => {
+
+    
+    it('renders', () => {
+        cy.mount(<AppStart>Click me!</AppStart>)
+        cy.get('button').should('contains.text', 'Click me!')
+    });
+    
+
 });
+
 
 /*
 [
@@ -1534,3 +1542,4 @@ describe("AppStart", () => {
    }
 ]
 */
+
