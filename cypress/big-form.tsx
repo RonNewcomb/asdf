@@ -7,18 +7,7 @@ describe('BIGFORM', () => {
 
     
     it('renders', () => {
-        cy.mount(<BIGFORM>Click me!</BIGFORM>)
-        cy.get('button').should('contains.text', 'Click me!')
-    });
-    
-
-});
-
-describe('IForm', () => {
-
-    
-    it('renders', () => {
-        cy.mount(<IForm>Click me!</IForm>)
+        cy.mount(<BIGFORM props={"anythings!"} undefined={({ /* IState */ })}>Click me!</BIGFORM>)
         cy.get('button').should('contains.text', 'Click me!')
     });
     
@@ -30,7 +19,7 @@ describe('IForm', () => {
 [
    {
       "pos": 57,
-      "end": 118,
+      "end": 242,
       "flags": 0,
       "modifierFlagsCache": 0,
       "transformFlags": 1,
@@ -104,28 +93,229 @@ describe('IForm', () => {
                "transformFlags": 1,
                "kind": 152
             }
+         },
+         {
+            "pos": 116,
+            "end": 133,
+            "flags": 0,
+            "modifierFlagsCache": 0,
+            "transformFlags": 1,
+            "kind": 168,
+            "name": {
+               "pos": 116,
+               "end": 124,
+               "flags": 0,
+               "modifierFlagsCache": 0,
+               "transformFlags": 0,
+               "kind": 79,
+               "escapedText": "phone"
+            },
+            "type": {
+               "pos": 125,
+               "end": 132,
+               "flags": 0,
+               "modifierFlagsCache": 0,
+               "transformFlags": 1,
+               "kind": 148
+            }
+         },
+         {
+            "pos": 133,
+            "end": 150,
+            "flags": 0,
+            "modifierFlagsCache": 0,
+            "transformFlags": 1,
+            "kind": 168,
+            "name": {
+               "pos": 133,
+               "end": 140,
+               "flags": 0,
+               "modifierFlagsCache": 0,
+               "transformFlags": 0,
+               "kind": 79,
+               "escapedText": "good"
+            },
+            "type": {
+               "pos": 141,
+               "end": 149,
+               "flags": 0,
+               "modifierFlagsCache": 0,
+               "transformFlags": 1,
+               "kind": 134
+            }
+         },
+         {
+            "pos": 150,
+            "end": 172,
+            "flags": 0,
+            "modifierFlagsCache": 0,
+            "transformFlags": 1,
+            "kind": 168,
+            "name": {
+               "pos": 150,
+               "end": 161,
+               "flags": 0,
+               "modifierFlagsCache": 0,
+               "transformFlags": 0,
+               "kind": 79,
+               "escapedText": "verygood"
+            },
+            "type": {
+               "pos": 163,
+               "end": 171,
+               "flags": 0,
+               "modifierFlagsCache": 0,
+               "transformFlags": 1,
+               "kind": 134
+            },
+            "questionToken": {
+               "pos": 161,
+               "end": 162,
+               "flags": 0,
+               "modifierFlagsCache": 0,
+               "transformFlags": 0,
+               "kind": 57
+            }
+         },
+         {
+            "pos": 172,
+            "end": 192,
+            "flags": 0,
+            "modifierFlagsCache": 0,
+            "transformFlags": 1,
+            "kind": 168,
+            "name": {
+               "pos": 172,
+               "end": 184,
+               "flags": 0,
+               "modifierFlagsCache": 0,
+               "transformFlags": 0,
+               "kind": 79,
+               "escapedText": "subobject"
+            },
+            "type": {
+               "pos": 185,
+               "end": 191,
+               "flags": 0,
+               "modifierFlagsCache": 0,
+               "transformFlags": 1,
+               "kind": 180,
+               "typeName": {
+                  "pos": 185,
+                  "end": 191,
+                  "flags": 0,
+                  "modifierFlagsCache": 0,
+                  "transformFlags": 0,
+                  "kind": 79,
+                  "escapedText": "IForm"
+               }
+            }
+         },
+         {
+            "pos": 192,
+            "end": 215,
+            "flags": 0,
+            "modifierFlagsCache": 0,
+            "transformFlags": 1,
+            "kind": 168,
+            "name": {
+               "pos": 192,
+               "end": 206,
+               "flags": 0,
+               "modifierFlagsCache": 0,
+               "transformFlags": 0,
+               "kind": 79,
+               "escapedText": "maybeObject"
+            },
+            "type": {
+               "pos": 208,
+               "end": 214,
+               "flags": 0,
+               "modifierFlagsCache": 0,
+               "transformFlags": 1,
+               "kind": 180,
+               "typeName": {
+                  "pos": 208,
+                  "end": 214,
+                  "flags": 0,
+                  "modifierFlagsCache": 0,
+                  "transformFlags": 0,
+                  "kind": 79,
+                  "escapedText": "IForm"
+               }
+            },
+            "questionToken": {
+               "pos": 206,
+               "end": 207,
+               "flags": 0,
+               "modifierFlagsCache": 0,
+               "transformFlags": 0,
+               "kind": 57
+            }
+         },
+         {
+            "pos": 215,
+            "end": 240,
+            "flags": 0,
+            "modifierFlagsCache": 0,
+            "transformFlags": 1,
+            "kind": 168,
+            "name": {
+               "pos": 215,
+               "end": 230,
+               "flags": 0,
+               "modifierFlagsCache": 0,
+               "transformFlags": 0,
+               "kind": 79,
+               "escapedText": "arrayObjects"
+            },
+            "type": {
+               "pos": 231,
+               "end": 239,
+               "flags": 0,
+               "modifierFlagsCache": 0,
+               "transformFlags": 1,
+               "kind": 185,
+               "elementType": {
+                  "pos": 231,
+                  "end": 237,
+                  "flags": 0,
+                  "modifierFlagsCache": 0,
+                  "transformFlags": 1,
+                  "kind": 180,
+                  "typeName": {
+                     "pos": 231,
+                     "end": 237,
+                     "flags": 0,
+                     "modifierFlagsCache": 0,
+                     "transformFlags": 0,
+                     "kind": 79,
+                     "escapedText": "IForm"
+                  }
+               }
+            }
          }
       ]
    },
    {
-      "pos": 118,
-      "end": 629,
+      "pos": 242,
+      "end": 762,
       "flags": 0,
       "modifierFlagsCache": 0,
       "transformFlags": 4981891,
       "kind": 259,
       "modifiers": [
          {
-            "pos": 118,
-            "end": 126,
+            "pos": 242,
+            "end": 250,
             "flags": 0,
             "modifierFlagsCache": 0,
             "transformFlags": 0,
             "kind": 93
          },
          {
-            "pos": 126,
-            "end": 134,
+            "pos": 250,
+            "end": 258,
             "flags": 0,
             "modifierFlagsCache": 0,
             "transformFlags": 0,
@@ -134,15 +324,15 @@ describe('IForm', () => {
       ],
       "parameters": [
          {
-            "pos": 145,
-            "end": 159,
+            "pos": 269,
+            "end": 283,
             "flags": 0,
             "modifierFlagsCache": 0,
             "transformFlags": 1,
             "kind": 166,
             "name": {
-               "pos": 145,
-               "end": 150,
+               "pos": 269,
+               "end": 274,
                "flags": 0,
                "modifierFlagsCache": 0,
                "transformFlags": 0,
@@ -150,8 +340,8 @@ describe('IForm', () => {
                "escapedText": "props"
             },
             "type": {
-               "pos": 151,
-               "end": 159,
+               "pos": 275,
+               "end": 283,
                "flags": 0,
                "modifierFlagsCache": 0,
                "transformFlags": 1,
@@ -159,30 +349,30 @@ describe('IForm', () => {
             }
          },
          {
-            "pos": 160,
-            "end": 189,
+            "pos": 284,
+            "end": 313,
             "flags": 0,
             "modifierFlagsCache": 0,
             "transformFlags": 525313,
             "kind": 166,
             "name": {
-               "pos": 160,
-               "end": 181,
+               "pos": 284,
+               "end": 305,
                "flags": 0,
                "modifierFlagsCache": 0,
                "transformFlags": 525312,
                "kind": 203,
                "elements": [
                   {
-                     "pos": 162,
-                     "end": 171,
+                     "pos": 286,
+                     "end": 295,
                      "flags": 0,
                      "modifierFlagsCache": 0,
                      "transformFlags": 1024,
                      "kind": 205,
                      "name": {
-                        "pos": 162,
-                        "end": 171,
+                        "pos": 286,
+                        "end": 295,
                         "flags": 0,
                         "modifierFlagsCache": 0,
                         "transformFlags": 0,
@@ -191,15 +381,15 @@ describe('IForm', () => {
                      }
                   },
                   {
-                     "pos": 172,
-                     "end": 179,
+                     "pos": 296,
+                     "end": 303,
                      "flags": 0,
                      "modifierFlagsCache": 0,
                      "transformFlags": 1024,
                      "kind": 205,
                      "name": {
-                        "pos": 172,
-                        "end": 179,
+                        "pos": 296,
+                        "end": 303,
                         "flags": 0,
                         "modifierFlagsCache": 0,
                         "transformFlags": 0,
@@ -210,15 +400,15 @@ describe('IForm', () => {
                ]
             },
             "type": {
-               "pos": 182,
-               "end": 189,
+               "pos": 306,
+               "end": 313,
                "flags": 0,
                "modifierFlagsCache": 0,
                "transformFlags": 1,
                "kind": 180,
                "typeName": {
-                  "pos": 182,
-                  "end": 189,
+                  "pos": 306,
+                  "end": 313,
                   "flags": 0,
                   "modifierFlagsCache": 0,
                   "transformFlags": 0,
@@ -229,53 +419,53 @@ describe('IForm', () => {
          }
       ],
       "body": {
-         "pos": 190,
-         "end": 629,
+         "pos": 314,
+         "end": 762,
          "flags": 0,
          "modifierFlagsCache": 0,
          "transformFlags": 4457603,
          "kind": 238,
          "statements": [
             {
-               "pos": 192,
-               "end": 260,
+               "pos": 316,
+               "end": 393,
                "flags": 0,
                "modifierFlagsCache": 0,
                "transformFlags": 4457473,
                "kind": 240,
                "declarationList": {
-                  "pos": 192,
-                  "end": 259,
+                  "pos": 316,
+                  "end": 392,
                   "flags": 2,
                   "modifierFlagsCache": 0,
                   "transformFlags": 4981761,
                   "kind": 258,
                   "declarations": [
                      {
-                        "pos": 200,
-                        "end": 259,
+                        "pos": 324,
+                        "end": 392,
                         "flags": 0,
                         "modifierFlagsCache": 0,
                         "transformFlags": 525313,
                         "kind": 257,
                         "name": {
-                           "pos": 200,
-                           "end": 216,
+                           "pos": 324,
+                           "end": 340,
                            "flags": 0,
                            "modifierFlagsCache": 0,
                            "transformFlags": 525312,
                            "kind": 204,
                            "elements": [
                               {
-                                 "pos": 202,
-                                 "end": 206,
+                                 "pos": 326,
+                                 "end": 330,
                                  "flags": 0,
                                  "modifierFlagsCache": 0,
                                  "transformFlags": 1024,
                                  "kind": 205,
                                  "name": {
-                                    "pos": 202,
-                                    "end": 206,
+                                    "pos": 326,
+                                    "end": 330,
                                     "flags": 0,
                                     "modifierFlagsCache": 0,
                                     "transformFlags": 0,
@@ -284,15 +474,15 @@ describe('IForm', () => {
                                  }
                               },
                               {
-                                 "pos": 207,
-                                 "end": 215,
+                                 "pos": 331,
+                                 "end": 339,
                                  "flags": 0,
                                  "modifierFlagsCache": 0,
                                  "transformFlags": 1024,
                                  "kind": 205,
                                  "name": {
-                                    "pos": 207,
-                                    "end": 215,
+                                    "pos": 331,
+                                    "end": 339,
                                     "flags": 0,
                                     "modifierFlagsCache": 0,
                                     "transformFlags": 0,
@@ -303,15 +493,15 @@ describe('IForm', () => {
                            ]
                         },
                         "initializer": {
-                           "pos": 218,
-                           "end": 259,
+                           "pos": 342,
+                           "end": 392,
                            "flags": 0,
                            "modifierFlagsCache": 0,
                            "transformFlags": 1,
                            "kind": 210,
                            "expression": {
-                              "pos": 218,
-                              "end": 227,
+                              "pos": 342,
+                              "end": 351,
                               "flags": 0,
                               "modifierFlagsCache": 0,
                               "transformFlags": 0,
@@ -320,15 +510,15 @@ describe('IForm', () => {
                            },
                            "typeArguments": [
                               {
-                                 "pos": 228,
-                                 "end": 233,
+                                 "pos": 352,
+                                 "end": 357,
                                  "flags": 0,
                                  "modifierFlagsCache": 0,
                                  "transformFlags": 1,
                                  "kind": 180,
                                  "typeName": {
-                                    "pos": 228,
-                                    "end": 233,
+                                    "pos": 352,
+                                    "end": 357,
                                     "flags": 0,
                                     "modifierFlagsCache": 0,
                                     "transformFlags": 0,
@@ -339,69 +529,94 @@ describe('IForm', () => {
                            ],
                            "arguments": [
                               {
-                                 "pos": 235,
-                                 "end": 258,
+                                 "pos": 359,
+                                 "end": 391,
                                  "flags": 0,
                                  "modifierFlagsCache": 0,
-                                 "transformFlags": 0,
-                                 "kind": 207,
-                                 "properties": [
-                                    {
-                                       "pos": 236,
-                                       "end": 245,
+                                 "transformFlags": 1,
+                                 "kind": 231,
+                                 "expression": {
+                                    "pos": 359,
+                                    "end": 382,
+                                    "flags": 0,
+                                    "modifierFlagsCache": 0,
+                                    "transformFlags": 0,
+                                    "kind": 207,
+                                    "properties": [
+                                       {
+                                          "pos": 360,
+                                          "end": 369,
+                                          "flags": 0,
+                                          "modifierFlagsCache": 0,
+                                          "transformFlags": 0,
+                                          "kind": 299,
+                                          "name": {
+                                             "pos": 360,
+                                             "end": 365,
+                                             "flags": 0,
+                                             "modifierFlagsCache": 0,
+                                             "transformFlags": 0,
+                                             "kind": 79,
+                                             "escapedText": "name"
+                                          },
+                                          "initializer": {
+                                             "pos": 366,
+                                             "end": 369,
+                                             "flags": 0,
+                                             "modifierFlagsCache": 0,
+                                             "transformFlags": 0,
+                                             "kind": 10,
+                                             "text": "",
+                                             "hasExtendedUnicodeEscape": false
+                                          }
+                                       },
+                                       {
+                                          "pos": 370,
+                                          "end": 380,
+                                          "flags": 0,
+                                          "modifierFlagsCache": 0,
+                                          "transformFlags": 0,
+                                          "kind": 299,
+                                          "name": {
+                                             "pos": 370,
+                                             "end": 376,
+                                             "flags": 0,
+                                             "modifierFlagsCache": 0,
+                                             "transformFlags": 0,
+                                             "kind": 79,
+                                             "escapedText": "email"
+                                          },
+                                          "initializer": {
+                                             "pos": 377,
+                                             "end": 380,
+                                             "flags": 0,
+                                             "modifierFlagsCache": 0,
+                                             "transformFlags": 0,
+                                             "kind": 10,
+                                             "text": "",
+                                             "hasExtendedUnicodeEscape": false
+                                          }
+                                       }
+                                    ],
+                                    "multiLine": false
+                                 },
+                                 "type": {
+                                    "pos": 385,
+                                    "end": 391,
+                                    "flags": 0,
+                                    "modifierFlagsCache": 0,
+                                    "transformFlags": 1,
+                                    "kind": 180,
+                                    "typeName": {
+                                       "pos": 385,
+                                       "end": 391,
                                        "flags": 0,
                                        "modifierFlagsCache": 0,
                                        "transformFlags": 0,
-                                       "kind": 299,
-                                       "name": {
-                                          "pos": 236,
-                                          "end": 241,
-                                          "flags": 0,
-                                          "modifierFlagsCache": 0,
-                                          "transformFlags": 0,
-                                          "kind": 79,
-                                          "escapedText": "name"
-                                       },
-                                       "initializer": {
-                                          "pos": 242,
-                                          "end": 245,
-                                          "flags": 0,
-                                          "modifierFlagsCache": 0,
-                                          "transformFlags": 0,
-                                          "kind": 10,
-                                          "text": "",
-                                          "hasExtendedUnicodeEscape": false
-                                       }
-                                    },
-                                    {
-                                       "pos": 246,
-                                       "end": 256,
-                                       "flags": 0,
-                                       "modifierFlagsCache": 0,
-                                       "transformFlags": 0,
-                                       "kind": 299,
-                                       "name": {
-                                          "pos": 246,
-                                          "end": 252,
-                                          "flags": 0,
-                                          "modifierFlagsCache": 0,
-                                          "transformFlags": 0,
-                                          "kind": 79,
-                                          "escapedText": "email"
-                                       },
-                                       "initializer": {
-                                          "pos": 253,
-                                          "end": 256,
-                                          "flags": 0,
-                                          "modifierFlagsCache": 0,
-                                          "transformFlags": 0,
-                                          "kind": 10,
-                                          "text": "",
-                                          "hasExtendedUnicodeEscape": false
-                                       }
+                                       "kind": 79,
+                                       "escapedText": "IForm"
                                     }
-                                 ],
-                                 "multiLine": false
+                                 }
                               }
                            ]
                         }
@@ -410,36 +625,36 @@ describe('IForm', () => {
                }
             },
             {
-               "pos": 260,
-               "end": 627,
+               "pos": 393,
+               "end": 760,
                "flags": 0,
                "modifierFlagsCache": 0,
                "transformFlags": 4195458,
                "kind": 250,
                "expression": {
-                  "pos": 269,
-                  "end": 626,
+                  "pos": 402,
+                  "end": 759,
                   "flags": 0,
                   "modifierFlagsCache": 0,
                   "transformFlags": 1026,
                   "kind": 214,
                   "expression": {
-                     "pos": 271,
-                     "end": 622,
+                     "pos": 404,
+                     "end": 755,
                      "flags": 0,
                      "modifierFlagsCache": 0,
                      "transformFlags": 1026,
                      "kind": 281,
                      "openingElement": {
-                        "pos": 271,
-                        "end": 282,
+                        "pos": 404,
+                        "end": 415,
                         "flags": 0,
                         "modifierFlagsCache": 0,
                         "transformFlags": 2,
                         "kind": 283,
                         "tagName": {
-                           "pos": 277,
-                           "end": 281,
+                           "pos": 410,
+                           "end": 414,
                            "flags": 0,
                            "modifierFlagsCache": 0,
                            "transformFlags": 0,
@@ -447,8 +662,8 @@ describe('IForm', () => {
                            "escapedText": "form"
                         },
                         "attributes": {
-                           "pos": 281,
-                           "end": 281,
+                           "pos": 414,
+                           "end": 414,
                            "flags": 0,
                            "modifierFlagsCache": 0,
                            "transformFlags": 2,
@@ -458,8 +673,8 @@ describe('IForm', () => {
                      },
                      "children": [
                         {
-                           "pos": 282,
-                           "end": 289,
+                           "pos": 415,
+                           "end": 422,
                            "flags": 0,
                            "modifierFlagsCache": 0,
                            "transformFlags": 2,
@@ -468,22 +683,22 @@ describe('IForm', () => {
                            "containsOnlyTriviaWhiteSpaces": true
                         },
                         {
-                           "pos": 289,
-                           "end": 414,
+                           "pos": 422,
+                           "end": 547,
                            "flags": 0,
                            "modifierFlagsCache": 0,
                            "transformFlags": 1026,
                            "kind": 281,
                            "openingElement": {
-                              "pos": 289,
-                              "end": 294,
+                              "pos": 422,
+                              "end": 427,
                               "flags": 0,
                               "modifierFlagsCache": 0,
                               "transformFlags": 2,
                               "kind": 283,
                               "tagName": {
-                                 "pos": 290,
-                                 "end": 293,
+                                 "pos": 423,
+                                 "end": 426,
                                  "flags": 0,
                                  "modifierFlagsCache": 0,
                                  "transformFlags": 0,
@@ -491,8 +706,8 @@ describe('IForm', () => {
                                  "escapedText": "div"
                               },
                               "attributes": {
-                                 "pos": 293,
-                                 "end": 293,
+                                 "pos": 426,
+                                 "end": 426,
                                  "flags": 0,
                                  "modifierFlagsCache": 0,
                                  "transformFlags": 2,
@@ -502,8 +717,8 @@ describe('IForm', () => {
                            },
                            "children": [
                               {
-                                 "pos": 294,
-                                 "end": 309,
+                                 "pos": 427,
+                                 "end": 442,
                                  "flags": 0,
                                  "modifierFlagsCache": 0,
                                  "transformFlags": 2,
@@ -512,369 +727,8 @@ describe('IForm', () => {
                                  "containsOnlyTriviaWhiteSpaces": false
                               },
                               {
-                                 "pos": 309,
-                                 "end": 401,
-                                 "flags": 0,
-                                 "modifierFlagsCache": 0,
-                                 "transformFlags": 1026,
-                                 "kind": 282,
-                                 "tagName": {
-                                    "pos": 310,
-                                    "end": 315,
-                                    "flags": 0,
-                                    "modifierFlagsCache": 0,
-                                    "transformFlags": 0,
-                                    "kind": 79,
-                                    "escapedText": "input"
-                                 },
-                                 "attributes": {
-                                    "pos": 315,
-                                    "end": 398,
-                                    "flags": 0,
-                                    "modifierFlagsCache": 0,
-                                    "transformFlags": 1026,
-                                    "kind": 289,
-                                    "properties": [
-                                       {
-                                          "pos": 315,
-                                          "end": 327,
-                                          "flags": 0,
-                                          "modifierFlagsCache": 0,
-                                          "transformFlags": 2,
-                                          "kind": 288,
-                                          "name": {
-                                             "pos": 315,
-                                             "end": 320,
-                                             "flags": 0,
-                                             "modifierFlagsCache": 0,
-                                             "transformFlags": 0,
-                                             "kind": 79,
-                                             "originalKeywordKind": 154,
-                                             "escapedText": "type"
-                                          },
-                                          "initializer": {
-                                             "pos": 321,
-                                             "end": 327,
-                                             "flags": 0,
-                                             "modifierFlagsCache": 0,
-                                             "transformFlags": 0,
-                                             "kind": 10,
-                                             "text": "text",
-                                             "hasExtendedUnicodeEscape": false
-                                          }
-                                       },
-                                       {
-                                          "pos": 327,
-                                          "end": 345,
-                                          "flags": 0,
-                                          "modifierFlagsCache": 0,
-                                          "transformFlags": 2,
-                                          "kind": 288,
-                                          "name": {
-                                             "pos": 327,
-                                             "end": 333,
-                                             "flags": 0,
-                                             "modifierFlagsCache": 0,
-                                             "transformFlags": 0,
-                                             "kind": 79,
-                                             "escapedText": "value"
-                                          },
-                                          "initializer": {
-                                             "pos": 334,
-                                             "end": 345,
-                                             "flags": 0,
-                                             "modifierFlagsCache": 0,
-                                             "transformFlags": 2,
-                                             "kind": 291,
-                                             "expression": {
-                                                "pos": 335,
-                                                "end": 344,
-                                                "flags": 0,
-                                                "modifierFlagsCache": 0,
-                                                "transformFlags": 0,
-                                                "kind": 208,
-                                                "expression": {
-                                                   "pos": 335,
-                                                   "end": 339,
-                                                   "flags": 0,
-                                                   "modifierFlagsCache": 0,
-                                                   "transformFlags": 0,
-                                                   "kind": 79,
-                                                   "escapedText": "form"
-                                                },
-                                                "name": {
-                                                   "pos": 340,
-                                                   "end": 344,
-                                                   "flags": 0,
-                                                   "modifierFlagsCache": 0,
-                                                   "transformFlags": 0,
-                                                   "kind": 79,
-                                                   "escapedText": "name"
-                                                }
-                                             }
-                                          }
-                                       },
-                                       {
-                                          "pos": 345,
-                                          "end": 398,
-                                          "flags": 0,
-                                          "modifierFlagsCache": 0,
-                                          "transformFlags": 1026,
-                                          "kind": 288,
-                                          "name": {
-                                             "pos": 345,
-                                             "end": 354,
-                                             "flags": 0,
-                                             "modifierFlagsCache": 0,
-                                             "transformFlags": 0,
-                                             "kind": 79,
-                                             "escapedText": "onChange"
-                                          },
-                                          "initializer": {
-                                             "pos": 355,
-                                             "end": 398,
-                                             "flags": 0,
-                                             "modifierFlagsCache": 0,
-                                             "transformFlags": 1026,
-                                             "kind": 291,
-                                             "expression": {
-                                                "pos": 356,
-                                                "end": 397,
-                                                "flags": 0,
-                                                "modifierFlagsCache": 0,
-                                                "transformFlags": 1024,
-                                                "kind": 216,
-                                                "parameters": [
-                                                   {
-                                                      "pos": 356,
-                                                      "end": 357,
-                                                      "flags": 0,
-                                                      "modifierFlagsCache": 0,
-                                                      "transformFlags": 0,
-                                                      "kind": 166,
-                                                      "name": {
-                                                         "pos": 356,
-                                                         "end": 357,
-                                                         "flags": 0,
-                                                         "modifierFlagsCache": 0,
-                                                         "transformFlags": 0,
-                                                         "kind": 79,
-                                                         "escapedText": "e"
-                                                      }
-                                                   }
-                                                ],
-                                                "body": {
-                                                   "pos": 360,
-                                                   "end": 397,
-                                                   "flags": 0,
-                                                   "modifierFlagsCache": 0,
-                                                   "transformFlags": 0,
-                                                   "kind": 210,
-                                                   "expression": {
-                                                      "pos": 360,
-                                                      "end": 367,
-                                                      "flags": 0,
-                                                      "modifierFlagsCache": 0,
-                                                      "transformFlags": 0,
-                                                      "kind": 79,
-                                                      "escapedText": "render"
-                                                   },
-                                                   "arguments": [
-                                                      {
-                                                         "pos": 368,
-                                                         "end": 396,
-                                                         "flags": 0,
-                                                         "modifierFlagsCache": 0,
-                                                         "transformFlags": 0,
-                                                         "kind": 214,
-                                                         "expression": {
-                                                            "pos": 369,
-                                                            "end": 395,
-                                                            "flags": 0,
-                                                            "modifierFlagsCache": 0,
-                                                            "transformFlags": 0,
-                                                            "kind": 223,
-                                                            "left": {
-                                                               "pos": 369,
-                                                               "end": 378,
-                                                               "flags": 0,
-                                                               "modifierFlagsCache": 0,
-                                                               "transformFlags": 0,
-                                                               "kind": 208,
-                                                               "expression": {
-                                                                  "pos": 369,
-                                                                  "end": 373,
-                                                                  "flags": 0,
-                                                                  "modifierFlagsCache": 0,
-                                                                  "transformFlags": 0,
-                                                                  "kind": 79,
-                                                                  "escapedText": "form"
-                                                               },
-                                                               "name": {
-                                                                  "pos": 374,
-                                                                  "end": 378,
-                                                                  "flags": 0,
-                                                                  "modifierFlagsCache": 0,
-                                                                  "transformFlags": 0,
-                                                                  "kind": 79,
-                                                                  "escapedText": "name"
-                                                               }
-                                                            },
-                                                            "operatorToken": {
-                                                               "pos": 378,
-                                                               "end": 380,
-                                                               "flags": 0,
-                                                               "modifierFlagsCache": 0,
-                                                               "transformFlags": 0,
-                                                               "kind": 63
-                                                            },
-                                                            "right": {
-                                                               "pos": 380,
-                                                               "end": 395,
-                                                               "flags": 0,
-                                                               "modifierFlagsCache": 0,
-                                                               "transformFlags": 0,
-                                                               "kind": 208,
-                                                               "expression": {
-                                                                  "pos": 380,
-                                                                  "end": 389,
-                                                                  "flags": 0,
-                                                                  "modifierFlagsCache": 0,
-                                                                  "transformFlags": 0,
-                                                                  "kind": 208,
-                                                                  "expression": {
-                                                                     "pos": 380,
-                                                                     "end": 382,
-                                                                     "flags": 0,
-                                                                     "modifierFlagsCache": 0,
-                                                                     "transformFlags": 0,
-                                                                     "kind": 79,
-                                                                     "escapedText": "e"
-                                                                  },
-                                                                  "name": {
-                                                                     "pos": 383,
-                                                                     "end": 389,
-                                                                     "flags": 0,
-                                                                     "modifierFlagsCache": 0,
-                                                                     "transformFlags": 0,
-                                                                     "kind": 79,
-                                                                     "escapedText": "target"
-                                                                  }
-                                                               },
-                                                               "name": {
-                                                                  "pos": 390,
-                                                                  "end": 395,
-                                                                  "flags": 0,
-                                                                  "modifierFlagsCache": 0,
-                                                                  "transformFlags": 0,
-                                                                  "kind": 79,
-                                                                  "escapedText": "value"
-                                                               }
-                                                            }
-                                                         }
-                                                      }
-                                                   ]
-                                                },
-                                                "equalsGreaterThanToken": {
-                                                   "pos": 357,
-                                                   "end": 360,
-                                                   "flags": 0,
-                                                   "modifierFlagsCache": 0,
-                                                   "transformFlags": 0,
-                                                   "kind": 38
-                                                }
-                                             }
-                                          }
-                                       }
-                                    ]
-                                 }
-                              },
-                              {
-                                 "pos": 401,
-                                 "end": 408,
-                                 "flags": 0,
-                                 "modifierFlagsCache": 0,
-                                 "transformFlags": 2,
-                                 "kind": 11,
-                                 "text": "\n      ",
-                                 "containsOnlyTriviaWhiteSpaces": true
-                              }
-                           ],
-                           "closingElement": {
-                              "pos": 408,
-                              "end": 414,
-                              "flags": 0,
-                              "modifierFlagsCache": 0,
-                              "transformFlags": 2,
-                              "kind": 284,
-                              "tagName": {
-                                 "pos": 410,
-                                 "end": 413,
-                                 "flags": 0,
-                                 "modifierFlagsCache": 0,
-                                 "transformFlags": 0,
-                                 "kind": 79,
-                                 "escapedText": "div"
-                              }
-                           }
-                        },
-                        {
-                           "pos": 414,
-                           "end": 421,
-                           "flags": 0,
-                           "modifierFlagsCache": 0,
-                           "transformFlags": 2,
-                           "kind": 11,
-                           "text": "\n      ",
-                           "containsOnlyTriviaWhiteSpaces": true
-                        },
-                        {
-                           "pos": 421,
-                           "end": 550,
-                           "flags": 0,
-                           "modifierFlagsCache": 0,
-                           "transformFlags": 1026,
-                           "kind": 281,
-                           "openingElement": {
-                              "pos": 421,
-                              "end": 426,
-                              "flags": 0,
-                              "modifierFlagsCache": 0,
-                              "transformFlags": 2,
-                              "kind": 283,
-                              "tagName": {
-                                 "pos": 422,
-                                 "end": 425,
-                                 "flags": 0,
-                                 "modifierFlagsCache": 0,
-                                 "transformFlags": 0,
-                                 "kind": 79,
-                                 "escapedText": "div"
-                              },
-                              "attributes": {
-                                 "pos": 425,
-                                 "end": 425,
-                                 "flags": 0,
-                                 "modifierFlagsCache": 0,
-                                 "transformFlags": 2,
-                                 "kind": 289,
-                                 "properties": []
-                              }
-                           },
-                           "children": [
-                              {
-                                 "pos": 426,
-                                 "end": 442,
-                                 "flags": 0,
-                                 "modifierFlagsCache": 0,
-                                 "transformFlags": 2,
-                                 "kind": 11,
-                                 "text": "\n        Email: ",
-                                 "containsOnlyTriviaWhiteSpaces": false
-                              },
-                              {
                                  "pos": 442,
-                                 "end": 537,
+                                 "end": 534,
                                  "flags": 0,
                                  "modifierFlagsCache": 0,
                                  "transformFlags": 1026,
@@ -890,7 +744,7 @@ describe('IForm', () => {
                                  },
                                  "attributes": {
                                     "pos": 448,
-                                    "end": 534,
+                                    "end": 531,
                                     "flags": 0,
                                     "modifierFlagsCache": 0,
                                     "transformFlags": 1026,
@@ -898,7 +752,7 @@ describe('IForm', () => {
                                     "properties": [
                                        {
                                           "pos": 448,
-                                          "end": 461,
+                                          "end": 460,
                                           "flags": 0,
                                           "modifierFlagsCache": 0,
                                           "transformFlags": 2,
@@ -915,25 +769,25 @@ describe('IForm', () => {
                                           },
                                           "initializer": {
                                              "pos": 454,
-                                             "end": 461,
+                                             "end": 460,
                                              "flags": 0,
                                              "modifierFlagsCache": 0,
                                              "transformFlags": 0,
                                              "kind": 10,
-                                             "text": "email",
+                                             "text": "text",
                                              "hasExtendedUnicodeEscape": false
                                           }
                                        },
                                        {
-                                          "pos": 461,
-                                          "end": 480,
+                                          "pos": 460,
+                                          "end": 478,
                                           "flags": 0,
                                           "modifierFlagsCache": 0,
                                           "transformFlags": 2,
                                           "kind": 288,
                                           "name": {
-                                             "pos": 461,
-                                             "end": 467,
+                                             "pos": 460,
+                                             "end": 466,
                                              "flags": 0,
                                              "modifierFlagsCache": 0,
                                              "transformFlags": 0,
@@ -941,22 +795,22 @@ describe('IForm', () => {
                                              "escapedText": "value"
                                           },
                                           "initializer": {
-                                             "pos": 468,
-                                             "end": 480,
+                                             "pos": 467,
+                                             "end": 478,
                                              "flags": 0,
                                              "modifierFlagsCache": 0,
                                              "transformFlags": 2,
                                              "kind": 291,
                                              "expression": {
-                                                "pos": 469,
-                                                "end": 479,
+                                                "pos": 468,
+                                                "end": 477,
                                                 "flags": 0,
                                                 "modifierFlagsCache": 0,
                                                 "transformFlags": 0,
                                                 "kind": 208,
                                                 "expression": {
-                                                   "pos": 469,
-                                                   "end": 473,
+                                                   "pos": 468,
+                                                   "end": 472,
                                                    "flags": 0,
                                                    "modifierFlagsCache": 0,
                                                    "transformFlags": 0,
@@ -964,27 +818,27 @@ describe('IForm', () => {
                                                    "escapedText": "form"
                                                 },
                                                 "name": {
-                                                   "pos": 474,
-                                                   "end": 479,
+                                                   "pos": 473,
+                                                   "end": 477,
                                                    "flags": 0,
                                                    "modifierFlagsCache": 0,
                                                    "transformFlags": 0,
                                                    "kind": 79,
-                                                   "escapedText": "email"
+                                                   "escapedText": "name"
                                                 }
                                              }
                                           }
                                        },
                                        {
-                                          "pos": 480,
-                                          "end": 534,
+                                          "pos": 478,
+                                          "end": 531,
                                           "flags": 0,
                                           "modifierFlagsCache": 0,
                                           "transformFlags": 1026,
                                           "kind": 288,
                                           "name": {
-                                             "pos": 480,
-                                             "end": 489,
+                                             "pos": 478,
+                                             "end": 487,
                                              "flags": 0,
                                              "modifierFlagsCache": 0,
                                              "transformFlags": 0,
@@ -992,30 +846,30 @@ describe('IForm', () => {
                                              "escapedText": "onChange"
                                           },
                                           "initializer": {
-                                             "pos": 490,
-                                             "end": 534,
+                                             "pos": 488,
+                                             "end": 531,
                                              "flags": 0,
                                              "modifierFlagsCache": 0,
                                              "transformFlags": 1026,
                                              "kind": 291,
                                              "expression": {
-                                                "pos": 491,
-                                                "end": 533,
+                                                "pos": 489,
+                                                "end": 530,
                                                 "flags": 0,
                                                 "modifierFlagsCache": 0,
                                                 "transformFlags": 1024,
                                                 "kind": 216,
                                                 "parameters": [
                                                    {
-                                                      "pos": 491,
-                                                      "end": 492,
+                                                      "pos": 489,
+                                                      "end": 490,
                                                       "flags": 0,
                                                       "modifierFlagsCache": 0,
                                                       "transformFlags": 0,
                                                       "kind": 166,
                                                       "name": {
-                                                         "pos": 491,
-                                                         "end": 492,
+                                                         "pos": 489,
+                                                         "end": 490,
                                                          "flags": 0,
                                                          "modifierFlagsCache": 0,
                                                          "transformFlags": 0,
@@ -1025,15 +879,15 @@ describe('IForm', () => {
                                                    }
                                                 ],
                                                 "body": {
-                                                   "pos": 495,
-                                                   "end": 533,
+                                                   "pos": 493,
+                                                   "end": 530,
                                                    "flags": 0,
                                                    "modifierFlagsCache": 0,
                                                    "transformFlags": 0,
                                                    "kind": 210,
                                                    "expression": {
-                                                      "pos": 495,
-                                                      "end": 502,
+                                                      "pos": 493,
+                                                      "end": 500,
                                                       "flags": 0,
                                                       "modifierFlagsCache": 0,
                                                       "transformFlags": 0,
@@ -1042,29 +896,29 @@ describe('IForm', () => {
                                                    },
                                                    "arguments": [
                                                       {
-                                                         "pos": 503,
-                                                         "end": 532,
+                                                         "pos": 501,
+                                                         "end": 529,
                                                          "flags": 0,
                                                          "modifierFlagsCache": 0,
                                                          "transformFlags": 0,
                                                          "kind": 214,
                                                          "expression": {
-                                                            "pos": 504,
-                                                            "end": 531,
+                                                            "pos": 502,
+                                                            "end": 528,
                                                             "flags": 0,
                                                             "modifierFlagsCache": 0,
                                                             "transformFlags": 0,
                                                             "kind": 223,
                                                             "left": {
-                                                               "pos": 504,
-                                                               "end": 514,
+                                                               "pos": 502,
+                                                               "end": 511,
                                                                "flags": 0,
                                                                "modifierFlagsCache": 0,
                                                                "transformFlags": 0,
                                                                "kind": 208,
                                                                "expression": {
-                                                                  "pos": 504,
-                                                                  "end": 508,
+                                                                  "pos": 502,
+                                                                  "end": 506,
                                                                   "flags": 0,
                                                                   "modifierFlagsCache": 0,
                                                                   "transformFlags": 0,
@@ -1072,40 +926,40 @@ describe('IForm', () => {
                                                                   "escapedText": "form"
                                                                },
                                                                "name": {
-                                                                  "pos": 509,
-                                                                  "end": 514,
+                                                                  "pos": 507,
+                                                                  "end": 511,
                                                                   "flags": 0,
                                                                   "modifierFlagsCache": 0,
                                                                   "transformFlags": 0,
                                                                   "kind": 79,
-                                                                  "escapedText": "email"
+                                                                  "escapedText": "name"
                                                                }
                                                             },
                                                             "operatorToken": {
-                                                               "pos": 514,
-                                                               "end": 516,
+                                                               "pos": 511,
+                                                               "end": 513,
                                                                "flags": 0,
                                                                "modifierFlagsCache": 0,
                                                                "transformFlags": 0,
                                                                "kind": 63
                                                             },
                                                             "right": {
-                                                               "pos": 516,
-                                                               "end": 531,
+                                                               "pos": 513,
+                                                               "end": 528,
                                                                "flags": 0,
                                                                "modifierFlagsCache": 0,
                                                                "transformFlags": 0,
                                                                "kind": 208,
                                                                "expression": {
-                                                                  "pos": 516,
-                                                                  "end": 525,
+                                                                  "pos": 513,
+                                                                  "end": 522,
                                                                   "flags": 0,
                                                                   "modifierFlagsCache": 0,
                                                                   "transformFlags": 0,
                                                                   "kind": 208,
                                                                   "expression": {
-                                                                     "pos": 516,
-                                                                     "end": 518,
+                                                                     "pos": 513,
+                                                                     "end": 515,
                                                                      "flags": 0,
                                                                      "modifierFlagsCache": 0,
                                                                      "transformFlags": 0,
@@ -1113,8 +967,8 @@ describe('IForm', () => {
                                                                      "escapedText": "e"
                                                                   },
                                                                   "name": {
-                                                                     "pos": 519,
-                                                                     "end": 525,
+                                                                     "pos": 516,
+                                                                     "end": 522,
                                                                      "flags": 0,
                                                                      "modifierFlagsCache": 0,
                                                                      "transformFlags": 0,
@@ -1123,8 +977,8 @@ describe('IForm', () => {
                                                                   }
                                                                },
                                                                "name": {
-                                                                  "pos": 526,
-                                                                  "end": 531,
+                                                                  "pos": 523,
+                                                                  "end": 528,
                                                                   "flags": 0,
                                                                   "modifierFlagsCache": 0,
                                                                   "transformFlags": 0,
@@ -1137,8 +991,8 @@ describe('IForm', () => {
                                                    ]
                                                 },
                                                 "equalsGreaterThanToken": {
-                                                   "pos": 492,
-                                                   "end": 495,
+                                                   "pos": 490,
+                                                   "end": 493,
                                                    "flags": 0,
                                                    "modifierFlagsCache": 0,
                                                    "transformFlags": 0,
@@ -1151,8 +1005,8 @@ describe('IForm', () => {
                                  }
                               },
                               {
-                                 "pos": 537,
-                                 "end": 544,
+                                 "pos": 534,
+                                 "end": 541,
                                  "flags": 0,
                                  "modifierFlagsCache": 0,
                                  "transformFlags": 2,
@@ -1162,15 +1016,15 @@ describe('IForm', () => {
                               }
                            ],
                            "closingElement": {
-                              "pos": 544,
-                              "end": 550,
+                              "pos": 541,
+                              "end": 547,
                               "flags": 0,
                               "modifierFlagsCache": 0,
                               "transformFlags": 2,
                               "kind": 284,
                               "tagName": {
-                                 "pos": 546,
-                                 "end": 549,
+                                 "pos": 543,
+                                 "end": 546,
                                  "flags": 0,
                                  "modifierFlagsCache": 0,
                                  "transformFlags": 0,
@@ -1180,8 +1034,8 @@ describe('IForm', () => {
                            }
                         },
                         {
-                           "pos": 550,
-                           "end": 557,
+                           "pos": 547,
+                           "end": 554,
                            "flags": 0,
                            "modifierFlagsCache": 0,
                            "transformFlags": 2,
@@ -1190,22 +1044,22 @@ describe('IForm', () => {
                            "containsOnlyTriviaWhiteSpaces": true
                         },
                         {
-                           "pos": 557,
-                           "end": 610,
+                           "pos": 554,
+                           "end": 683,
                            "flags": 0,
                            "modifierFlagsCache": 0,
-                           "transformFlags": 2,
+                           "transformFlags": 1026,
                            "kind": 281,
                            "openingElement": {
-                              "pos": 557,
-                              "end": 562,
+                              "pos": 554,
+                              "end": 559,
                               "flags": 0,
                               "modifierFlagsCache": 0,
                               "transformFlags": 2,
                               "kind": 283,
                               "tagName": {
-                                 "pos": 558,
-                                 "end": 561,
+                                 "pos": 555,
+                                 "end": 558,
                                  "flags": 0,
                                  "modifierFlagsCache": 0,
                                  "transformFlags": 0,
@@ -1213,8 +1067,8 @@ describe('IForm', () => {
                                  "escapedText": "div"
                               },
                               "attributes": {
-                                 "pos": 561,
-                                 "end": 561,
+                                 "pos": 558,
+                                 "end": 558,
                                  "flags": 0,
                                  "modifierFlagsCache": 0,
                                  "transformFlags": 2,
@@ -1224,96 +1078,296 @@ describe('IForm', () => {
                            },
                            "children": [
                               {
-                                 "pos": 562,
-                                 "end": 571,
+                                 "pos": 559,
+                                 "end": 575,
                                  "flags": 0,
                                  "modifierFlagsCache": 0,
                                  "transformFlags": 2,
                                  "kind": 11,
-                                 "text": "\n        ",
-                                 "containsOnlyTriviaWhiteSpaces": true
+                                 "text": "\n        Email: ",
+                                 "containsOnlyTriviaWhiteSpaces": false
                               },
                               {
-                                 "pos": 571,
-                                 "end": 582,
+                                 "pos": 575,
+                                 "end": 670,
                                  "flags": 0,
                                  "modifierFlagsCache": 0,
-                                 "transformFlags": 2,
-                                 "kind": 291,
-                                 "expression": {
-                                    "pos": 572,
+                                 "transformFlags": 1026,
+                                 "kind": 282,
+                                 "tagName": {
+                                    "pos": 576,
                                     "end": 581,
                                     "flags": 0,
                                     "modifierFlagsCache": 0,
                                     "transformFlags": 0,
-                                    "kind": 208,
-                                    "expression": {
-                                       "pos": 572,
-                                       "end": 576,
-                                       "flags": 0,
-                                       "modifierFlagsCache": 0,
-                                       "transformFlags": 0,
-                                       "kind": 79,
-                                       "escapedText": "form"
-                                    },
-                                    "name": {
-                                       "pos": 577,
-                                       "end": 581,
-                                       "flags": 0,
-                                       "modifierFlagsCache": 0,
-                                       "transformFlags": 0,
-                                       "kind": 79,
-                                       "escapedText": "name"
-                                    }
-                                 }
-                              },
-                              {
-                                 "pos": 582,
-                                 "end": 585,
-                                 "flags": 0,
-                                 "modifierFlagsCache": 0,
-                                 "transformFlags": 2,
-                                 "kind": 11,
-                                 "text": " @ ",
-                                 "containsOnlyTriviaWhiteSpaces": false
-                              },
-                              {
-                                 "pos": 585,
-                                 "end": 597,
-                                 "flags": 0,
-                                 "modifierFlagsCache": 0,
-                                 "transformFlags": 2,
-                                 "kind": 291,
-                                 "expression": {
-                                    "pos": 586,
-                                    "end": 596,
+                                    "kind": 79,
+                                    "escapedText": "input"
+                                 },
+                                 "attributes": {
+                                    "pos": 581,
+                                    "end": 667,
                                     "flags": 0,
                                     "modifierFlagsCache": 0,
-                                    "transformFlags": 0,
-                                    "kind": 208,
-                                    "expression": {
-                                       "pos": 586,
-                                       "end": 590,
-                                       "flags": 0,
-                                       "modifierFlagsCache": 0,
-                                       "transformFlags": 0,
-                                       "kind": 79,
-                                       "escapedText": "form"
-                                    },
-                                    "name": {
-                                       "pos": 591,
-                                       "end": 596,
-                                       "flags": 0,
-                                       "modifierFlagsCache": 0,
-                                       "transformFlags": 0,
-                                       "kind": 79,
-                                       "escapedText": "email"
-                                    }
+                                    "transformFlags": 1026,
+                                    "kind": 289,
+                                    "properties": [
+                                       {
+                                          "pos": 581,
+                                          "end": 594,
+                                          "flags": 0,
+                                          "modifierFlagsCache": 0,
+                                          "transformFlags": 2,
+                                          "kind": 288,
+                                          "name": {
+                                             "pos": 581,
+                                             "end": 586,
+                                             "flags": 0,
+                                             "modifierFlagsCache": 0,
+                                             "transformFlags": 0,
+                                             "kind": 79,
+                                             "originalKeywordKind": 154,
+                                             "escapedText": "type"
+                                          },
+                                          "initializer": {
+                                             "pos": 587,
+                                             "end": 594,
+                                             "flags": 0,
+                                             "modifierFlagsCache": 0,
+                                             "transformFlags": 0,
+                                             "kind": 10,
+                                             "text": "email",
+                                             "hasExtendedUnicodeEscape": false
+                                          }
+                                       },
+                                       {
+                                          "pos": 594,
+                                          "end": 613,
+                                          "flags": 0,
+                                          "modifierFlagsCache": 0,
+                                          "transformFlags": 2,
+                                          "kind": 288,
+                                          "name": {
+                                             "pos": 594,
+                                             "end": 600,
+                                             "flags": 0,
+                                             "modifierFlagsCache": 0,
+                                             "transformFlags": 0,
+                                             "kind": 79,
+                                             "escapedText": "value"
+                                          },
+                                          "initializer": {
+                                             "pos": 601,
+                                             "end": 613,
+                                             "flags": 0,
+                                             "modifierFlagsCache": 0,
+                                             "transformFlags": 2,
+                                             "kind": 291,
+                                             "expression": {
+                                                "pos": 602,
+                                                "end": 612,
+                                                "flags": 0,
+                                                "modifierFlagsCache": 0,
+                                                "transformFlags": 0,
+                                                "kind": 208,
+                                                "expression": {
+                                                   "pos": 602,
+                                                   "end": 606,
+                                                   "flags": 0,
+                                                   "modifierFlagsCache": 0,
+                                                   "transformFlags": 0,
+                                                   "kind": 79,
+                                                   "escapedText": "form"
+                                                },
+                                                "name": {
+                                                   "pos": 607,
+                                                   "end": 612,
+                                                   "flags": 0,
+                                                   "modifierFlagsCache": 0,
+                                                   "transformFlags": 0,
+                                                   "kind": 79,
+                                                   "escapedText": "email"
+                                                }
+                                             }
+                                          }
+                                       },
+                                       {
+                                          "pos": 613,
+                                          "end": 667,
+                                          "flags": 0,
+                                          "modifierFlagsCache": 0,
+                                          "transformFlags": 1026,
+                                          "kind": 288,
+                                          "name": {
+                                             "pos": 613,
+                                             "end": 622,
+                                             "flags": 0,
+                                             "modifierFlagsCache": 0,
+                                             "transformFlags": 0,
+                                             "kind": 79,
+                                             "escapedText": "onChange"
+                                          },
+                                          "initializer": {
+                                             "pos": 623,
+                                             "end": 667,
+                                             "flags": 0,
+                                             "modifierFlagsCache": 0,
+                                             "transformFlags": 1026,
+                                             "kind": 291,
+                                             "expression": {
+                                                "pos": 624,
+                                                "end": 666,
+                                                "flags": 0,
+                                                "modifierFlagsCache": 0,
+                                                "transformFlags": 1024,
+                                                "kind": 216,
+                                                "parameters": [
+                                                   {
+                                                      "pos": 624,
+                                                      "end": 625,
+                                                      "flags": 0,
+                                                      "modifierFlagsCache": 0,
+                                                      "transformFlags": 0,
+                                                      "kind": 166,
+                                                      "name": {
+                                                         "pos": 624,
+                                                         "end": 625,
+                                                         "flags": 0,
+                                                         "modifierFlagsCache": 0,
+                                                         "transformFlags": 0,
+                                                         "kind": 79,
+                                                         "escapedText": "e"
+                                                      }
+                                                   }
+                                                ],
+                                                "body": {
+                                                   "pos": 628,
+                                                   "end": 666,
+                                                   "flags": 0,
+                                                   "modifierFlagsCache": 0,
+                                                   "transformFlags": 0,
+                                                   "kind": 210,
+                                                   "expression": {
+                                                      "pos": 628,
+                                                      "end": 635,
+                                                      "flags": 0,
+                                                      "modifierFlagsCache": 0,
+                                                      "transformFlags": 0,
+                                                      "kind": 79,
+                                                      "escapedText": "render"
+                                                   },
+                                                   "arguments": [
+                                                      {
+                                                         "pos": 636,
+                                                         "end": 665,
+                                                         "flags": 0,
+                                                         "modifierFlagsCache": 0,
+                                                         "transformFlags": 0,
+                                                         "kind": 214,
+                                                         "expression": {
+                                                            "pos": 637,
+                                                            "end": 664,
+                                                            "flags": 0,
+                                                            "modifierFlagsCache": 0,
+                                                            "transformFlags": 0,
+                                                            "kind": 223,
+                                                            "left": {
+                                                               "pos": 637,
+                                                               "end": 647,
+                                                               "flags": 0,
+                                                               "modifierFlagsCache": 0,
+                                                               "transformFlags": 0,
+                                                               "kind": 208,
+                                                               "expression": {
+                                                                  "pos": 637,
+                                                                  "end": 641,
+                                                                  "flags": 0,
+                                                                  "modifierFlagsCache": 0,
+                                                                  "transformFlags": 0,
+                                                                  "kind": 79,
+                                                                  "escapedText": "form"
+                                                               },
+                                                               "name": {
+                                                                  "pos": 642,
+                                                                  "end": 647,
+                                                                  "flags": 0,
+                                                                  "modifierFlagsCache": 0,
+                                                                  "transformFlags": 0,
+                                                                  "kind": 79,
+                                                                  "escapedText": "email"
+                                                               }
+                                                            },
+                                                            "operatorToken": {
+                                                               "pos": 647,
+                                                               "end": 649,
+                                                               "flags": 0,
+                                                               "modifierFlagsCache": 0,
+                                                               "transformFlags": 0,
+                                                               "kind": 63
+                                                            },
+                                                            "right": {
+                                                               "pos": 649,
+                                                               "end": 664,
+                                                               "flags": 0,
+                                                               "modifierFlagsCache": 0,
+                                                               "transformFlags": 0,
+                                                               "kind": 208,
+                                                               "expression": {
+                                                                  "pos": 649,
+                                                                  "end": 658,
+                                                                  "flags": 0,
+                                                                  "modifierFlagsCache": 0,
+                                                                  "transformFlags": 0,
+                                                                  "kind": 208,
+                                                                  "expression": {
+                                                                     "pos": 649,
+                                                                     "end": 651,
+                                                                     "flags": 0,
+                                                                     "modifierFlagsCache": 0,
+                                                                     "transformFlags": 0,
+                                                                     "kind": 79,
+                                                                     "escapedText": "e"
+                                                                  },
+                                                                  "name": {
+                                                                     "pos": 652,
+                                                                     "end": 658,
+                                                                     "flags": 0,
+                                                                     "modifierFlagsCache": 0,
+                                                                     "transformFlags": 0,
+                                                                     "kind": 79,
+                                                                     "escapedText": "target"
+                                                                  }
+                                                               },
+                                                               "name": {
+                                                                  "pos": 659,
+                                                                  "end": 664,
+                                                                  "flags": 0,
+                                                                  "modifierFlagsCache": 0,
+                                                                  "transformFlags": 0,
+                                                                  "kind": 79,
+                                                                  "escapedText": "value"
+                                                               }
+                                                            }
+                                                         }
+                                                      }
+                                                   ]
+                                                },
+                                                "equalsGreaterThanToken": {
+                                                   "pos": 625,
+                                                   "end": 628,
+                                                   "flags": 0,
+                                                   "modifierFlagsCache": 0,
+                                                   "transformFlags": 0,
+                                                   "kind": 38
+                                                }
+                                             }
+                                          }
+                                       }
+                                    ]
                                  }
                               },
                               {
-                                 "pos": 597,
-                                 "end": 604,
+                                 "pos": 670,
+                                 "end": 677,
                                  "flags": 0,
                                  "modifierFlagsCache": 0,
                                  "transformFlags": 2,
@@ -1323,15 +1377,15 @@ describe('IForm', () => {
                               }
                            ],
                            "closingElement": {
-                              "pos": 604,
-                              "end": 610,
+                              "pos": 677,
+                              "end": 683,
                               "flags": 0,
                               "modifierFlagsCache": 0,
                               "transformFlags": 2,
                               "kind": 284,
                               "tagName": {
-                                 "pos": 606,
-                                 "end": 609,
+                                 "pos": 679,
+                                 "end": 682,
                                  "flags": 0,
                                  "modifierFlagsCache": 0,
                                  "transformFlags": 0,
@@ -1341,8 +1395,169 @@ describe('IForm', () => {
                            }
                         },
                         {
-                           "pos": 610,
-                           "end": 615,
+                           "pos": 683,
+                           "end": 690,
+                           "flags": 0,
+                           "modifierFlagsCache": 0,
+                           "transformFlags": 2,
+                           "kind": 11,
+                           "text": "\n      ",
+                           "containsOnlyTriviaWhiteSpaces": true
+                        },
+                        {
+                           "pos": 690,
+                           "end": 743,
+                           "flags": 0,
+                           "modifierFlagsCache": 0,
+                           "transformFlags": 2,
+                           "kind": 281,
+                           "openingElement": {
+                              "pos": 690,
+                              "end": 695,
+                              "flags": 0,
+                              "modifierFlagsCache": 0,
+                              "transformFlags": 2,
+                              "kind": 283,
+                              "tagName": {
+                                 "pos": 691,
+                                 "end": 694,
+                                 "flags": 0,
+                                 "modifierFlagsCache": 0,
+                                 "transformFlags": 0,
+                                 "kind": 79,
+                                 "escapedText": "div"
+                              },
+                              "attributes": {
+                                 "pos": 694,
+                                 "end": 694,
+                                 "flags": 0,
+                                 "modifierFlagsCache": 0,
+                                 "transformFlags": 2,
+                                 "kind": 289,
+                                 "properties": []
+                              }
+                           },
+                           "children": [
+                              {
+                                 "pos": 695,
+                                 "end": 704,
+                                 "flags": 0,
+                                 "modifierFlagsCache": 0,
+                                 "transformFlags": 2,
+                                 "kind": 11,
+                                 "text": "\n        ",
+                                 "containsOnlyTriviaWhiteSpaces": true
+                              },
+                              {
+                                 "pos": 704,
+                                 "end": 715,
+                                 "flags": 0,
+                                 "modifierFlagsCache": 0,
+                                 "transformFlags": 2,
+                                 "kind": 291,
+                                 "expression": {
+                                    "pos": 705,
+                                    "end": 714,
+                                    "flags": 0,
+                                    "modifierFlagsCache": 0,
+                                    "transformFlags": 0,
+                                    "kind": 208,
+                                    "expression": {
+                                       "pos": 705,
+                                       "end": 709,
+                                       "flags": 0,
+                                       "modifierFlagsCache": 0,
+                                       "transformFlags": 0,
+                                       "kind": 79,
+                                       "escapedText": "form"
+                                    },
+                                    "name": {
+                                       "pos": 710,
+                                       "end": 714,
+                                       "flags": 0,
+                                       "modifierFlagsCache": 0,
+                                       "transformFlags": 0,
+                                       "kind": 79,
+                                       "escapedText": "name"
+                                    }
+                                 }
+                              },
+                              {
+                                 "pos": 715,
+                                 "end": 718,
+                                 "flags": 0,
+                                 "modifierFlagsCache": 0,
+                                 "transformFlags": 2,
+                                 "kind": 11,
+                                 "text": " @ ",
+                                 "containsOnlyTriviaWhiteSpaces": false
+                              },
+                              {
+                                 "pos": 718,
+                                 "end": 730,
+                                 "flags": 0,
+                                 "modifierFlagsCache": 0,
+                                 "transformFlags": 2,
+                                 "kind": 291,
+                                 "expression": {
+                                    "pos": 719,
+                                    "end": 729,
+                                    "flags": 0,
+                                    "modifierFlagsCache": 0,
+                                    "transformFlags": 0,
+                                    "kind": 208,
+                                    "expression": {
+                                       "pos": 719,
+                                       "end": 723,
+                                       "flags": 0,
+                                       "modifierFlagsCache": 0,
+                                       "transformFlags": 0,
+                                       "kind": 79,
+                                       "escapedText": "form"
+                                    },
+                                    "name": {
+                                       "pos": 724,
+                                       "end": 729,
+                                       "flags": 0,
+                                       "modifierFlagsCache": 0,
+                                       "transformFlags": 0,
+                                       "kind": 79,
+                                       "escapedText": "email"
+                                    }
+                                 }
+                              },
+                              {
+                                 "pos": 730,
+                                 "end": 737,
+                                 "flags": 0,
+                                 "modifierFlagsCache": 0,
+                                 "transformFlags": 2,
+                                 "kind": 11,
+                                 "text": "\n      ",
+                                 "containsOnlyTriviaWhiteSpaces": true
+                              }
+                           ],
+                           "closingElement": {
+                              "pos": 737,
+                              "end": 743,
+                              "flags": 0,
+                              "modifierFlagsCache": 0,
+                              "transformFlags": 2,
+                              "kind": 284,
+                              "tagName": {
+                                 "pos": 739,
+                                 "end": 742,
+                                 "flags": 0,
+                                 "modifierFlagsCache": 0,
+                                 "transformFlags": 0,
+                                 "kind": 79,
+                                 "escapedText": "div"
+                              }
+                           }
+                        },
+                        {
+                           "pos": 743,
+                           "end": 748,
                            "flags": 0,
                            "modifierFlagsCache": 0,
                            "transformFlags": 2,
@@ -1352,15 +1567,15 @@ describe('IForm', () => {
                         }
                      ],
                      "closingElement": {
-                        "pos": 615,
-                        "end": 622,
+                        "pos": 748,
+                        "end": 755,
                         "flags": 0,
                         "modifierFlagsCache": 0,
                         "transformFlags": 2,
                         "kind": 284,
                         "tagName": {
-                           "pos": 617,
-                           "end": 621,
+                           "pos": 750,
+                           "end": 754,
                            "flags": 0,
                            "modifierFlagsCache": 0,
                            "transformFlags": 0,

@@ -7,7 +7,7 @@ describe('LOOPER', () => {
 
     
     it('renders', () => {
-        cy.mount(<LOOPER>Click me!</LOOPER>)
+        cy.mount(<LOOPER props={"anythings!"} undefined={({ /* IState */ })}>Click me!</LOOPER>)
         cy.get('button').should('contains.text', 'Click me!')
     });
     

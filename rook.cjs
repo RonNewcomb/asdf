@@ -59,4 +59,4 @@ function hunt(filename) {
     newDependencies.forEach(filename => hunt(filename.replace(".js", ".tsx"))); // recurse into imoprts
 }
 hunt(firstFile);
-console.log("node crow " + outputBaseDir);
+console.log("node crow.cjs " + outputBaseDir);

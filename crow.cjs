@@ -10,8 +10,26 @@ const outputBaseDir = "./cypress/";
 const alreadyDone = [];
 const topFolder = "./ast/components/";
 const modifiersKind = {
+    string: 152,
+    number: 148,
+    boolean: 134,
+    questionTokenMeaningOrUndefined: 57,
+    object: 180,
+    array: 185,
     default: 88,
     export: 93,
+    endOfFileToken: 1,
+    interfaceDeclaration: 261,
+    function: 259,
+    importStatement: 269,
+    expressionOrFunctionCall: 241,
+    jsxElement: 283,
+    whitespace: 11,
+    typeUnion: 261,
+    typeIntersection: 190,
+    adhocInterface: 184,
+    any: 131,
+    unknown: 157,
 };
 if (!fs_1.default.existsSync(outputBaseDir))
     fs_1.default.mkdirSync(outputBaseDir, { recursive: true });
@@ -42,8 +60,9 @@ function stampout(folder) {
         console.log("-> " + outputFilename);
         console.log();
         const FileUnderTest = `../${ast.fileName.replace(".tsx", ".js")}`;
-        const defaultExportUnderTest = defaultExport?.name?.escapedText;
-        const namesToTest = (defaultExport ? [defaultExport.name.escapedText] : []).concat(exports.map(ex => ex.name.escapedText));
+        const allExports = (defaultExport ? [defaultExport] : []).concat(exports);
+        const allConcreteExports = allExports.filter(e => e.kind !== modifiersKind.interfaceDeclaration);
+        const namesToTest = allExports.map(ex => ex.name.escapedText);
         console.log({ namesToTest });
         // for each exported item,
         // pick "reasonable" inputs for it,
@@ -55,13 +74,13 @@ function stampout(folder) {
 ${defaultExport ? `import ${defaultExport.name.escapedText} from '${FileUnderTest}'` : ""}
 ${exports && exports.length > 0 ? `import { ${exports.map(ex => ex.name.escapedText)} } from '${FileUnderTest}'` : ""}
 
-${namesToTest
-            .map(exportingName => `
-describe('${exportingName}', () => {
+${allConcreteExports
+            .map(ex => `
+describe('${ex.name.escapedText}', () => {
 
     ${`
     it('renders', () => {
-        cy.mount(<${exportingName}>Click me!</${exportingName}>)
+        cy.mount(<${ex.name.escapedText} ${resonableInputs(ex.parameters)}>Click me!</${ex.name.escapedText}>)
         cy.get('button').should('contains.text', 'Click me!')
     });
     `}
@@ -80,5 +99,46 @@ ${JSON.stringify(statements, undefined, 3)}
     }
 }
 stampout(topFolder);
-// modifiers.kind=93 export
-// modifiers.kind=88 default
+///////
+function resonableInputs(parameters) {
+    if (!parameters)
+        return "";
+    const params = Array.isArray(parameters) ? parameters : [parameters];
+    return params.map(reasonableInput).join(" ");
+}
+function reasonableInput(paramObj) {
+    return paramObj.name.escapedText + "={" + sample(paramObj.type) + "}";
+}
+function sample(x) {
+    switch (x.kind) {
+        case modifiersKind.string:
+            return "'string'";
+        case modifiersKind.number:
+            return "6";
+        case modifiersKind.boolean:
+            return "true";
+        case modifiersKind.questionTokenMeaningOrUndefined:
+            return "undefined";
+        case modifiersKind.object: //180, // look for typeName
+            return "({ /* " + (x.typeName?.escapedText || "") + " */ })";
+        case modifiersKind.any:
+        case modifiersKind.unknown:
+            return '"anythings!"';
+        case modifiersKind.typeUnion: //261, // x | y // look for .types array on this .type
+            return "{" + x.types.map(sample).join(" ") + "}";
+        case modifiersKind.typeIntersection: //190, // x & y // look for .types array on this .type
+            return "{" + x.types.map(sample).join(" ") + "}";
+        case modifiersKind.array: // 185, // look for elementType
+            return "[" + sample(x.elementType) + "]";
+        // //interfaceDeclaration: 261, // .name .modifiers .members
+        // //function: 259, // .name .modifiers .parameters .body
+        // //importStatement: 269,
+        // //expressionOrFunctionCall: 241, // .expression
+        // case modifiersKind.jsxElement: 283,
+        // case modifiersKind.typeUnion:261, // ?? look for .types on this .type
+        case modifiersKind.adhocInterface:
+            return resonableInputs(x.members); //?.map(member => "").join(" ") || ""; // ? look for .members on this .type
+        default:
+            throw new Error("unknown kind for input type " + x.kind + ": " + JSON.stringify(x));
+    }
+}

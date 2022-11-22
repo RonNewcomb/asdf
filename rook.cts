@@ -69,4 +69,4 @@ function hunt(filename: string) {
 
 hunt(firstFile);
 
-console.log("node crow " + outputBaseDir);
+console.log("node crow.cjs " + outputBaseDir);

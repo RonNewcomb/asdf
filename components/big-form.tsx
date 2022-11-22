@@ -3,10 +3,16 @@ import { IState, jsx } from "../lib/render/framework.js";
 export interface IForm {
   name: string;
   email: string;
+  phone: number;
+  good: boolean;
+  verygood?: boolean;
+  subobject: IForm;
+  maybeObject?: IForm;
+  arrayObjects: IForm[];
 }
 
 export default function (props: unknown, { useState, render }: IState) {
-  const [form, setForm] = useState<IForm>({ name: "", email: "" });
+  const [form, setForm] = useState<IForm>({ name: "", email: "" } as IForm);
   return (
     <form>
       <div>
