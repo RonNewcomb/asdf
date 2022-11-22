@@ -1,6 +1,6 @@
 import { IState, jsx } from "../lib/render/framework.js";
 
-export default function Under({ x }: { x: number }, { useState }: IState) {
+export default function Under({ aNumericInput }: { aNumericInput: number }, { useState }: IState) {
   console.log("Under.state = ");
   const [counter, setCounter] = useState(17);
   const [y, sety] = useState(44);
@@ -17,7 +17,7 @@ export default function Under({ x }: { x: number }, { useState }: IState) {
 
   return (
     <div onClick={handler}>
-      number x={x}
+      number inputted = {aNumericInput}
       <br />
       and state.counter={counter}
       <br />

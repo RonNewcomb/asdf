@@ -14,7 +14,7 @@ export default function AppStart(props: { seed: string; children?: any }, state:
   return (
     <div class="app-start">
       <span>yee </span>
-      <Under x={5} />
+      <Under aNumericInput={5} />
       <button type="button" onClick={pressed} onKeyDown={pressed}>
         z is {z}
       </button>

@@ -1,764 +1,1358 @@
 {
-  "type": "Program",
-  "start": 0,
-  "end": 625,
-  "body": [
+  "pos": 0,
+  "end": 562,
+  "flags": 0,
+  "modifierFlagsCache": 0,
+  "transformFlags": 1155,
+  "kind": 308,
+  "statements": [
     {
-      "type": "ImportDeclaration",
-      "start": 0,
-      "end": 49,
-      "specifiers": [
-        {
-          "type": "ImportSpecifier",
-          "start": 9,
-          "end": 12,
-          "imported": {
-            "type": "Identifier",
-            "start": 9,
-            "end": 12,
-            "name": "jsx"
-          },
-          "local": {
-            "type": "Identifier",
-            "start": 9,
-            "end": 12,
-            "name": "jsx"
-          }
-        }
-      ],
-      "source": {
-        "type": "Literal",
-        "start": 20,
-        "end": 48,
-        "value": "../lib/render/framework.js",
-        "raw": "\"../lib/render/framework.js\""
-      }
-    },
-    {
-      "type": "ExportDefaultDeclaration",
-      "start": 50,
-      "end": 624,
-      "declaration": {
-        "type": "FunctionDeclaration",
-        "start": 65,
-        "end": 624,
-        "id": null,
-        "expression": false,
-        "generator": false,
-        "async": false,
-        "params": [
-          {
-            "type": "Identifier",
-            "start": 75,
-            "end": 80,
-            "name": "props"
-          },
-          {
-            "type": "ObjectPattern",
-            "start": 82,
-            "end": 102,
-            "properties": [
-              {
-                "type": "Property",
-                "start": 84,
-                "end": 92,
-                "method": false,
-                "shorthand": true,
-                "computed": false,
-                "key": {
-                  "type": "Identifier",
-                  "start": 84,
-                  "end": 92,
-                  "name": "useState"
-                },
-                "kind": "init",
-                "value": {
-                  "type": "Identifier",
-                  "start": 84,
-                  "end": 92,
-                  "name": "useState"
-                }
-              },
-              {
-                "type": "Property",
-                "start": 94,
-                "end": 100,
-                "method": false,
-                "shorthand": true,
-                "computed": false,
-                "key": {
-                  "type": "Identifier",
-                  "start": 94,
-                  "end": 100,
-                  "name": "render"
-                },
-                "kind": "init",
-                "value": {
-                  "type": "Identifier",
-                  "start": 94,
-                  "end": 100,
-                  "name": "render"
-                }
-              }
-            ]
-          }
-        ],
-        "body": {
-          "type": "BlockStatement",
-          "start": 104,
-          "end": 624,
-          "body": [
+      "pos": 0,
+      "end": 57,
+      "flags": 0,
+      "modifierFlagsCache": 0,
+      "transformFlags": 0,
+      "kind": 269,
+      "importClause": {
+        "pos": 6,
+        "end": 22,
+        "flags": 0,
+        "modifierFlagsCache": 0,
+        "transformFlags": 0,
+        "kind": 270,
+        "isTypeOnly": false,
+        "namedBindings": {
+          "pos": 6,
+          "end": 22,
+          "flags": 0,
+          "modifierFlagsCache": 0,
+          "transformFlags": 0,
+          "kind": 272,
+          "elements": [
             {
-              "type": "VariableDeclaration",
-              "start": 110,
-              "end": 168,
-              "declarations": [
-                {
-                  "type": "VariableDeclarator",
-                  "start": 116,
-                  "end": 167,
-                  "id": {
-                    "type": "ArrayPattern",
-                    "start": 116,
-                    "end": 131,
-                    "elements": [
-                      {
-                        "type": "Identifier",
-                        "start": 117,
-                        "end": 121,
-                        "name": "form"
-                      },
-                      {
-                        "type": "Identifier",
-                        "start": 123,
-                        "end": 130,
-                        "name": "setForm"
-                      }
-                    ]
-                  },
-                  "init": {
-                    "type": "CallExpression",
-                    "start": 134,
-                    "end": 167,
-                    "callee": {
-                      "type": "Identifier",
-                      "start": 134,
-                      "end": 142,
-                      "name": "useState"
-                    },
-                    "arguments": [
-                      {
-                        "type": "ObjectExpression",
-                        "start": 143,
-                        "end": 166,
-                        "properties": [
-                          {
-                            "type": "Property",
-                            "start": 145,
-                            "end": 153,
-                            "method": false,
-                            "shorthand": false,
-                            "computed": false,
-                            "key": {
-                              "type": "Identifier",
-                              "start": 145,
-                              "end": 149,
-                              "name": "name"
-                            },
-                            "value": {
-                              "type": "Literal",
-                              "start": 151,
-                              "end": 153,
-                              "value": "",
-                              "raw": "\"\""
-                            },
-                            "kind": "init"
-                          },
-                          {
-                            "type": "Property",
-                            "start": 155,
-                            "end": 164,
-                            "method": false,
-                            "shorthand": false,
-                            "computed": false,
-                            "key": {
-                              "type": "Identifier",
-                              "start": 155,
-                              "end": 160,
-                              "name": "email"
-                            },
-                            "value": {
-                              "type": "Literal",
-                              "start": 162,
-                              "end": 164,
-                              "value": "",
-                              "raw": "\"\""
-                            },
-                            "kind": "init"
-                          }
-                        ]
-                      }
-                    ],
-                    "optional": false
-                  }
-                }
-              ],
-              "kind": "const"
+              "pos": 8,
+              "end": 15,
+              "flags": 0,
+              "modifierFlagsCache": 0,
+              "transformFlags": 0,
+              "kind": 273,
+              "isTypeOnly": false,
+              "name": {
+                "pos": 8,
+                "end": 15,
+                "flags": 0,
+                "modifierFlagsCache": 0,
+                "transformFlags": 0,
+                "kind": 79,
+                "escapedText": "IState"
+              }
             },
             {
-              "type": "ReturnStatement",
-              "start": 173,
-              "end": 622,
-              "argument": {
-                "type": "CallExpression",
-                "start": 181,
-                "end": 620,
-                "callee": {
-                  "type": "Identifier",
-                  "start": 181,
-                  "end": 184,
-                  "name": "jsx"
-                },
-                "arguments": [
-                  {
-                    "type": "Literal",
-                    "start": 185,
-                    "end": 191,
-                    "value": "form",
-                    "raw": "\"form\""
-                  },
-                  {
-                    "type": "Literal",
-                    "start": 193,
-                    "end": 197,
-                    "value": null,
-                    "raw": "null"
-                  },
-                  {
-                    "type": "CallExpression",
-                    "start": 207,
-                    "end": 360,
-                    "callee": {
-                      "type": "Identifier",
-                      "start": 207,
-                      "end": 210,
-                      "name": "jsx"
-                    },
-                    "arguments": [
-                      {
-                        "type": "Literal",
-                        "start": 211,
-                        "end": 216,
-                        "value": "div",
-                        "raw": "\"div\""
-                      },
-                      {
-                        "type": "Literal",
-                        "start": 218,
-                        "end": 222,
-                        "value": null,
-                        "raw": "null"
-                      },
-                      {
-                        "type": "Literal",
-                        "start": 236,
-                        "end": 244,
-                        "value": "Name: ",
-                        "raw": "\"Name: \""
-                      },
-                      {
-                        "type": "CallExpression",
-                        "start": 258,
-                        "end": 359,
-                        "callee": {
-                          "type": "Identifier",
-                          "start": 258,
-                          "end": 261,
-                          "name": "jsx"
-                        },
-                        "arguments": [
-                          {
-                            "type": "Literal",
-                            "start": 262,
-                            "end": 269,
-                            "value": "input",
-                            "raw": "\"input\""
-                          },
-                          {
-                            "type": "ObjectExpression",
-                            "start": 271,
-                            "end": 358,
-                            "properties": [
-                              {
-                                "type": "Property",
-                                "start": 273,
-                                "end": 285,
-                                "method": false,
-                                "shorthand": false,
-                                "computed": false,
-                                "key": {
-                                  "type": "Identifier",
-                                  "start": 273,
-                                  "end": 277,
-                                  "name": "type"
-                                },
-                                "value": {
-                                  "type": "Literal",
-                                  "start": 279,
-                                  "end": 285,
-                                  "value": "text",
-                                  "raw": "\"text\""
-                                },
-                                "kind": "init"
-                              },
-                              {
-                                "type": "Property",
-                                "start": 287,
-                                "end": 303,
-                                "method": false,
-                                "shorthand": false,
-                                "computed": false,
-                                "key": {
-                                  "type": "Identifier",
-                                  "start": 287,
-                                  "end": 292,
-                                  "name": "value"
-                                },
-                                "value": {
-                                  "type": "MemberExpression",
-                                  "start": 294,
-                                  "end": 303,
-                                  "object": {
-                                    "type": "Identifier",
-                                    "start": 294,
-                                    "end": 298,
-                                    "name": "form"
-                                  },
-                                  "property": {
-                                    "type": "Identifier",
-                                    "start": 299,
-                                    "end": 303,
-                                    "name": "name"
-                                  },
-                                  "computed": false,
-                                  "optional": false
-                                },
-                                "kind": "init"
-                              },
-                              {
-                                "type": "Property",
-                                "start": 305,
-                                "end": 356,
-                                "method": false,
-                                "shorthand": false,
-                                "computed": false,
-                                "key": {
-                                  "type": "Identifier",
-                                  "start": 305,
-                                  "end": 313,
-                                  "name": "onChange"
-                                },
-                                "value": {
-                                  "type": "ArrowFunctionExpression",
-                                  "start": 315,
-                                  "end": 356,
-                                  "id": null,
-                                  "expression": true,
-                                  "generator": false,
-                                  "async": false,
-                                  "params": [
-                                    {
-                                      "type": "Identifier",
-                                      "start": 315,
-                                      "end": 316,
-                                      "name": "e"
-                                    }
-                                  ],
-                                  "body": {
-                                    "type": "CallExpression",
-                                    "start": 320,
-                                    "end": 356,
-                                    "callee": {
-                                      "type": "Identifier",
-                                      "start": 320,
-                                      "end": 326,
-                                      "name": "render"
-                                    },
-                                    "arguments": [
-                                      {
-                                        "type": "AssignmentExpression",
-                                        "start": 328,
-                                        "end": 354,
-                                        "operator": "=",
-                                        "left": {
-                                          "type": "MemberExpression",
-                                          "start": 328,
-                                          "end": 337,
-                                          "object": {
-                                            "type": "Identifier",
-                                            "start": 328,
-                                            "end": 332,
-                                            "name": "form"
-                                          },
-                                          "property": {
-                                            "type": "Identifier",
-                                            "start": 333,
-                                            "end": 337,
-                                            "name": "name"
-                                          },
-                                          "computed": false,
-                                          "optional": false
-                                        },
-                                        "right": {
-                                          "type": "MemberExpression",
-                                          "start": 340,
-                                          "end": 354,
-                                          "object": {
-                                            "type": "MemberExpression",
-                                            "start": 340,
-                                            "end": 348,
-                                            "object": {
-                                              "type": "Identifier",
-                                              "start": 340,
-                                              "end": 341,
-                                              "name": "e"
-                                            },
-                                            "property": {
-                                              "type": "Identifier",
-                                              "start": 342,
-                                              "end": 348,
-                                              "name": "target"
-                                            },
-                                            "computed": false,
-                                            "optional": false
-                                          },
-                                          "property": {
-                                            "type": "Identifier",
-                                            "start": 349,
-                                            "end": 354,
-                                            "name": "value"
-                                          },
-                                          "computed": false,
-                                          "optional": false
-                                        }
-                                      }
-                                    ],
-                                    "optional": false
-                                  }
-                                },
-                                "kind": "init"
-                              }
-                            ]
-                          }
-                        ],
-                        "optional": false
-                      }
-                    ],
-                    "optional": false
-                  },
-                  {
-                    "type": "CallExpression",
-                    "start": 370,
-                    "end": 527,
-                    "callee": {
-                      "type": "Identifier",
-                      "start": 370,
-                      "end": 373,
-                      "name": "jsx"
-                    },
-                    "arguments": [
-                      {
-                        "type": "Literal",
-                        "start": 374,
-                        "end": 379,
-                        "value": "div",
-                        "raw": "\"div\""
-                      },
-                      {
-                        "type": "Literal",
-                        "start": 381,
-                        "end": 385,
-                        "value": null,
-                        "raw": "null"
-                      },
-                      {
-                        "type": "Literal",
-                        "start": 399,
-                        "end": 408,
-                        "value": "Email: ",
-                        "raw": "\"Email: \""
-                      },
-                      {
-                        "type": "CallExpression",
-                        "start": 422,
-                        "end": 526,
-                        "callee": {
-                          "type": "Identifier",
-                          "start": 422,
-                          "end": 425,
-                          "name": "jsx"
-                        },
-                        "arguments": [
-                          {
-                            "type": "Literal",
-                            "start": 426,
-                            "end": 433,
-                            "value": "input",
-                            "raw": "\"input\""
-                          },
-                          {
-                            "type": "ObjectExpression",
-                            "start": 435,
-                            "end": 525,
-                            "properties": [
-                              {
-                                "type": "Property",
-                                "start": 437,
-                                "end": 450,
-                                "method": false,
-                                "shorthand": false,
-                                "computed": false,
-                                "key": {
-                                  "type": "Identifier",
-                                  "start": 437,
-                                  "end": 441,
-                                  "name": "type"
-                                },
-                                "value": {
-                                  "type": "Literal",
-                                  "start": 443,
-                                  "end": 450,
-                                  "value": "email",
-                                  "raw": "\"email\""
-                                },
-                                "kind": "init"
-                              },
-                              {
-                                "type": "Property",
-                                "start": 452,
-                                "end": 469,
-                                "method": false,
-                                "shorthand": false,
-                                "computed": false,
-                                "key": {
-                                  "type": "Identifier",
-                                  "start": 452,
-                                  "end": 457,
-                                  "name": "value"
-                                },
-                                "value": {
-                                  "type": "MemberExpression",
-                                  "start": 459,
-                                  "end": 469,
-                                  "object": {
-                                    "type": "Identifier",
-                                    "start": 459,
-                                    "end": 463,
-                                    "name": "form"
-                                  },
-                                  "property": {
-                                    "type": "Identifier",
-                                    "start": 464,
-                                    "end": 469,
-                                    "name": "email"
-                                  },
-                                  "computed": false,
-                                  "optional": false
-                                },
-                                "kind": "init"
-                              },
-                              {
-                                "type": "Property",
-                                "start": 471,
-                                "end": 523,
-                                "method": false,
-                                "shorthand": false,
-                                "computed": false,
-                                "key": {
-                                  "type": "Identifier",
-                                  "start": 471,
-                                  "end": 479,
-                                  "name": "onChange"
-                                },
-                                "value": {
-                                  "type": "ArrowFunctionExpression",
-                                  "start": 481,
-                                  "end": 523,
-                                  "id": null,
-                                  "expression": true,
-                                  "generator": false,
-                                  "async": false,
-                                  "params": [
-                                    {
-                                      "type": "Identifier",
-                                      "start": 481,
-                                      "end": 482,
-                                      "name": "e"
-                                    }
-                                  ],
-                                  "body": {
-                                    "type": "CallExpression",
-                                    "start": 486,
-                                    "end": 523,
-                                    "callee": {
-                                      "type": "Identifier",
-                                      "start": 486,
-                                      "end": 492,
-                                      "name": "render"
-                                    },
-                                    "arguments": [
-                                      {
-                                        "type": "AssignmentExpression",
-                                        "start": 494,
-                                        "end": 521,
-                                        "operator": "=",
-                                        "left": {
-                                          "type": "MemberExpression",
-                                          "start": 494,
-                                          "end": 504,
-                                          "object": {
-                                            "type": "Identifier",
-                                            "start": 494,
-                                            "end": 498,
-                                            "name": "form"
-                                          },
-                                          "property": {
-                                            "type": "Identifier",
-                                            "start": 499,
-                                            "end": 504,
-                                            "name": "email"
-                                          },
-                                          "computed": false,
-                                          "optional": false
-                                        },
-                                        "right": {
-                                          "type": "MemberExpression",
-                                          "start": 507,
-                                          "end": 521,
-                                          "object": {
-                                            "type": "MemberExpression",
-                                            "start": 507,
-                                            "end": 515,
-                                            "object": {
-                                              "type": "Identifier",
-                                              "start": 507,
-                                              "end": 508,
-                                              "name": "e"
-                                            },
-                                            "property": {
-                                              "type": "Identifier",
-                                              "start": 509,
-                                              "end": 515,
-                                              "name": "target"
-                                            },
-                                            "computed": false,
-                                            "optional": false
-                                          },
-                                          "property": {
-                                            "type": "Identifier",
-                                            "start": 516,
-                                            "end": 521,
-                                            "name": "value"
-                                          },
-                                          "computed": false,
-                                          "optional": false
-                                        }
-                                      }
-                                    ],
-                                    "optional": false
-                                  }
-                                },
-                                "kind": "init"
-                              }
-                            ]
-                          }
-                        ],
-                        "optional": false
-                      }
-                    ],
-                    "optional": false
-                  },
-                  {
-                    "type": "CallExpression",
-                    "start": 537,
-                    "end": 619,
-                    "callee": {
-                      "type": "Identifier",
-                      "start": 537,
-                      "end": 540,
-                      "name": "jsx"
-                    },
-                    "arguments": [
-                      {
-                        "type": "Literal",
-                        "start": 541,
-                        "end": 546,
-                        "value": "div",
-                        "raw": "\"div\""
-                      },
-                      {
-                        "type": "Literal",
-                        "start": 548,
-                        "end": 552,
-                        "value": null,
-                        "raw": "null"
-                      },
-                      {
-                        "type": "MemberExpression",
-                        "start": 566,
-                        "end": 575,
-                        "object": {
-                          "type": "Identifier",
-                          "start": 566,
-                          "end": 570,
-                          "name": "form"
-                        },
-                        "property": {
-                          "type": "Identifier",
-                          "start": 571,
-                          "end": 575,
-                          "name": "name"
-                        },
-                        "computed": false,
-                        "optional": false
-                      },
-                      {
-                        "type": "Literal",
-                        "start": 589,
-                        "end": 594,
-                        "value": " @ ",
-                        "raw": "\" @ \""
-                      },
-                      {
-                        "type": "MemberExpression",
-                        "start": 608,
-                        "end": 618,
-                        "object": {
-                          "type": "Identifier",
-                          "start": 608,
-                          "end": 612,
-                          "name": "form"
-                        },
-                        "property": {
-                          "type": "Identifier",
-                          "start": 613,
-                          "end": 618,
-                          "name": "email"
-                        },
-                        "computed": false,
-                        "optional": false
-                      }
-                    ],
-                    "optional": false
-                  }
-                ],
-                "optional": false
+              "pos": 16,
+              "end": 20,
+              "flags": 0,
+              "modifierFlagsCache": 0,
+              "transformFlags": 0,
+              "kind": 273,
+              "isTypeOnly": false,
+              "name": {
+                "pos": 16,
+                "end": 20,
+                "flags": 0,
+                "modifierFlagsCache": 0,
+                "transformFlags": 0,
+                "kind": 79,
+                "escapedText": "jsx"
               }
             }
           ]
         }
+      },
+      "moduleSpecifier": {
+        "pos": 27,
+        "end": 56,
+        "flags": 0,
+        "modifierFlagsCache": 0,
+        "transformFlags": 0,
+        "kind": 10,
+        "text": "../lib/render/framework.js",
+        "hasExtendedUnicodeEscape": false
+      }
+    },
+    {
+      "pos": 57,
+      "end": 561,
+      "flags": 0,
+      "modifierFlagsCache": 0,
+      "transformFlags": 4981891,
+      "kind": 259,
+      "modifiers": [
+        {
+          "pos": 57,
+          "end": 65,
+          "flags": 0,
+          "modifierFlagsCache": 0,
+          "transformFlags": 0,
+          "kind": 93
+        },
+        {
+          "pos": 65,
+          "end": 73,
+          "flags": 0,
+          "modifierFlagsCache": 0,
+          "transformFlags": 0,
+          "kind": 88
+        }
+      ],
+      "parameters": [
+        {
+          "pos": 84,
+          "end": 98,
+          "flags": 0,
+          "modifierFlagsCache": 0,
+          "transformFlags": 1,
+          "kind": 166,
+          "name": {
+            "pos": 84,
+            "end": 89,
+            "flags": 0,
+            "modifierFlagsCache": 0,
+            "transformFlags": 0,
+            "kind": 79,
+            "escapedText": "props"
+          },
+          "type": {
+            "pos": 90,
+            "end": 98,
+            "flags": 0,
+            "modifierFlagsCache": 0,
+            "transformFlags": 1,
+            "kind": 157
+          }
+        },
+        {
+          "pos": 99,
+          "end": 128,
+          "flags": 0,
+          "modifierFlagsCache": 0,
+          "transformFlags": 525313,
+          "kind": 166,
+          "name": {
+            "pos": 99,
+            "end": 120,
+            "flags": 0,
+            "modifierFlagsCache": 0,
+            "transformFlags": 525312,
+            "kind": 203,
+            "elements": [
+              {
+                "pos": 101,
+                "end": 110,
+                "flags": 0,
+                "modifierFlagsCache": 0,
+                "transformFlags": 1024,
+                "kind": 205,
+                "name": {
+                  "pos": 101,
+                  "end": 110,
+                  "flags": 0,
+                  "modifierFlagsCache": 0,
+                  "transformFlags": 0,
+                  "kind": 79,
+                  "escapedText": "useState"
+                }
+              },
+              {
+                "pos": 111,
+                "end": 118,
+                "flags": 0,
+                "modifierFlagsCache": 0,
+                "transformFlags": 1024,
+                "kind": 205,
+                "name": {
+                  "pos": 111,
+                  "end": 118,
+                  "flags": 0,
+                  "modifierFlagsCache": 0,
+                  "transformFlags": 0,
+                  "kind": 79,
+                  "escapedText": "render"
+                }
+              }
+            ]
+          },
+          "type": {
+            "pos": 121,
+            "end": 128,
+            "flags": 0,
+            "modifierFlagsCache": 0,
+            "transformFlags": 1,
+            "kind": 180,
+            "typeName": {
+              "pos": 121,
+              "end": 128,
+              "flags": 0,
+              "modifierFlagsCache": 0,
+              "transformFlags": 0,
+              "kind": 79,
+              "escapedText": "IState"
+            }
+          }
+        }
+      ],
+      "body": {
+        "pos": 129,
+        "end": 561,
+        "flags": 0,
+        "modifierFlagsCache": 0,
+        "transformFlags": 4457602,
+        "kind": 238,
+        "statements": [
+          {
+            "pos": 131,
+            "end": 192,
+            "flags": 0,
+            "modifierFlagsCache": 0,
+            "transformFlags": 4457472,
+            "kind": 240,
+            "declarationList": {
+              "pos": 131,
+              "end": 191,
+              "flags": 2,
+              "modifierFlagsCache": 0,
+              "transformFlags": 4981760,
+              "kind": 258,
+              "declarations": [
+                {
+                  "pos": 139,
+                  "end": 191,
+                  "flags": 0,
+                  "modifierFlagsCache": 0,
+                  "transformFlags": 525312,
+                  "kind": 257,
+                  "name": {
+                    "pos": 139,
+                    "end": 155,
+                    "flags": 0,
+                    "modifierFlagsCache": 0,
+                    "transformFlags": 525312,
+                    "kind": 204,
+                    "elements": [
+                      {
+                        "pos": 141,
+                        "end": 145,
+                        "flags": 0,
+                        "modifierFlagsCache": 0,
+                        "transformFlags": 1024,
+                        "kind": 205,
+                        "name": {
+                          "pos": 141,
+                          "end": 145,
+                          "flags": 0,
+                          "modifierFlagsCache": 0,
+                          "transformFlags": 0,
+                          "kind": 79,
+                          "escapedText": "form"
+                        }
+                      },
+                      {
+                        "pos": 146,
+                        "end": 154,
+                        "flags": 0,
+                        "modifierFlagsCache": 0,
+                        "transformFlags": 1024,
+                        "kind": 205,
+                        "name": {
+                          "pos": 146,
+                          "end": 154,
+                          "flags": 0,
+                          "modifierFlagsCache": 0,
+                          "transformFlags": 0,
+                          "kind": 79,
+                          "escapedText": "setForm"
+                        }
+                      }
+                    ]
+                  },
+                  "initializer": {
+                    "pos": 157,
+                    "end": 191,
+                    "flags": 0,
+                    "modifierFlagsCache": 0,
+                    "transformFlags": 0,
+                    "kind": 210,
+                    "expression": {
+                      "pos": 157,
+                      "end": 166,
+                      "flags": 0,
+                      "modifierFlagsCache": 0,
+                      "transformFlags": 0,
+                      "kind": 79,
+                      "escapedText": "useState"
+                    },
+                    "arguments": [
+                      {
+                        "pos": 167,
+                        "end": 190,
+                        "flags": 0,
+                        "modifierFlagsCache": 0,
+                        "transformFlags": 0,
+                        "kind": 207,
+                        "properties": [
+                          {
+                            "pos": 168,
+                            "end": 177,
+                            "flags": 0,
+                            "modifierFlagsCache": 0,
+                            "transformFlags": 0,
+                            "kind": 299,
+                            "name": {
+                              "pos": 168,
+                              "end": 173,
+                              "flags": 0,
+                              "modifierFlagsCache": 0,
+                              "transformFlags": 0,
+                              "kind": 79,
+                              "escapedText": "name"
+                            },
+                            "initializer": {
+                              "pos": 174,
+                              "end": 177,
+                              "flags": 0,
+                              "modifierFlagsCache": 0,
+                              "transformFlags": 0,
+                              "kind": 10,
+                              "text": "",
+                              "hasExtendedUnicodeEscape": false
+                            }
+                          },
+                          {
+                            "pos": 178,
+                            "end": 188,
+                            "flags": 0,
+                            "modifierFlagsCache": 0,
+                            "transformFlags": 0,
+                            "kind": 299,
+                            "name": {
+                              "pos": 178,
+                              "end": 184,
+                              "flags": 0,
+                              "modifierFlagsCache": 0,
+                              "transformFlags": 0,
+                              "kind": 79,
+                              "escapedText": "email"
+                            },
+                            "initializer": {
+                              "pos": 185,
+                              "end": 188,
+                              "flags": 0,
+                              "modifierFlagsCache": 0,
+                              "transformFlags": 0,
+                              "kind": 10,
+                              "text": "",
+                              "hasExtendedUnicodeEscape": false
+                            }
+                          }
+                        ],
+                        "multiLine": false
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "pos": 192,
+            "end": 559,
+            "flags": 0,
+            "modifierFlagsCache": 0,
+            "transformFlags": 4195458,
+            "kind": 250,
+            "expression": {
+              "pos": 201,
+              "end": 558,
+              "flags": 0,
+              "modifierFlagsCache": 0,
+              "transformFlags": 1026,
+              "kind": 214,
+              "expression": {
+                "pos": 203,
+                "end": 554,
+                "flags": 0,
+                "modifierFlagsCache": 0,
+                "transformFlags": 1026,
+                "kind": 281,
+                "openingElement": {
+                  "pos": 203,
+                  "end": 214,
+                  "flags": 0,
+                  "modifierFlagsCache": 0,
+                  "transformFlags": 2,
+                  "kind": 283,
+                  "tagName": {
+                    "pos": 209,
+                    "end": 213,
+                    "flags": 0,
+                    "modifierFlagsCache": 0,
+                    "transformFlags": 0,
+                    "kind": 79,
+                    "escapedText": "form"
+                  },
+                  "attributes": {
+                    "pos": 213,
+                    "end": 213,
+                    "flags": 0,
+                    "modifierFlagsCache": 0,
+                    "transformFlags": 2,
+                    "kind": 289,
+                    "properties": []
+                  }
+                },
+                "children": [
+                  {
+                    "pos": 214,
+                    "end": 221,
+                    "flags": 0,
+                    "modifierFlagsCache": 0,
+                    "transformFlags": 2,
+                    "kind": 11,
+                    "text": "\n      ",
+                    "containsOnlyTriviaWhiteSpaces": true
+                  },
+                  {
+                    "pos": 221,
+                    "end": 346,
+                    "flags": 0,
+                    "modifierFlagsCache": 0,
+                    "transformFlags": 1026,
+                    "kind": 281,
+                    "openingElement": {
+                      "pos": 221,
+                      "end": 226,
+                      "flags": 0,
+                      "modifierFlagsCache": 0,
+                      "transformFlags": 2,
+                      "kind": 283,
+                      "tagName": {
+                        "pos": 222,
+                        "end": 225,
+                        "flags": 0,
+                        "modifierFlagsCache": 0,
+                        "transformFlags": 0,
+                        "kind": 79,
+                        "escapedText": "div"
+                      },
+                      "attributes": {
+                        "pos": 225,
+                        "end": 225,
+                        "flags": 0,
+                        "modifierFlagsCache": 0,
+                        "transformFlags": 2,
+                        "kind": 289,
+                        "properties": []
+                      }
+                    },
+                    "children": [
+                      {
+                        "pos": 226,
+                        "end": 241,
+                        "flags": 0,
+                        "modifierFlagsCache": 0,
+                        "transformFlags": 2,
+                        "kind": 11,
+                        "text": "\n        Name: ",
+                        "containsOnlyTriviaWhiteSpaces": false
+                      },
+                      {
+                        "pos": 241,
+                        "end": 333,
+                        "flags": 0,
+                        "modifierFlagsCache": 0,
+                        "transformFlags": 1026,
+                        "kind": 282,
+                        "tagName": {
+                          "pos": 242,
+                          "end": 247,
+                          "flags": 0,
+                          "modifierFlagsCache": 0,
+                          "transformFlags": 0,
+                          "kind": 79,
+                          "escapedText": "input"
+                        },
+                        "attributes": {
+                          "pos": 247,
+                          "end": 330,
+                          "flags": 0,
+                          "modifierFlagsCache": 0,
+                          "transformFlags": 1026,
+                          "kind": 289,
+                          "properties": [
+                            {
+                              "pos": 247,
+                              "end": 259,
+                              "flags": 0,
+                              "modifierFlagsCache": 0,
+                              "transformFlags": 2,
+                              "kind": 288,
+                              "name": {
+                                "pos": 247,
+                                "end": 252,
+                                "flags": 0,
+                                "modifierFlagsCache": 0,
+                                "transformFlags": 0,
+                                "kind": 79,
+                                "originalKeywordKind": 154,
+                                "escapedText": "type"
+                              },
+                              "initializer": {
+                                "pos": 253,
+                                "end": 259,
+                                "flags": 0,
+                                "modifierFlagsCache": 0,
+                                "transformFlags": 0,
+                                "kind": 10,
+                                "text": "text",
+                                "hasExtendedUnicodeEscape": false
+                              }
+                            },
+                            {
+                              "pos": 259,
+                              "end": 277,
+                              "flags": 0,
+                              "modifierFlagsCache": 0,
+                              "transformFlags": 2,
+                              "kind": 288,
+                              "name": {
+                                "pos": 259,
+                                "end": 265,
+                                "flags": 0,
+                                "modifierFlagsCache": 0,
+                                "transformFlags": 0,
+                                "kind": 79,
+                                "escapedText": "value"
+                              },
+                              "initializer": {
+                                "pos": 266,
+                                "end": 277,
+                                "flags": 0,
+                                "modifierFlagsCache": 0,
+                                "transformFlags": 2,
+                                "kind": 291,
+                                "expression": {
+                                  "pos": 267,
+                                  "end": 276,
+                                  "flags": 0,
+                                  "modifierFlagsCache": 0,
+                                  "transformFlags": 0,
+                                  "kind": 208,
+                                  "expression": {
+                                    "pos": 267,
+                                    "end": 271,
+                                    "flags": 0,
+                                    "modifierFlagsCache": 0,
+                                    "transformFlags": 0,
+                                    "kind": 79,
+                                    "escapedText": "form"
+                                  },
+                                  "name": {
+                                    "pos": 272,
+                                    "end": 276,
+                                    "flags": 0,
+                                    "modifierFlagsCache": 0,
+                                    "transformFlags": 0,
+                                    "kind": 79,
+                                    "escapedText": "name"
+                                  }
+                                }
+                              }
+                            },
+                            {
+                              "pos": 277,
+                              "end": 330,
+                              "flags": 0,
+                              "modifierFlagsCache": 0,
+                              "transformFlags": 1026,
+                              "kind": 288,
+                              "name": {
+                                "pos": 277,
+                                "end": 286,
+                                "flags": 0,
+                                "modifierFlagsCache": 0,
+                                "transformFlags": 0,
+                                "kind": 79,
+                                "escapedText": "onChange"
+                              },
+                              "initializer": {
+                                "pos": 287,
+                                "end": 330,
+                                "flags": 0,
+                                "modifierFlagsCache": 0,
+                                "transformFlags": 1026,
+                                "kind": 291,
+                                "expression": {
+                                  "pos": 288,
+                                  "end": 329,
+                                  "flags": 0,
+                                  "modifierFlagsCache": 0,
+                                  "transformFlags": 1024,
+                                  "kind": 216,
+                                  "parameters": [
+                                    {
+                                      "pos": 288,
+                                      "end": 289,
+                                      "flags": 0,
+                                      "modifierFlagsCache": 0,
+                                      "transformFlags": 0,
+                                      "kind": 166,
+                                      "name": {
+                                        "pos": 288,
+                                        "end": 289,
+                                        "flags": 0,
+                                        "modifierFlagsCache": 0,
+                                        "transformFlags": 0,
+                                        "kind": 79,
+                                        "escapedText": "e"
+                                      }
+                                    }
+                                  ],
+                                  "body": {
+                                    "pos": 292,
+                                    "end": 329,
+                                    "flags": 0,
+                                    "modifierFlagsCache": 0,
+                                    "transformFlags": 0,
+                                    "kind": 210,
+                                    "expression": {
+                                      "pos": 292,
+                                      "end": 299,
+                                      "flags": 0,
+                                      "modifierFlagsCache": 0,
+                                      "transformFlags": 0,
+                                      "kind": 79,
+                                      "escapedText": "render"
+                                    },
+                                    "arguments": [
+                                      {
+                                        "pos": 300,
+                                        "end": 328,
+                                        "flags": 0,
+                                        "modifierFlagsCache": 0,
+                                        "transformFlags": 0,
+                                        "kind": 214,
+                                        "expression": {
+                                          "pos": 301,
+                                          "end": 327,
+                                          "flags": 0,
+                                          "modifierFlagsCache": 0,
+                                          "transformFlags": 0,
+                                          "kind": 223,
+                                          "left": {
+                                            "pos": 301,
+                                            "end": 310,
+                                            "flags": 0,
+                                            "modifierFlagsCache": 0,
+                                            "transformFlags": 0,
+                                            "kind": 208,
+                                            "expression": {
+                                              "pos": 301,
+                                              "end": 305,
+                                              "flags": 0,
+                                              "modifierFlagsCache": 0,
+                                              "transformFlags": 0,
+                                              "kind": 79,
+                                              "escapedText": "form"
+                                            },
+                                            "name": {
+                                              "pos": 306,
+                                              "end": 310,
+                                              "flags": 0,
+                                              "modifierFlagsCache": 0,
+                                              "transformFlags": 0,
+                                              "kind": 79,
+                                              "escapedText": "name"
+                                            }
+                                          },
+                                          "operatorToken": {
+                                            "pos": 310,
+                                            "end": 312,
+                                            "flags": 0,
+                                            "modifierFlagsCache": 0,
+                                            "transformFlags": 0,
+                                            "kind": 63
+                                          },
+                                          "right": {
+                                            "pos": 312,
+                                            "end": 327,
+                                            "flags": 0,
+                                            "modifierFlagsCache": 0,
+                                            "transformFlags": 0,
+                                            "kind": 208,
+                                            "expression": {
+                                              "pos": 312,
+                                              "end": 321,
+                                              "flags": 0,
+                                              "modifierFlagsCache": 0,
+                                              "transformFlags": 0,
+                                              "kind": 208,
+                                              "expression": {
+                                                "pos": 312,
+                                                "end": 314,
+                                                "flags": 0,
+                                                "modifierFlagsCache": 0,
+                                                "transformFlags": 0,
+                                                "kind": 79,
+                                                "escapedText": "e"
+                                              },
+                                              "name": {
+                                                "pos": 315,
+                                                "end": 321,
+                                                "flags": 0,
+                                                "modifierFlagsCache": 0,
+                                                "transformFlags": 0,
+                                                "kind": 79,
+                                                "escapedText": "target"
+                                              }
+                                            },
+                                            "name": {
+                                              "pos": 322,
+                                              "end": 327,
+                                              "flags": 0,
+                                              "modifierFlagsCache": 0,
+                                              "transformFlags": 0,
+                                              "kind": 79,
+                                              "escapedText": "value"
+                                            }
+                                          }
+                                        }
+                                      }
+                                    ]
+                                  },
+                                  "equalsGreaterThanToken": {
+                                    "pos": 289,
+                                    "end": 292,
+                                    "flags": 0,
+                                    "modifierFlagsCache": 0,
+                                    "transformFlags": 0,
+                                    "kind": 38
+                                  }
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "pos": 333,
+                        "end": 340,
+                        "flags": 0,
+                        "modifierFlagsCache": 0,
+                        "transformFlags": 2,
+                        "kind": 11,
+                        "text": "\n      ",
+                        "containsOnlyTriviaWhiteSpaces": true
+                      }
+                    ],
+                    "closingElement": {
+                      "pos": 340,
+                      "end": 346,
+                      "flags": 0,
+                      "modifierFlagsCache": 0,
+                      "transformFlags": 2,
+                      "kind": 284,
+                      "tagName": {
+                        "pos": 342,
+                        "end": 345,
+                        "flags": 0,
+                        "modifierFlagsCache": 0,
+                        "transformFlags": 0,
+                        "kind": 79,
+                        "escapedText": "div"
+                      }
+                    }
+                  },
+                  {
+                    "pos": 346,
+                    "end": 353,
+                    "flags": 0,
+                    "modifierFlagsCache": 0,
+                    "transformFlags": 2,
+                    "kind": 11,
+                    "text": "\n      ",
+                    "containsOnlyTriviaWhiteSpaces": true
+                  },
+                  {
+                    "pos": 353,
+                    "end": 482,
+                    "flags": 0,
+                    "modifierFlagsCache": 0,
+                    "transformFlags": 1026,
+                    "kind": 281,
+                    "openingElement": {
+                      "pos": 353,
+                      "end": 358,
+                      "flags": 0,
+                      "modifierFlagsCache": 0,
+                      "transformFlags": 2,
+                      "kind": 283,
+                      "tagName": {
+                        "pos": 354,
+                        "end": 357,
+                        "flags": 0,
+                        "modifierFlagsCache": 0,
+                        "transformFlags": 0,
+                        "kind": 79,
+                        "escapedText": "div"
+                      },
+                      "attributes": {
+                        "pos": 357,
+                        "end": 357,
+                        "flags": 0,
+                        "modifierFlagsCache": 0,
+                        "transformFlags": 2,
+                        "kind": 289,
+                        "properties": []
+                      }
+                    },
+                    "children": [
+                      {
+                        "pos": 358,
+                        "end": 374,
+                        "flags": 0,
+                        "modifierFlagsCache": 0,
+                        "transformFlags": 2,
+                        "kind": 11,
+                        "text": "\n        Email: ",
+                        "containsOnlyTriviaWhiteSpaces": false
+                      },
+                      {
+                        "pos": 374,
+                        "end": 469,
+                        "flags": 0,
+                        "modifierFlagsCache": 0,
+                        "transformFlags": 1026,
+                        "kind": 282,
+                        "tagName": {
+                          "pos": 375,
+                          "end": 380,
+                          "flags": 0,
+                          "modifierFlagsCache": 0,
+                          "transformFlags": 0,
+                          "kind": 79,
+                          "escapedText": "input"
+                        },
+                        "attributes": {
+                          "pos": 380,
+                          "end": 466,
+                          "flags": 0,
+                          "modifierFlagsCache": 0,
+                          "transformFlags": 1026,
+                          "kind": 289,
+                          "properties": [
+                            {
+                              "pos": 380,
+                              "end": 393,
+                              "flags": 0,
+                              "modifierFlagsCache": 0,
+                              "transformFlags": 2,
+                              "kind": 288,
+                              "name": {
+                                "pos": 380,
+                                "end": 385,
+                                "flags": 0,
+                                "modifierFlagsCache": 0,
+                                "transformFlags": 0,
+                                "kind": 79,
+                                "originalKeywordKind": 154,
+                                "escapedText": "type"
+                              },
+                              "initializer": {
+                                "pos": 386,
+                                "end": 393,
+                                "flags": 0,
+                                "modifierFlagsCache": 0,
+                                "transformFlags": 0,
+                                "kind": 10,
+                                "text": "email",
+                                "hasExtendedUnicodeEscape": false
+                              }
+                            },
+                            {
+                              "pos": 393,
+                              "end": 412,
+                              "flags": 0,
+                              "modifierFlagsCache": 0,
+                              "transformFlags": 2,
+                              "kind": 288,
+                              "name": {
+                                "pos": 393,
+                                "end": 399,
+                                "flags": 0,
+                                "modifierFlagsCache": 0,
+                                "transformFlags": 0,
+                                "kind": 79,
+                                "escapedText": "value"
+                              },
+                              "initializer": {
+                                "pos": 400,
+                                "end": 412,
+                                "flags": 0,
+                                "modifierFlagsCache": 0,
+                                "transformFlags": 2,
+                                "kind": 291,
+                                "expression": {
+                                  "pos": 401,
+                                  "end": 411,
+                                  "flags": 0,
+                                  "modifierFlagsCache": 0,
+                                  "transformFlags": 0,
+                                  "kind": 208,
+                                  "expression": {
+                                    "pos": 401,
+                                    "end": 405,
+                                    "flags": 0,
+                                    "modifierFlagsCache": 0,
+                                    "transformFlags": 0,
+                                    "kind": 79,
+                                    "escapedText": "form"
+                                  },
+                                  "name": {
+                                    "pos": 406,
+                                    "end": 411,
+                                    "flags": 0,
+                                    "modifierFlagsCache": 0,
+                                    "transformFlags": 0,
+                                    "kind": 79,
+                                    "escapedText": "email"
+                                  }
+                                }
+                              }
+                            },
+                            {
+                              "pos": 412,
+                              "end": 466,
+                              "flags": 0,
+                              "modifierFlagsCache": 0,
+                              "transformFlags": 1026,
+                              "kind": 288,
+                              "name": {
+                                "pos": 412,
+                                "end": 421,
+                                "flags": 0,
+                                "modifierFlagsCache": 0,
+                                "transformFlags": 0,
+                                "kind": 79,
+                                "escapedText": "onChange"
+                              },
+                              "initializer": {
+                                "pos": 422,
+                                "end": 466,
+                                "flags": 0,
+                                "modifierFlagsCache": 0,
+                                "transformFlags": 1026,
+                                "kind": 291,
+                                "expression": {
+                                  "pos": 423,
+                                  "end": 465,
+                                  "flags": 0,
+                                  "modifierFlagsCache": 0,
+                                  "transformFlags": 1024,
+                                  "kind": 216,
+                                  "parameters": [
+                                    {
+                                      "pos": 423,
+                                      "end": 424,
+                                      "flags": 0,
+                                      "modifierFlagsCache": 0,
+                                      "transformFlags": 0,
+                                      "kind": 166,
+                                      "name": {
+                                        "pos": 423,
+                                        "end": 424,
+                                        "flags": 0,
+                                        "modifierFlagsCache": 0,
+                                        "transformFlags": 0,
+                                        "kind": 79,
+                                        "escapedText": "e"
+                                      }
+                                    }
+                                  ],
+                                  "body": {
+                                    "pos": 427,
+                                    "end": 465,
+                                    "flags": 0,
+                                    "modifierFlagsCache": 0,
+                                    "transformFlags": 0,
+                                    "kind": 210,
+                                    "expression": {
+                                      "pos": 427,
+                                      "end": 434,
+                                      "flags": 0,
+                                      "modifierFlagsCache": 0,
+                                      "transformFlags": 0,
+                                      "kind": 79,
+                                      "escapedText": "render"
+                                    },
+                                    "arguments": [
+                                      {
+                                        "pos": 435,
+                                        "end": 464,
+                                        "flags": 0,
+                                        "modifierFlagsCache": 0,
+                                        "transformFlags": 0,
+                                        "kind": 214,
+                                        "expression": {
+                                          "pos": 436,
+                                          "end": 463,
+                                          "flags": 0,
+                                          "modifierFlagsCache": 0,
+                                          "transformFlags": 0,
+                                          "kind": 223,
+                                          "left": {
+                                            "pos": 436,
+                                            "end": 446,
+                                            "flags": 0,
+                                            "modifierFlagsCache": 0,
+                                            "transformFlags": 0,
+                                            "kind": 208,
+                                            "expression": {
+                                              "pos": 436,
+                                              "end": 440,
+                                              "flags": 0,
+                                              "modifierFlagsCache": 0,
+                                              "transformFlags": 0,
+                                              "kind": 79,
+                                              "escapedText": "form"
+                                            },
+                                            "name": {
+                                              "pos": 441,
+                                              "end": 446,
+                                              "flags": 0,
+                                              "modifierFlagsCache": 0,
+                                              "transformFlags": 0,
+                                              "kind": 79,
+                                              "escapedText": "email"
+                                            }
+                                          },
+                                          "operatorToken": {
+                                            "pos": 446,
+                                            "end": 448,
+                                            "flags": 0,
+                                            "modifierFlagsCache": 0,
+                                            "transformFlags": 0,
+                                            "kind": 63
+                                          },
+                                          "right": {
+                                            "pos": 448,
+                                            "end": 463,
+                                            "flags": 0,
+                                            "modifierFlagsCache": 0,
+                                            "transformFlags": 0,
+                                            "kind": 208,
+                                            "expression": {
+                                              "pos": 448,
+                                              "end": 457,
+                                              "flags": 0,
+                                              "modifierFlagsCache": 0,
+                                              "transformFlags": 0,
+                                              "kind": 208,
+                                              "expression": {
+                                                "pos": 448,
+                                                "end": 450,
+                                                "flags": 0,
+                                                "modifierFlagsCache": 0,
+                                                "transformFlags": 0,
+                                                "kind": 79,
+                                                "escapedText": "e"
+                                              },
+                                              "name": {
+                                                "pos": 451,
+                                                "end": 457,
+                                                "flags": 0,
+                                                "modifierFlagsCache": 0,
+                                                "transformFlags": 0,
+                                                "kind": 79,
+                                                "escapedText": "target"
+                                              }
+                                            },
+                                            "name": {
+                                              "pos": 458,
+                                              "end": 463,
+                                              "flags": 0,
+                                              "modifierFlagsCache": 0,
+                                              "transformFlags": 0,
+                                              "kind": 79,
+                                              "escapedText": "value"
+                                            }
+                                          }
+                                        }
+                                      }
+                                    ]
+                                  },
+                                  "equalsGreaterThanToken": {
+                                    "pos": 424,
+                                    "end": 427,
+                                    "flags": 0,
+                                    "modifierFlagsCache": 0,
+                                    "transformFlags": 0,
+                                    "kind": 38
+                                  }
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "pos": 469,
+                        "end": 476,
+                        "flags": 0,
+                        "modifierFlagsCache": 0,
+                        "transformFlags": 2,
+                        "kind": 11,
+                        "text": "\n      ",
+                        "containsOnlyTriviaWhiteSpaces": true
+                      }
+                    ],
+                    "closingElement": {
+                      "pos": 476,
+                      "end": 482,
+                      "flags": 0,
+                      "modifierFlagsCache": 0,
+                      "transformFlags": 2,
+                      "kind": 284,
+                      "tagName": {
+                        "pos": 478,
+                        "end": 481,
+                        "flags": 0,
+                        "modifierFlagsCache": 0,
+                        "transformFlags": 0,
+                        "kind": 79,
+                        "escapedText": "div"
+                      }
+                    }
+                  },
+                  {
+                    "pos": 482,
+                    "end": 489,
+                    "flags": 0,
+                    "modifierFlagsCache": 0,
+                    "transformFlags": 2,
+                    "kind": 11,
+                    "text": "\n      ",
+                    "containsOnlyTriviaWhiteSpaces": true
+                  },
+                  {
+                    "pos": 489,
+                    "end": 542,
+                    "flags": 0,
+                    "modifierFlagsCache": 0,
+                    "transformFlags": 2,
+                    "kind": 281,
+                    "openingElement": {
+                      "pos": 489,
+                      "end": 494,
+                      "flags": 0,
+                      "modifierFlagsCache": 0,
+                      "transformFlags": 2,
+                      "kind": 283,
+                      "tagName": {
+                        "pos": 490,
+                        "end": 493,
+                        "flags": 0,
+                        "modifierFlagsCache": 0,
+                        "transformFlags": 0,
+                        "kind": 79,
+                        "escapedText": "div"
+                      },
+                      "attributes": {
+                        "pos": 493,
+                        "end": 493,
+                        "flags": 0,
+                        "modifierFlagsCache": 0,
+                        "transformFlags": 2,
+                        "kind": 289,
+                        "properties": []
+                      }
+                    },
+                    "children": [
+                      {
+                        "pos": 494,
+                        "end": 503,
+                        "flags": 0,
+                        "modifierFlagsCache": 0,
+                        "transformFlags": 2,
+                        "kind": 11,
+                        "text": "\n        ",
+                        "containsOnlyTriviaWhiteSpaces": true
+                      },
+                      {
+                        "pos": 503,
+                        "end": 514,
+                        "flags": 0,
+                        "modifierFlagsCache": 0,
+                        "transformFlags": 2,
+                        "kind": 291,
+                        "expression": {
+                          "pos": 504,
+                          "end": 513,
+                          "flags": 0,
+                          "modifierFlagsCache": 0,
+                          "transformFlags": 0,
+                          "kind": 208,
+                          "expression": {
+                            "pos": 504,
+                            "end": 508,
+                            "flags": 0,
+                            "modifierFlagsCache": 0,
+                            "transformFlags": 0,
+                            "kind": 79,
+                            "escapedText": "form"
+                          },
+                          "name": {
+                            "pos": 509,
+                            "end": 513,
+                            "flags": 0,
+                            "modifierFlagsCache": 0,
+                            "transformFlags": 0,
+                            "kind": 79,
+                            "escapedText": "name"
+                          }
+                        }
+                      },
+                      {
+                        "pos": 514,
+                        "end": 517,
+                        "flags": 0,
+                        "modifierFlagsCache": 0,
+                        "transformFlags": 2,
+                        "kind": 11,
+                        "text": " @ ",
+                        "containsOnlyTriviaWhiteSpaces": false
+                      },
+                      {
+                        "pos": 517,
+                        "end": 529,
+                        "flags": 0,
+                        "modifierFlagsCache": 0,
+                        "transformFlags": 2,
+                        "kind": 291,
+                        "expression": {
+                          "pos": 518,
+                          "end": 528,
+                          "flags": 0,
+                          "modifierFlagsCache": 0,
+                          "transformFlags": 0,
+                          "kind": 208,
+                          "expression": {
+                            "pos": 518,
+                            "end": 522,
+                            "flags": 0,
+                            "modifierFlagsCache": 0,
+                            "transformFlags": 0,
+                            "kind": 79,
+                            "escapedText": "form"
+                          },
+                          "name": {
+                            "pos": 523,
+                            "end": 528,
+                            "flags": 0,
+                            "modifierFlagsCache": 0,
+                            "transformFlags": 0,
+                            "kind": 79,
+                            "escapedText": "email"
+                          }
+                        }
+                      },
+                      {
+                        "pos": 529,
+                        "end": 536,
+                        "flags": 0,
+                        "modifierFlagsCache": 0,
+                        "transformFlags": 2,
+                        "kind": 11,
+                        "text": "\n      ",
+                        "containsOnlyTriviaWhiteSpaces": true
+                      }
+                    ],
+                    "closingElement": {
+                      "pos": 536,
+                      "end": 542,
+                      "flags": 0,
+                      "modifierFlagsCache": 0,
+                      "transformFlags": 2,
+                      "kind": 284,
+                      "tagName": {
+                        "pos": 538,
+                        "end": 541,
+                        "flags": 0,
+                        "modifierFlagsCache": 0,
+                        "transformFlags": 0,
+                        "kind": 79,
+                        "escapedText": "div"
+                      }
+                    }
+                  },
+                  {
+                    "pos": 542,
+                    "end": 547,
+                    "flags": 0,
+                    "modifierFlagsCache": 0,
+                    "transformFlags": 2,
+                    "kind": 11,
+                    "text": "\n    ",
+                    "containsOnlyTriviaWhiteSpaces": true
+                  }
+                ],
+                "closingElement": {
+                  "pos": 547,
+                  "end": 554,
+                  "flags": 0,
+                  "modifierFlagsCache": 0,
+                  "transformFlags": 2,
+                  "kind": 284,
+                  "tagName": {
+                    "pos": 549,
+                    "end": 553,
+                    "flags": 0,
+                    "modifierFlagsCache": 0,
+                    "transformFlags": 0,
+                    "kind": 79,
+                    "escapedText": "form"
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "multiLine": true
       }
     }
   ],
-  "sourceType": "module"
+  "endOfFileToken": {
+    "pos": 561,
+    "end": 562,
+    "flags": 0,
+    "modifierFlagsCache": 0,
+    "transformFlags": 0,
+    "kind": 1
+  },
+  "fileName": "components/big-form.tsx",
+  "text": "import { IState, jsx } from \"../lib/render/framework.js\";\n\nexport default function (props: unknown, { useState, render }: IState) {\n  const [form, setForm] = useState({ name: \"\", email: \"\" });\n  return (\n    <form>\n      <div>\n        Name: <input type=\"text\" value={form.name} onChange={e => render((form.name = e.target.value))} />\n      </div>\n      <div>\n        Email: <input type=\"email\" value={form.email} onChange={e => render((form.email = e.target.value))} />\n      </div>\n      <div>\n        {form.name} @ {form.email}\n      </div>\n    </form>\n  );\n}\n",
+  "languageVersion": 99,
+  "languageVariant": 1,
+  "scriptKind": 4,
+  "isDeclarationFile": false,
+  "hasNoDefaultLib": false,
+  "bindDiagnostics": [],
+  "externalModuleIndicator": "[Circular]",
+  "pragmas": {},
+  "referencedFiles": [],
+  "typeReferenceDirectives": [],
+  "libReferenceDirectives": [],
+  "amdDependencies": [],
+  "nodeCount": 151,
+  "identifierCount": 49,
+  "identifiers": {},
+  "parseDiagnostics": []
 }
