@@ -1,50 +1,18 @@
-// $ node crow.cjs
+// $ node crow
 
 import fs from "fs";
 import path from "path";
-import type { ASTTree, IName, IParameter, IStatement, IType } from "./IAST.cjs";
+import { ASTTree, IName, IParameter, IStatement, IType, KINDS } from "./IAST.js";
 
 const outputBaseDir = "./cypress/";
 const topFolder = "./ast/components/";
-
-const KINDS = {
-  string: 152,
-  number: 148,
-  boolean: 134,
-  questionTokenMeaningOrUndefined: 57,
-  object: 180, // look for typeName
-  array: 185, // look for elementType
-  default: 88,
-  export: 93,
-  endOfFileToken: 1,
-  interfaceDeclaration: 261, // .name .modifiers .members
-  function: 259, // .name .modifiers .parameters .body
-  importStatement: 269,
-  expressionOrFunctionCall: 241, // .expression
-  jsxElement1: 283,
-  whitespace: 11,
-  typeUnion: 261, // x | y // look for .types array on this .type
-  typeIntersection: 190, // x & y // look for .types array on this .type
-  adhocInterface: 184, // ? look for .members on this .type
-  any: 131,
-  unknown: 157,
-  functionBody: 238, //?
-  plainText: 11,
-  initializer: 291,
-  property: 288,
-  jsxAttribute: 289,
-  jsxElement2: 284,
-  jsxArgument: 281,
-  returnExpression: 250, // expression...
-  jsxExpression: 214,
-  destructuredObject: 203,
-};
 
 function isJsx(statement: IStatement): boolean {
   if (!statement || !statement.body) return false;
   const last = statement.body.statements[statement.body.statements.length - 1];
   return last.kind == KINDS.returnExpression && last.expression.kind == KINDS.jsxExpression;
 }
+
 let formatPropsChildren: [string, any] | null | undefined | "" = null;
 
 if (!fs.existsSync(outputBaseDir)) fs.mkdirSync(outputBaseDir, { recursive: true });
@@ -94,6 +62,7 @@ function stampout(folder: string) {
 
     ///////////////////////////
     const output = `
+import type { IStatement } from "../IAST.js";
 ${defaultExport ? `import ${defaultExport.name!.escapedText} from '${FileUnderTest}'` : ""}
 ${exports && exports.length > 0 ? `import { ${exports.map(ex => ex.name!.escapedText)} } from '${FileUnderTest}'` : ""}
 
@@ -120,9 +89,9 @@ describe('${ex.name!.escapedText}', () => {
   })
   .join("")}
 
-/*
-${JSON.stringify(statements, undefined, 3)}
-*/`;
+
+const ast: IStatement[] = ${JSON.stringify(statements, undefined, 3)};
+`;
     ///////////////////////////
 
     fs.writeFileSync(outputFilename, output);

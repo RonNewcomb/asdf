@@ -1,4 +1,5 @@
 
+import type { IStatement } from "../IAST.js";
 import FANCIFY from '../components/fancify.js'
 
 
@@ -18,8 +19,8 @@ describe('FANCIFY', () => {
 });
 
 
-/*
-[
+
+const ast: IStatement[] = [
    {
       "pos": 57,
       "end": 478,
@@ -930,5 +931,4 @@ describe('FANCIFY', () => {
          "escapedText": "FANCIFY"
       }
    }
-]
-*/
+];

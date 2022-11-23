@@ -1,4 +1,5 @@
 
+import type { IStatement } from "../IAST.js";
 import LOOPER from '../components/looper.js'
 
 
@@ -18,8 +19,8 @@ describe('LOOPER', () => {
 });
 
 
-/*
-[
+
+const ast: IStatement[] = [
    {
       "pos": 93,
       "end": 395,
@@ -733,5 +734,4 @@ describe('LOOPER', () => {
          "escapedText": "LOOPER"
       }
    }
-]
-*/
+];

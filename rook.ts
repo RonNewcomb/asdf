@@ -3,7 +3,7 @@
 import fs from "fs";
 import path from "path";
 import ts from "typescript"; // grab the global one
-import type { ASTTree } from "./IAST.cjs";
+import type { ASTTree } from "./IAST.js";
 
 const outputBaseDir = "./ast/";
 const alreadyDone: string[] = [];

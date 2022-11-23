@@ -1,4 +1,5 @@
 
+import type { IStatement } from "../IAST.js";
 import BIGFORM from '../components/big-form.js'
 import { IForm } from '../components/big-form.js'
 
@@ -18,8 +19,8 @@ describe('BIGFORM', () => {
 });
 
 
-/*
-[
+
+const ast: IStatement[] = [
    {
       "pos": 57,
       "end": 242,
@@ -1596,5 +1597,4 @@ describe('BIGFORM', () => {
          "escapedText": "BIGFORM"
       }
    }
-]
-*/
+];

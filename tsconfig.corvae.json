@@ -7,5 +7,5 @@
     "strict": true,
     "watch": true
   },
-  "files": ["rook.cts", "crow.cts"]
+  "files": ["rook.ts", "crow.ts"]
 }

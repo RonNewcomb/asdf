@@ -1,4 +1,5 @@
 
+import type { IStatement } from "../IAST.js";
 import Under from '../components/Under.js'
 
 
@@ -18,8 +19,8 @@ describe('Under', () => {
 });
 
 
-/*
-[
+
+const ast: IStatement[] = [
    {
       "pos": 57,
       "end": 714,
@@ -1236,5 +1237,4 @@ describe('Under', () => {
          "multiLine": true
       }
    }
-]
-*/
+];
