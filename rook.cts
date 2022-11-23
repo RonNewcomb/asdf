@@ -41,7 +41,7 @@ function hunt(filename: string) {
   // imports are relative to the path of "filename", not relative to rook
   const inports = output1.statements.filter(each => each.moduleSpecifier);
   const dependencies = inports.map(each => each.moduleSpecifier!.text).map(filename => path.join(inputFilePath, filename));
-  const outsideDependencies = dependencies.filter(d => !pathIsIn(topFolder, d));
+  const outsideDependencies = dependencies.filter(dir => !pathIsIn(topFolder, dir) || ![".", "/"].includes(dir[0]));
   //outsideDependencies.forEach(d => alreadyDone.push(d));
 
   // console.log(inports);
