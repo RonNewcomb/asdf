@@ -5,11 +5,12 @@ import path from "path";
 import ts from "typescript"; // grab the global one
 import type { ASTTree } from "./IAST.js";
 
+const baseFolder = path.resolve();
 const outputBaseDir = path.resolve("./ast/");
 const alreadyDone: string[] = [];
 const firstFile = path.resolve(process.argv[2]);
 const topFolder = path.resolve(process.argv[3] || path.dirname(firstFile));
-console.log({ topFolder, firstFile, outputBaseDir });
+console.log({ topFolder, firstFile, outputBaseDir, baseFolder });
 
 if (!fs.existsSync(firstFile)) throw Error("Pass the top-most .tsx file onto the command line");
 if (!fs.existsSync(outputBaseDir)) fs.mkdirSync(outputBaseDir, { recursive: true });
@@ -30,50 +31,45 @@ function pathIsIn(parent: string, dir: string) {
   return relative && !relative.startsWith("..") && !path.isAbsolute(relative);
 }
 
+let count = 0;
+
 ////////
 function hunt(filename: string) {
+  // find filename and extension -- typescript is required
+  filename = fs.existsSync(filename) ? filename : fs.existsSync(filename + ".tsx") ? filename + ".tsx" : filename + ".ts";
   console.log(filename);
 
-  filename = fs.existsSync(filename) ? filename : fs.existsSync(filename + ".tsx") ? filename + ".tsx" : filename + ".ts";
+  // read and parse
   const input = fs.readFileSync(filename, "utf-8");
-  //console.log( input )
+  const outputObj = ts.createSourceFile(filename, input, ts.ScriptTarget.Latest) as unknown as ASTTree;
 
-  const output1 = ts.createSourceFile(filename, input, ts.ScriptTarget.Latest) as unknown as ASTTree;
-  //console.log({ output1 });
-
-  // imports are relative to the path of "filename", not relative to rook
-  const inports = output1.statements.filter(each => each.moduleSpecifier);
+  // list the imports, find dependencies within working folder
+  const inports = outputObj.statements.filter(each => each.moduleSpecifier);
   const dependencies = inports
     .map(each => each.moduleSpecifier!.text)
     .map(filename => {
+      // imports are relative to the path of "filename", not relative to this script
       if (filename[0] === "/") return path.resolve(filename);
       if (filename[0] === ".") return path.resolve(filename);
       if (path.resolve(filename).startsWith(topFolder)) return path.resolve("./" + filename);
       return filename;
     });
   const outsideDependencies = dependencies.filter(dir => !pathIsIn(topFolder, dir) || ![".", "/"].includes(dir[0]));
-  //outsideDependencies.forEach(d => alreadyDone.push(d));
-
-  //  console.log(inports);
-  console.log("  dependencies:", dependencies);
-  console.log("  outsideDependencies: ", outsideDependencies, "(ignored)");
-
+  //  //console.log(inports);
+  //console.log("  dependencies:", dependencies);
+  //console.log("  outsideDependencies: ", outsideDependencies, "(ignored)");
   const newDependencies = dependencies.filter(filename => !alreadyDone.includes(filename) && !outsideDependencies.includes(filename));
-  // .map(filename => {
-  //   const ext = path.extname(filename);
-  //   if (ext) filename.replace(ext, ".tsx");
-  //   else filename += ".tsx";
-  //   return filename;
-  // });
-
   if (newDependencies.length) console.log(newDependencies);
 
-  const output = JSON.stringify(output1, getCircularReplacer(), 2);
+  // output intermediate parsing to ast folder
+  const output = JSON.stringify(outputObj, getCircularReplacer(), 2);
   //console.log(output);
 
   alreadyDone.push(filename);
+  count++;
 
-  const outputFilename = outputBaseDir + filename.replace(".js", ".json").replace(".tsx", ".json").replace(".ts", ".json"); // .js to .json // .tsx to .json
+  const outputFilename =
+    outputBaseDir + filename.replace(baseFolder, "").replace(".js", ".json").replace(".tsx", ".json").replace(".ts", ".json"); // .js to .json // .tsx to .json
   fs.mkdirSync(path.dirname(outputFilename), { recursive: true });
 
   console.log("-> " + outputFilename);
@@ -81,9 +77,10 @@ function hunt(filename: string) {
 
   fs.writeFileSync(outputFilename, output);
 
-  newDependencies.forEach(hunt); // recurse into imoprts
+  newDependencies.forEach(hunt); // recurse into imports
 }
 
 hunt(firstFile);
 
-console.log("node crow " + outputBaseDir);
+console.log(count, "files processed");
+console.log("node crow ");

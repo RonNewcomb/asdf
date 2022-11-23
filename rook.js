@@ -7,11 +7,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const fs_1 = __importDefault(require("fs"));
 const path_1 = __importDefault(require("path"));
 const typescript_1 = __importDefault(require("typescript")); // grab the global one
+const baseFolder = path_1.default.resolve();
 const outputBaseDir = path_1.default.resolve("./ast/");
 const alreadyDone = [];
 const firstFile = path_1.default.resolve(process.argv[2]);
 const topFolder = path_1.default.resolve(process.argv[3] || path_1.default.dirname(firstFile));
-console.log({ topFolder, firstFile, outputBaseDir });
+console.log({ topFolder, firstFile, outputBaseDir, baseFolder });
 if (!fs_1.default.existsSync(firstFile))
     throw Error("Pass the top-most .tsx file onto the command line");
 if (!fs_1.default.existsSync(outputBaseDir))
@@ -31,19 +32,21 @@ function pathIsIn(parent, dir) {
     const relative = path_1.default.relative(parent, dir);
     return relative && !relative.startsWith("..") && !path_1.default.isAbsolute(relative);
 }
+let count = 0;
 ////////
 function hunt(filename) {
-    console.log(filename);
+    // find filename and extension -- typescript is required
     filename = fs_1.default.existsSync(filename) ? filename : fs_1.default.existsSync(filename + ".tsx") ? filename + ".tsx" : filename + ".ts";
+    console.log(filename);
+    // read and parse
     const input = fs_1.default.readFileSync(filename, "utf-8");
-    //console.log( input )
-    const output1 = typescript_1.default.createSourceFile(filename, input, typescript_1.default.ScriptTarget.Latest);
-    //console.log({ output1 });
-    // imports are relative to the path of "filename", not relative to rook
-    const inports = output1.statements.filter(each => each.moduleSpecifier);
+    const outputObj = typescript_1.default.createSourceFile(filename, input, typescript_1.default.ScriptTarget.Latest);
+    // list the imports, find dependencies within working folder
+    const inports = outputObj.statements.filter(each => each.moduleSpecifier);
     const dependencies = inports
         .map(each => each.moduleSpecifier.text)
         .map(filename => {
+        // imports are relative to the path of "filename", not relative to this script
         if (filename[0] === "/")
             return path_1.default.resolve(filename);
         if (filename[0] === ".")
@@ -53,28 +56,24 @@ function hunt(filename) {
         return filename;
     });
     const outsideDependencies = dependencies.filter(dir => !pathIsIn(topFolder, dir) || ![".", "/"].includes(dir[0]));
-    //outsideDependencies.forEach(d => alreadyDone.push(d));
-    //  console.log(inports);
-    console.log("  dependencies:", dependencies);
-    console.log("  outsideDependencies: ", outsideDependencies, "(ignored)");
+    //  //console.log(inports);
+    //console.log("  dependencies:", dependencies);
+    //console.log("  outsideDependencies: ", outsideDependencies, "(ignored)");
     const newDependencies = dependencies.filter(filename => !alreadyDone.includes(filename) && !outsideDependencies.includes(filename));
-    // .map(filename => {
-    //   const ext = path.extname(filename);
-    //   if (ext) filename.replace(ext, ".tsx");
-    //   else filename += ".tsx";
-    //   return filename;
-    // });
     if (newDependencies.length)
         console.log(newDependencies);
-    const output = JSON.stringify(output1, getCircularReplacer(), 2);
+    // output intermediate parsing to ast folder
+    const output = JSON.stringify(outputObj, getCircularReplacer(), 2);
     //console.log(output);
     alreadyDone.push(filename);
-    const outputFilename = outputBaseDir + filename.replace(".js", ".json").replace(".tsx", ".json").replace(".ts", ".json"); // .js to .json // .tsx to .json
+    count++;
+    const outputFilename = outputBaseDir + filename.replace(baseFolder, "").replace(".js", ".json").replace(".tsx", ".json").replace(".ts", ".json"); // .js to .json // .tsx to .json
     fs_1.default.mkdirSync(path_1.default.dirname(outputFilename), { recursive: true });
     console.log("-> " + outputFilename);
     console.log("");
     fs_1.default.writeFileSync(outputFilename, output);
-    newDependencies.forEach(hunt); // recurse into imoprts
+    newDependencies.forEach(hunt); // recurse into imports
 }
 hunt(firstFile);
-console.log("node crow " + outputBaseDir);
+console.log(count, "files processed");
+console.log("node crow ");
