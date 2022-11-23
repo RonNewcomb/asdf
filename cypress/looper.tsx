@@ -7,7 +7,10 @@ describe('LOOPER', () => {
 
     
     it('renders', () => {
-        cy.mount(<LOOPER props={"anythings!"} undefined={({ /* IState */ })}>Click me!</LOOPER>)
+        cy.mount(
+          <LOOPER >
+            
+          </LOOPER>)
         cy.get('button').should('contains.text', 'Click me!')
     });
     
@@ -732,4 +735,3 @@ describe('LOOPER', () => {
    }
 ]
 */
-

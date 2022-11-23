@@ -7,7 +7,10 @@ describe('AppStart', () => {
 
     
     it('renders', () => {
-        cy.mount(<AppStart props={seed={'string'} children={"anythings!"}} state={{({ /* IState */ }) as={'string'}}}>Click me!</AppStart>)
+        cy.mount(
+          <AppStart seed={'sample string'} >
+            {}
+          </AppStart>)
         cy.get('button').should('contains.text', 'Click me!')
     });
     
@@ -1542,4 +1545,3 @@ describe('AppStart', () => {
    }
 ]
 */
-

@@ -7,7 +7,10 @@ describe('FANCIFY', () => {
 
     
     it('renders', () => {
-        cy.mount(<FANCIFY undefined={x={"anythings!"} children={"anythings!"}} undefined={({ /* IState */ })}>Click me!</FANCIFY>)
+        cy.mount(
+          <FANCIFY x={{}} >
+            {}
+          </FANCIFY>)
         cy.get('button').should('contains.text', 'Click me!')
     });
     
@@ -929,4 +932,3 @@ describe('FANCIFY', () => {
    }
 ]
 */
-

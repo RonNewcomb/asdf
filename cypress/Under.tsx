@@ -7,7 +7,10 @@ describe('Under', () => {
 
     
     it('renders', () => {
-        cy.mount(<Under undefined={aNumericInput={6}} undefined={({ /* IState */ })}>Click me!</Under>)
+        cy.mount(
+          <Under aNumericInput={6} >
+            
+          </Under>)
         cy.get('button').should('contains.text', 'Click me!')
     });
     
@@ -1235,4 +1238,3 @@ describe('Under', () => {
    }
 ]
 */
-

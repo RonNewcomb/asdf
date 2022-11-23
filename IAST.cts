@@ -14,9 +14,27 @@ export interface ASTTree {
 export interface IStatement extends Common {
   moduleSpecifier?: IModuleSpecifier;
   importClause?: IImportClause;
-  modifiers?: IModifiers[];
   name?: IName;
+  modifiers?: IModifiers[];
   parameters?: IParameter[];
+  body?: IBody;
+}
+export interface IBody extends Common {
+  multiline: boolean;
+  statements: IImperativeStatements[];
+}
+export interface IImperativeStatements extends Common {
+  declarationList: IDeclarationList;
+  expression: IExpression;
+}
+export interface IDeclarationList extends Common {
+  declarations: IDeclaration[];
+}
+export interface IDeclaration extends Common {
+  name: IName & {
+    elements: IName[];
+  };
+  initializer: IInitializer;
 }
 export interface IModuleSpecifier extends Common {
   text: string;
@@ -55,40 +73,37 @@ export interface IArrayElementType extends Common {
 }
 export interface IExpression extends Common {
   escapedText?: string;
-  arguments?: IArgument[];
+  arguments?: (IArgument | IJsxArgument)[];
   text?: string;
   hasExtendedUnicodeEscape?: boolean;
 }
-
 export interface IArgument extends Common {
-  //281
+  text: string;
+  hasExtendedUnicodeEscape: boolean;
+}
+export interface IJsxArgument extends Common {
   text: string;
   hasExtendedUnicodeEscape: boolean;
   openingElement: IJsxElement;
   children: (IPlainText | IJsxAttribute | any)[];
-  closingElement: IJsxElement; //284
+  closingElement: IJsxElement;
 }
 
 export interface IJsxElement extends Common {
-  //284
   tagName: IName;
   attributes: IJsxAttribute;
 }
 export interface IJsxAttribute extends Common {
-  //289
   properties: IProperty[];
 }
 export interface IProperty extends Common {
-  //288
   name: IName;
   initializer: IInitializer;
 }
 export interface IInitializer extends Common {
-  //291
   expression: IExpression;
 }
 export interface IPlainText extends Common {
-  //11
   text: string;
   containsOnlyTriviaWhiteSpaces: boolean;
 }

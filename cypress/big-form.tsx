@@ -7,7 +7,10 @@ describe('BIGFORM', () => {
 
     
     it('renders', () => {
-        cy.mount(<BIGFORM props={"anythings!"} undefined={({ /* IState */ })}>Click me!</BIGFORM>)
+        cy.mount(
+          <BIGFORM >
+            
+          </BIGFORM>)
         cy.get('button').should('contains.text', 'Click me!')
     });
     
@@ -1595,4 +1598,3 @@ describe('BIGFORM', () => {
    }
 ]
 */
-
