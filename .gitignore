@@ -1,5 +1,5 @@
 node_modules
-crow.cjs
-rook.cjs
-*.cjs
-./*.cjs
+crow.js
+rook.js
+*.js
+./*.js

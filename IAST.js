@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.KINDS = void 0;
+exports.KindLabel = exports.KINDS = void 0;
 exports.KINDS = {
     reservedWordAs: 128,
     string: 152,
@@ -33,4 +33,9 @@ exports.KINDS = {
     returnExpression: 250,
     jsxExpression: 214,
     destructuredObject: 203,
+    name: 79,
 };
+exports.KindLabel = Object.keys(exports.KINDS).reduce((retval, key) => {
+    retval[exports.KINDS[key]] = key;
+    return retval;
+}, []);

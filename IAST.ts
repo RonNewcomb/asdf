@@ -1,4 +1,4 @@
-export const KINDS = {
+export const KINDS: Record<string, number> = {
   reservedWordAs: 128, // or all reserved words?
   string: 152,
   number: 148,
@@ -30,15 +30,22 @@ export const KINDS = {
   returnExpression: 250, // expression...
   jsxExpression: 214,
   destructuredObject: 203,
+  name: 79,
 };
 
+export const KindLabel = Object.keys(KINDS).reduce((retval, key) => {
+  retval[KINDS[key]] = key;
+  return retval;
+}, [] as string[]);
+
 export interface Common {
-  pos: number;
-  end: number;
-  flags: number;
-  modifierFlagsCache: number;
-  transformFlags: number;
+  // pos: number;
+  // end: number;
+  // flags: number;
+  // modifierFlagsCache: number;
+  // transformFlags: number;
   kind: number;
+  ___?: string;
 }
 
 export interface IDestructuredArray {
@@ -53,9 +60,9 @@ export interface ASTTree {
   statements: IStatement[];
 }
 
-export type IStatement = IStatement_Expression | IStatement_Other;
+//export type IStatement = IStatement_Expression | IStatement_Other;
 
-export interface IStatement_Other extends Common {
+export interface IStatement extends Common {
   moduleSpecifier?: IModuleSpecifier;
   importClause?: IImportClause;
   name?: IName;
@@ -64,10 +71,10 @@ export interface IStatement_Other extends Common {
   body?: IBody;
 }
 
-export interface IStatement_Expression extends Common {
-  kind: 241;
-  expression: IExpression;
-}
+// export interface IStatement_Expression extends Common {
+//   kind: 241;
+//   expression: IExpression;
+// }
 
 export type IBody = IBody210 | IBody238;
 
@@ -80,6 +87,7 @@ export interface IBody210 extends Common {
   kind: 210;
   expression: IObjectMethodExpression208;
   arguments: IArgument[];
+  statements?: IImperativeStatement[];
 }
 
 export type IImperativeStatement = IImperativeStatements240 | IImperativeStatements241 | IImperativeStatements250;

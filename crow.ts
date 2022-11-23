@@ -2,13 +2,13 @@
 
 import fs from "fs";
 import path from "path";
-import { ASTTree, IName, IParameter, IStatement, IType, KINDS } from "./IAST.js";
+import { ASTTree, Common, IName, IParameter, IStatement, IType, KINDS } from "./IAST.js";
 
 const outputBaseDir = "./cypress/";
 const topFolder = "./ast/components/";
 
 function isJsx(statement: IStatement): boolean {
-  if (!statement || !statement.body) return false;
+  if (!statement || !statement.body || !statement.body.statements) return false;
   const last = statement.body.statements[statement.body.statements.length - 1];
   return last.kind == KINDS.returnExpression && last.expression.kind == KINDS.jsxExpression;
 }
@@ -16,6 +16,18 @@ function isJsx(statement: IStatement): boolean {
 let formatPropsChildren: [string, any] | null | undefined | "" = null;
 
 if (!fs.existsSync(outputBaseDir)) fs.mkdirSync(outputBaseDir, { recursive: true });
+
+function slim(obj: any & Common): any {
+  if (Array.isArray(obj)) return obj.map(slim);
+  if (typeof obj !== "object") return obj;
+  const retval: any = {};
+  for (const key in obj)
+    if (!["pos", "end", "flags", "modifierFlagsCache", "transformFlags"].includes(key)) {
+      //if (key === "kind") retval.___ =   KindLabel[obj[key] ];
+      retval[key] = slim(obj[key]);
+    }
+  return retval;
+}
 
 function stampout(folder: string) {
   console.log(folder);
@@ -68,18 +80,17 @@ ${exports && exports.length > 0 ? `import { ${exports.map(ex => ex.name!.escaped
 
 ${allConcreteJsxExports
   .map(ex => {
+    const nameUnderTest = ex.name!.escapedText;
     formatPropsChildren = "";
     const propsObj = reasonableInput(ex.parameters?.[0]);
     const props = formatPropsForJsx(propsObj);
     return `
-describe('${ex.name!.escapedText}', () => {
+describe('${nameUnderTest}', () => {
 
     ${`
     it('renders', () => {
         cy.mount(
-          <${ex.name!.escapedText} ${props}>
-            ${formatPropsChildren ? formatPropsChildren[1] : ""}
-          </${ex.name!.escapedText}>)
+          <${nameUnderTest} ${props}>${formatPropsChildren ? formatPropsChildren[1] : ""}</${nameUnderTest}>)
         cy.get('button').should('contains.text', 'Click me!')
     });
     `}
@@ -90,7 +101,7 @@ describe('${ex.name!.escapedText}', () => {
   .join("")}
 
 
-const ast: IStatement[] = ${JSON.stringify(statements, undefined, 3)};
+const ast: IStatement[] = ${JSON.stringify(statements.map(slim), undefined, 3)};
 `;
     ///////////////////////////
 
