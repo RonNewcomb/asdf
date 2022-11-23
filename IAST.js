@@ -36,7 +36,8 @@ exports.KINDS = {
     jsxExpression2: 212,
     destructuredObject: 203,
     name: 79,
-    interfaceGeneric: 178, // look for .typename ; it's an IType with .typename
+    interfaceGeneric: 178,
+    typeArguments: 182,
 };
 exports.KindLabel = Object.keys(exports.KINDS).reduce((retval, key) => {
     retval[exports.KINDS[key]] = key;

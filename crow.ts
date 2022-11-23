@@ -6,6 +6,8 @@ import { ASTTree, Common, IName, IParameter, IStatement, IType, KINDS } from "./
 
 const outputBaseDir = "./cypress/";
 const topFolder = "./ast/";
+const projectFolder = path.resolve();
+console.log({ outputBaseDir, topFolder, projectFolder });
 
 function isJsx(statement: IStatement): boolean {
   if (statement && statement.body && statement.body.statements) {
@@ -23,8 +25,6 @@ function isJsx(statement: IStatement): boolean {
   }
   return false;
 }
-
-let formatPropsChildren: [string, any] | null | undefined | "" = null;
 
 if (!fs.existsSync(outputBaseDir)) fs.mkdirSync(outputBaseDir, { recursive: true });
 
@@ -68,13 +68,16 @@ function processFile(filename: string) {
     const outputFilename = outputBaseDir + filename.replace(".json", ".tsx");
     fs.mkdirSync(path.dirname(outputFilename), { recursive: true });
 
-    const FileUnderTest = `../${ast.fileName.replace(".tsx", ".js").replace(".ts", ".js")}`;
+    const FileUnderTest = ast.fileName
+      .replace(".tsx", ".js")
+      .replace(".ts", ".js")
+      .replace(projectFolder + "/", "");
     const allExports = (defaultExport ? [defaultExport] : []).concat(exports);
     const allConcreteExports = allExports.filter(e => !e.isTypeOnly && ![KINDS.interfaceDeclaration].includes(e.kind));
     const allConcreteJsxExports = allConcreteExports.filter(isJsx);
 
     if (allConcreteJsxExports.length === 0 && allConcreteExports.length > 0)
-      return console.log(allConcreteExports.length, "exports, none are jsx components\n\r");
+      return console.log(allConcreteExports.length, "exports but no jsx components\n\r");
 
     const getName = (statement: IStatement): string =>
       statement.name ? statement.name.escapedText : statement.declarationList!.declarations![0].name!.escapedText;
@@ -85,42 +88,39 @@ function processFile(filename: string) {
     // for each async operation,
     // test "render with <inputs> [after <async op>] [on <handlername> <inputs>] [after <async op>]"
 
-    console.log("-> " + outputFilename);
-    console.log();
-
     ///////////////////////////
     const output = `
-//import type { IStatement } from "../IAST.js";
 ${defaultExport ? `import ${defaultExport.name!.escapedText} from '${FileUnderTest}'` : ""}
 ${exports && exports.length > 0 ? `import { ${exports.map(getName)} } from '${FileUnderTest}'` : ""}
 
 ${allConcreteJsxExports
   .map(ex => {
     const nameUnderTest = getName(ex);
-    formatPropsChildren = "";
-    const propsObj = reasonableInput(ex.parameters?.[0]);
-    const props = formatPropsForJsx(propsObj);
+    const argsForOneParam = reasonableInputSequence(ex.parameters?.[0]);
+    const sequenceOfProps = flattenPossiblities(argsForOneParam);
+    console.log({ argsForOneParam: JSON.stringify(argsForOneParam), sequenceOfProps: JSON.stringify(sequenceOfProps) });
     return `
 describe('${nameUnderTest}', () => {
 
-    ${`
-    it('renders', () => {
-        cy.mount(
-          <${nameUnderTest} ${props}>${formatPropsChildren ? formatPropsChildren[1] : ""}</${nameUnderTest}>)
-        cy.get('button').should('contains.text', 'Click me!')
-    });
-    `}
+  ${sequenceOfProps.map(propsObj => {
+    if (!propsObj) return "";
+    const [props, childs] = formatPropsForJsx(propsObj);
+    return `
+  it('renders', () => {
+      cy.mount(<${nameUnderTest} ${props}>${childs}</${nameUnderTest}>)
+      cy.get('button').should('contains.text', 'Click me!')
+  });
+    `;
+  })} 
 
-});
-`;
+});`;
   })
   .join("")}
-
-
-/*const ast: IStatement[] = ${/*JSON.stringify(statements.map(slim), undefined, 3)*/ []};*/
 `;
-    ///////////////////////////
+    /////////////////////////// /*const ast: IStatement[] = ${/*JSON.stringify(statements.map(slim), undefined, 3)*/ []};*/
 
+    console.log("-> " + outputFilename);
+    console.log();
     fs.writeFileSync(outputFilename, output);
   } catch (e) {
     console.log(e);
@@ -138,57 +138,87 @@ function processFolder(folder: string) {
 
 processFolder(topFolder);
 
-///////
+/////// sample inputs generator /////////////
 
-function formatPropsForJsx(samples: null | [string, any][]): string {
-  if (!samples) return "";
-  const props = Array.isArray(samples[1]) ? samples[1] : [samples[1]];
+type JsxPropsAndChildsStrings = [string, string];
+type ParameterNameAndArgumentValue = [string, AnyArgument];
+type AnyArgument = any;
+type ParameterNameAndPossibleArguments = { name: string; args: AnyArgument[] };
+
+function stringifyOneJsxProp(kv: ParameterNameAndArgumentValue): string {
+  const [parameterName, anyValue] = kv;
+  return parameterName + "={" + anyValue + "} ";
+}
+
+function stringifyJsxProps(kvs: ParameterNameAndArgumentValue[]): string {
+  return kvs.map(stringifyOneJsxProp).join();
+}
+
+// returns [props,children]; children is not among the props
+function formatPropsForJsx(samples: ParameterNameAndArgumentValue): JsxPropsAndChildsStrings {
+  if (!samples) return ["", ""];
+  const [parameterName, anyValue] = samples;
+  if (typeof anyValue !== "object") return [parameterName + "={" + anyValue + "} ", ""];
+  const props = Array.isArray(anyValue) ? anyValue : [anyValue];
   console.log("throwing away", samples[0], "keeping", JSON.stringify(props));
-  formatPropsChildren = props.find(tuple => tuple[0] === "children");
-  return props
-    .filter(t => t !== formatPropsChildren)
-    .map(tuple => tuple[0] + "={" + tuple[1] + "} ")
-    .join("");
+  const formatPropsChildren = props.find(tuple => tuple[0] === "children");
+  return [
+    props
+      .filter(t => t !== formatPropsChildren)
+      .map(tuple => tuple[0] + "={" + tuple[1] + "} ")
+      .join(""),
+    formatPropsChildren || "",
+  ];
 }
 
-function reasonableInputs(parameters?: IParameter[]): [string, any][] {
-  if (!parameters) return [];
-  const params = Array.isArray(parameters) ? parameters : [parameters];
-  return params.map(reasonableInput).filter(x => x !== null) as [string, any][];
+function flattenPossiblities(paramObj: ParameterNameAndPossibleArguments): ParameterNameAndArgumentValue[] {
+  return paramObj.args.map(a => [paramObj.name, a]);
 }
 
-function reasonableInput(paramObj?: IParameter): [string, any] | null {
-  if (!paramObj) return null;
-  const val = sample(paramObj.type);
-  return val === null ? null : [paramObj.name.escapedText, sample(paramObj.type)];
+// jsx-agnostic /////////
+
+function reasonableInputSequence(paramObj?: IParameter): ParameterNameAndPossibleArguments {
+  if (!paramObj) return { name: "", args: [] };
+  console.log("paramname", paramObj.name.escapedText, !paramObj.name.escapedText ? JSON.stringify(paramObj) : "");
+  const inputSequence = generateSampleArguments(paramObj.type);
+  return { name: paramObj.name.escapedText, args: inputSequence };
 }
 
-function sample(x: IType): any {
-  switch (x.kind) {
+function generateSampleArguments(type: IType): AnyArgument[] {
+  switch (type.kind) {
     case KINDS.string:
-      return "'sample string'";
+      return ["'sample string'", "other sample string"];
     case KINDS.number:
-      return "6";
+      return [68, 534];
     case KINDS.boolean:
-      return true;
-    case KINDS.questionTokenMeaningOrUndefined:
-      return undefined;
+      return [true];
+    case KINDS.questionTokenMeaningOrUndefined: // TODO this is basically a type-union
+      return [undefined];
     case KINDS.object: //180, // look for typeName
+      return [{ address: type.typeName?.escapedText, wasAnObject: true }];
     case KINDS.interfaceGeneric: // 178
-      return "({ /* " + (x.typeName?.escapedText || "") + " */ })";
-    case KINDS.any:
-      return "{}";
-    case KINDS.unknown:
-      return null;
-    case KINDS.typeUnion: //261, // x | y // look for .types array on this .type
-      return "{" + x.types!.map(sample).join(" ") + "}";
-    case KINDS.typeIntersection: //190, // x & y // look for .types array on this .type
-      return "{" + x.types!.map(sample).join(" ") + "}";
-    case KINDS.array: // 185, // look for elementType
-      return "[" + sample(x.elementType!) + "]";
+      if (type.typeName?.escapedText !== "PropsWithChildren")
+        return [{ address: type.typeName?.escapedText, isViolationOfInterface: true }];
+      if (!type.typeArguments) return [{ propsWithChildren: "no typeArguments", children: generateSampleArguments({ kind: KINDS.any }) }];
+      if (!type.typeArguments.members)
+        return [{ propsWithChildren: "no typeArguments.members", children: generateSampleArguments({ kind: KINDS.any }) }];
+      const props = type.typeArguments.members.map(generateSampleArguments);
+      return [{ children: generateSampleArguments({ kind: KINDS.any }), fromPropsWithChildren: true, ...props }];
     case KINDS.adhocInterface:
-      return reasonableInputs(x.members as IParameter[]); // ? look for .members on this .type
+      return [{ members: type.members, type: "adhocInterface" }]; // ? look for .members on this .type
+    case KINDS.any:
+      return ["any type", 42, true, undefined, null, [6, 12, 7, "random array"], { random: "object" }];
+    case KINDS.unknown:
+      return [];
+    case KINDS.typeUnion: //261, // x | y // look for .types array on this .type
+      if (!type.types) return ["type.types null"];
+      return type.types.map(generateSampleArguments).flat();
+    case KINDS.typeIntersection: //190, // x & y // look for .types array on this .type
+      if (!type.types) return ["type.types null"];
+      return type.types.map(generateSampleArguments).flat();
+    case KINDS.array: // 185, // look for elementType
+      return [generateSampleArguments(type.elementType!)];
     default:
-      throw new Error("unknown kind for input type " + x.kind + ": " + JSON.stringify(x));
+      throw new Error("unknown kind for input type " + type.kind + ": " + JSON.stringify(type));
   }
 }

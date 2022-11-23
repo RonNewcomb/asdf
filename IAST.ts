@@ -34,6 +34,7 @@ export const KINDS: Record<string, number> = {
   destructuredObject: 203,
   name: 79,
   interfaceGeneric: 178, // look for .typename ; it's an IType with .typename
+  typeArguments: 182,
 };
 
 export const KindLabel = Object.keys(KINDS).reduce((retval, key) => {
@@ -146,8 +147,21 @@ export interface IType extends Common {
   typeName?: ITypeName;
   elementType?: IArrayElementType;
   types?: IType[];
+  typeArguments?: ITypeArguments;
 }
-export interface IQuestionToken extends Common {}
+export interface ITypeArguments extends Common {
+  kind: 182;
+  members: [];
+}
+export interface ITypeArgument extends Common {
+  kind: 166;
+  name: IName;
+  type: IType;
+  questionToken?: IQuestionToken;
+}
+export interface IQuestionToken extends Common {
+  kind: 57;
+}
 export interface IMember extends Common {
   name: IName;
   type: IType;
