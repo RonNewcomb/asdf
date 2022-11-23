@@ -31,6 +31,22 @@ function pathIsIn(parent: string, dir: string) {
   return relative && !relative.startsWith("..") && !path.isAbsolute(relative);
 }
 
+const slimseen = new WeakSet();
+function slim(obj: any): any {
+  if (Array.isArray(obj)) return obj.map(slim);
+  if (typeof obj !== "object") return obj;
+  if (obj === null) return null;
+  if (slimseen.has(obj)) return "[Circular]";
+  slimseen.add(obj);
+  const retval: any = {};
+  for (const key in obj)
+    if (!["pos", "end", "flags", "modifierFlagsCache", "transformFlags"].includes(key)) {
+      //if (key === "kind") retval.___ =   KindLabel[obj[key] ];
+      retval[key] = slim(obj[key]);
+    }
+  return retval;
+}
+
 let count = 0;
 
 ////////
@@ -62,7 +78,7 @@ function hunt(filename: string) {
   if (newDependencies.length) console.log(newDependencies);
 
   // output intermediate parsing to ast folder
-  const output = JSON.stringify(outputObj, getCircularReplacer(), 2);
+  const output = JSON.stringify(slim(outputObj), getCircularReplacer(), 2);
   //console.log(output);
 
   alreadyDone.push(filename);

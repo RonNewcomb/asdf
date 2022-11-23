@@ -8,12 +8,22 @@ const fs_1 = __importDefault(require("fs"));
 const path_1 = __importDefault(require("path"));
 const IAST_js_1 = require("./IAST.js");
 const outputBaseDir = "./cypress/";
-const topFolder = "./ast/components/";
+const topFolder = "./ast/";
 function isJsx(statement) {
-    if (!statement || !statement.body || !statement.body.statements)
-        return false;
-    const last = statement.body.statements[statement.body.statements.length - 1];
-    return last.kind == IAST_js_1.KINDS.returnExpression && last.expression.kind == IAST_js_1.KINDS.jsxExpression;
+    if (statement && statement.body && statement.body.statements) {
+        const last = statement.body.statements[statement.body.statements.length - 1];
+        if (last.kind == IAST_js_1.KINDS.returnExpression && last.expression.kind == IAST_js_1.KINDS.jsxExpression)
+            return true;
+        return last.kind === IAST_js_1.KINDS.returnExpression2 && last.expression.kind === IAST_js_1.KINDS.jsxExpression2;
+    }
+    else if (statement &&
+        statement.declarationList &&
+        statement.declarationList.declarations &&
+        statement.declarationList.declarations.length === 1) {
+        const last = statement.declarationList.declarations[0];
+        return last.initializer.kind === IAST_js_1.KINDS.jsxExpression;
+    }
+    return false;
 }
 let formatPropsChildren = null;
 if (!fs_1.default.existsSync(outputBaseDir))
@@ -31,14 +41,18 @@ function slim(obj) {
         }
     return retval;
 }
-function stampout(folder) {
-    console.log(folder);
-    const filenames = fs_1.default.readdirSync(folder) || [];
-    for (const filename of filenames) {
-        console.log(filename);
-        const astString = fs_1.default.readFileSync(path_1.default.join(folder, filename), "utf-8");
+function processFile(filename) {
+    console.log(filename);
+    try {
+        let astString = "";
+        try {
+            astString = fs_1.default.readFileSync(filename, "utf-8");
+        }
+        catch (e) {
+            console.log(e);
+            return;
+        }
         const ast = JSON.parse(astString);
-        const statements = ast.statements.filter(s => !s.importClause);
         const defaultExport = ast.statements.find(x => x.modifiers?.find(m => m.kind === IAST_js_1.KINDS.default));
         if (defaultExport && !defaultExport.name)
             defaultExport.name = {
@@ -53,28 +67,29 @@ function stampout(folder) {
         // console.log(ast.statements.map(s => s.modifiers?.kind))
         const outputFilename = outputBaseDir + filename.replace(".json", ".tsx");
         fs_1.default.mkdirSync(path_1.default.dirname(outputFilename), { recursive: true });
-        console.log("-> " + outputFilename);
-        console.log();
-        const FileUnderTest = `../${ast.fileName.replace(".tsx", ".js")}`;
+        const FileUnderTest = `../${ast.fileName.replace(".tsx", ".js").replace(".ts", ".js")}`;
         const allExports = (defaultExport ? [defaultExport] : []).concat(exports);
-        const allConcreteExports = allExports.filter(e => e.kind !== IAST_js_1.KINDS.interfaceDeclaration);
+        const allConcreteExports = allExports.filter(e => !e.isTypeOnly && ![IAST_js_1.KINDS.interfaceDeclaration].includes(e.kind));
         const allConcreteJsxExports = allConcreteExports.filter(isJsx);
-        const namesToTest = allExports.map(ex => ex.name.escapedText);
-        console.log({ namesToTest });
+        if (allConcreteJsxExports.length === 0 && allConcreteExports.length > 0)
+            return console.log(allConcreteExports.length, "exports, none are jsx components\n\r");
+        const getName = (statement) => statement.name ? statement.name.escapedText : statement.declarationList.declarations[0].name.escapedText;
         // for each exported item,
         // pick "reasonable" inputs for it,
         // for each onXxxx handler,
         // for each async operation,
         // test "render with <inputs> [after <async op>] [on <handlername> <inputs>] [after <async op>]"
+        console.log("-> " + outputFilename);
+        console.log();
         ///////////////////////////
         const output = `
-import type { IStatement } from "../IAST.js";
+//import type { IStatement } from "../IAST.js";
 ${defaultExport ? `import ${defaultExport.name.escapedText} from '${FileUnderTest}'` : ""}
-${exports && exports.length > 0 ? `import { ${exports.map(ex => ex.name.escapedText)} } from '${FileUnderTest}'` : ""}
+${exports && exports.length > 0 ? `import { ${exports.map(getName)} } from '${FileUnderTest}'` : ""}
 
 ${allConcreteJsxExports
             .map(ex => {
-            const nameUnderTest = ex.name.escapedText;
+            const nameUnderTest = getName(ex);
             formatPropsChildren = "";
             const propsObj = reasonableInput(ex.parameters?.[0]);
             const props = formatPropsForJsx(propsObj);
@@ -95,13 +110,26 @@ describe('${nameUnderTest}', () => {
             .join("")}
 
 
-const ast: IStatement[] = ${JSON.stringify(statements.map(slim), undefined, 3)};
+/*const ast: IStatement[] = ${ /*JSON.stringify(statements.map(slim), undefined, 3)*/[]};*/
 `;
         ///////////////////////////
         fs_1.default.writeFileSync(outputFilename, output);
     }
+    catch (e) {
+        console.log(e);
+    }
 }
-stampout(topFolder);
+function processFolder(folder) {
+    //console.log(folder);
+    const folderAndFileNames = fs_1.default.readdirSync(folder, { withFileTypes: true }) || [];
+    for (const dirEntry of folderAndFileNames) {
+        if (dirEntry.isDirectory())
+            processFolder(path_1.default.join(folder, dirEntry.name));
+        else
+            processFile(path_1.default.join(folder, dirEntry.name));
+    }
+}
+processFolder(topFolder);
 ///////
 function formatPropsForJsx(samples) {
     if (!samples)
@@ -137,6 +165,7 @@ function sample(x) {
         case IAST_js_1.KINDS.questionTokenMeaningOrUndefined:
             return undefined;
         case IAST_js_1.KINDS.object: //180, // look for typeName
+        case IAST_js_1.KINDS.interfaceGeneric: // 178
             return "({ /* " + (x.typeName?.escapedText || "") + " */ })";
         case IAST_js_1.KINDS.any:
             return "{}";

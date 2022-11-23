@@ -28,9 +28,12 @@ export const KINDS: Record<string, number> = {
   jsxElement2: 284,
   jsxArgument: 281,
   returnExpression: 250, // expression...
-  jsxExpression: 214,
+  returnExpression2: 247,
+  jsxExpression: 214, // <div> or built in?
+  jsxExpression2: 212, //  <CustomComp/> not built in?
   destructuredObject: 203,
   name: 79,
+  interfaceGeneric: 178, // look for .typename ; it's an IType with .typename
 };
 
 export const KindLabel = Object.keys(KINDS).reduce((retval, key) => {
@@ -69,6 +72,8 @@ export interface IStatement extends Common {
   modifiers?: IModifiers[];
   parameters?: IParameter[];
   body?: IBody;
+  declarationList?: IDeclarationList;
+  isTypeOnly?: boolean;
 }
 
 // export interface IStatement_Expression extends Common {
@@ -103,7 +108,7 @@ export interface IImperativeStatements240 extends Common {
 }
 export interface IImperativeStatements250 extends Common {
   kind: 250;
-  expression: IExpression214;
+  expression: IJsxExpression214;
 }
 
 export interface IDeclarationList extends Common {
@@ -136,6 +141,7 @@ export interface IName extends Common {
   originalKeywordKind?: number;
 }
 export interface IType extends Common {
+  // kind: 178 among others
   members?: IMember[];
   typeName?: ITypeName;
   elementType?: IArrayElementType;
@@ -159,7 +165,7 @@ export interface IParameter extends Common {
 export interface IArrayElementType extends Common {
   typeName?: ITypeName;
 }
-export type IExpression = IJsxArgument281 | IExpression_Other | IObjectMethodExpression208 | IExpression214 | IExpression223;
+export type IExpression = IJsxArgument281 | IExpression_Other | IObjectMethodExpression208 | IJsxExpression214 | IExpression223;
 export interface IObjectMethodExpression208 extends Common {
   kind: 208;
   name: IName;
@@ -173,7 +179,7 @@ export interface IExpression_Other extends Common {
   expression?: IExpression;
   //  name?: IName;
 }
-export interface IExpression214 extends Common {
+export interface IJsxExpression214 extends Common {
   kind: 214;
 }
 export interface IOperatorToken extends Common {
