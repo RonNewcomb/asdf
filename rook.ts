@@ -1,14 +1,15 @@
-// $ node rook.cjs components/app-start.tsx
+// $ node rook src/components/app-start.tsx  src
 
 import fs from "fs";
 import path from "path";
 import ts from "typescript"; // grab the global one
 import type { ASTTree } from "./IAST.js";
 
-const outputBaseDir = "./ast/";
+const outputBaseDir = path.resolve("./ast/");
 const alreadyDone: string[] = [];
-const firstFile = process.argv[2];
-const topFolder = path.dirname(firstFile);
+const firstFile = path.resolve(process.argv[2]);
+const topFolder = path.resolve(process.argv[3] || path.dirname(firstFile));
+console.log({ topFolder, firstFile, outputBaseDir });
 
 if (!fs.existsSync(firstFile)) throw Error("Pass the top-most .tsx file onto the command line");
 if (!fs.existsSync(outputBaseDir)) fs.mkdirSync(outputBaseDir, { recursive: true });
@@ -29,9 +30,11 @@ function pathIsIn(parent: string, dir: string) {
   return relative && !relative.startsWith("..") && !path.isAbsolute(relative);
 }
 
+////////
 function hunt(filename: string) {
   console.log(filename);
-  const inputFilePath = path.dirname(filename);
+
+  filename = fs.existsSync(filename) ? filename : fs.existsSync(filename + ".tsx") ? filename + ".tsx" : filename + ".ts";
   const input = fs.readFileSync(filename, "utf-8");
   //console.log( input )
 
@@ -40,15 +43,29 @@ function hunt(filename: string) {
 
   // imports are relative to the path of "filename", not relative to rook
   const inports = output1.statements.filter(each => each.moduleSpecifier);
-  const dependencies = inports.map(each => each.moduleSpecifier!.text).map(filename => path.join(inputFilePath, filename));
+  const dependencies = inports
+    .map(each => each.moduleSpecifier!.text)
+    .map(filename => {
+      if (filename[0] === "/") return path.resolve(filename);
+      if (filename[0] === ".") return path.resolve(filename);
+      if (path.resolve(filename).startsWith(topFolder)) return path.resolve("./" + filename);
+      return filename;
+    });
   const outsideDependencies = dependencies.filter(dir => !pathIsIn(topFolder, dir) || ![".", "/"].includes(dir[0]));
   //outsideDependencies.forEach(d => alreadyDone.push(d));
 
-  // console.log(inports);
-  // console.log("  dependencies:", dependencies);
-  // console.log("  outsideDependencies: ", outsideDependencies, "(ignored)");
+  //  console.log(inports);
+  console.log("  dependencies:", dependencies);
+  console.log("  outsideDependencies: ", outsideDependencies, "(ignored)");
 
   const newDependencies = dependencies.filter(filename => !alreadyDone.includes(filename) && !outsideDependencies.includes(filename));
+  // .map(filename => {
+  //   const ext = path.extname(filename);
+  //   if (ext) filename.replace(ext, ".tsx");
+  //   else filename += ".tsx";
+  //   return filename;
+  // });
+
   if (newDependencies.length) console.log(newDependencies);
 
   const output = JSON.stringify(output1, getCircularReplacer(), 2);
@@ -64,9 +81,9 @@ function hunt(filename: string) {
 
   fs.writeFileSync(outputFilename, output);
 
-  newDependencies.forEach(filename => hunt(filename.replace(".js", ".tsx"))); // recurse into imoprts
+  newDependencies.forEach(hunt); // recurse into imoprts
 }
 
 hunt(firstFile);
 
-console.log("node crow.cjs " + outputBaseDir);
+console.log("node crow " + outputBaseDir);
